@@ -1,7 +1,8 @@
 import React from 'react'
-import restaurants from '../../assets/restaurants.json'
+import { useSelector } from 'react-redux'
 
 const Restaurants = () => {
+  const restaurants = useSelector(state=>state.restaurants)
   return (
     <div className='restaurants'>
       <div className="restaurant-heading">
