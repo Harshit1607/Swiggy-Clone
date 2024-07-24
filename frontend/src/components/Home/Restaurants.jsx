@@ -14,7 +14,7 @@ const Restaurants = () => {
               <img src={item.image} />
               <span className='restaurant-name'>{item.name}</span>
               <span className='restaurant-rating'>{item.rating}</span>
-              <span className='restaurant-cusine'>{item.cuisine}</span>
+              <span className='restaurant-cusine'>{item.cuisine.substring(0, 25) + '...'}</span>
             </div>
           )
         })

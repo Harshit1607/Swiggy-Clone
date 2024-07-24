@@ -1,12 +1,14 @@
 import React from 'react'
 import Navbar from './Navbar'
-import Main from './Home/Main'
+import Home from './Home/Home'
+import RestaurantHome from './Restaurant/RestaurantHome'
 
 const App = () => {
   return (
     <div>
       <Navbar />
-      <Main />
+      {/* <Home /> */}
+      <RestaurantHome />
     </div>
   )
 }

@@ -3,7 +3,7 @@ import Recomendation from './Recomendation'
 import Restaurants from './Restaurants'
 
 
-const Main = () => {
+const Home = () => {
   return (
     <div className="main">
       <Recomendation />
@@ -12,4 +12,4 @@ const Main = () => {
   )
 }
 
-export default Main
+export default Home
