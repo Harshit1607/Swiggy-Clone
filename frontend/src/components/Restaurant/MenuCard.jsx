@@ -3,7 +3,6 @@ import { useSelector } from 'react-redux';
 
 const MenuCard = () => {
   const restaurant = useSelector(state => state.singleRestaurant.restaurant);
-  console.log(restaurant)
 
   if (!restaurant) {
     return <div>Loading...</div>;

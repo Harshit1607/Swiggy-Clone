@@ -1,9 +1,13 @@
 import React, {useState} from 'react'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
+import { getRestaurantByCuisine } from '../../Redux/actions'
+import { useNavigate } from 'react-router-dom'
 
 
 const Recomendation = () => {
   const cuisines = useSelector(state=>state.cuisines)
+  const dispatch = useDispatch()
+  const navigate = useNavigate()
   const [slide, setSlide] = useState([0, 1, 2, 3])
   function nextSlide(){
     setSlide(slide.map(item=>item+1));
@@ -11,7 +15,10 @@ const Recomendation = () => {
   function prevSlide(){
     setSlide(slide.map(item=>item-1));
   }
-
+  function handleClick(cuisine){
+    dispatch(getRestaurantByCuisine(cuisine))
+    navigate('/cuisine')
+  }
   return (
     <div className="recomendation">
       <div className="recom-heading">
@@ -25,7 +32,7 @@ const Recomendation = () => {
         {cuisines.map((item, index)=>{
           return(
             <div className = {slide.includes(index)? "recom-img" : "recom-img recon-img-hidden"}>
-              <img src={item.image}/>
+              <img src={item.image} onClick={()=>handleClick(item.cuisine)}/>
             </div>
           )
         })}

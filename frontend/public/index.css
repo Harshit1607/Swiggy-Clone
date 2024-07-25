@@ -22,18 +22,24 @@ code {
   position: sticky;
   display: flex;
   flex-direction: row;
+  justify-content: space-between;
 }
 .Navbar-Left{
   height: 100%;
-  width: 40%;
+  width: 30%;
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: space-around;
+  justify-content: start;
+  padding: 0 30px;
+}
+.Navbar-Left > img {
+  width: 55px;
+  height: 55px;
 }
 .Navbar-Right{
   height: 100%;
-  width: 60%;
+  width: 50%;
   display: flex;
   flex-direction: row;
   align-items: center;

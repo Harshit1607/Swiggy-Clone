@@ -6,7 +6,6 @@ import { fetchRestaurants } from '../../Redux/actions'
 
 const Home = () => {
   const dispatch = useDispatch();
-
   dispatch(fetchRestaurants());
   return (
     <div className="main">

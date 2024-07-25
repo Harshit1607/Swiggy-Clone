@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { Fetch_Restaurants, Single_Restaurant } from './actiontypes'
+import { Fetch_Restaurants, Restaurant_By_cuisine, Single_Restaurant } from './actiontypes'
 
 const API_URL = 'http://localhost:5000/'
 
@@ -16,6 +16,16 @@ export const getSingleRestaurant = ({id}) => async (dispatch)=>{
   try {
     const result = await axios.get(`${API_URL}restaurants/${id}`);
     dispatch({ type: Single_Restaurant, payload: result.data })
+  } catch (error) {
+    alert(error.message)
+  }
+}
+
+export const getRestaurantByCuisine = (cuisine) => async (dispatch)=>{
+  try {
+    console.log(cuisine)
+    const result = await axios.get(`${API_URL}restaurants/cuisine/${cuisine}`)
+    dispatch({type: Restaurant_By_cuisine, payload: result.data})
   } catch (error) {
     alert(error.message)
   }

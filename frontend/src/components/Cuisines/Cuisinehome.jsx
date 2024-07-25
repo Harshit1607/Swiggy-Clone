@@ -3,7 +3,8 @@ import { useDispatch, useSelector } from 'react-redux'
 import { getSingleRestaurant } from '../../Redux/actions';
 import { useNavigate } from 'react-router-dom';
 
-const Restaurants = () => {
+
+const Cuisinehome = () => {
   const restaurants = useSelector(state=>state.restaurants)
   const restaurant = useSelector(state=>state.singleRestaurant)
   const dispatch = useDispatch();
@@ -28,7 +29,7 @@ const Restaurants = () => {
       <div className="restaurant-container">
         { restaurants.map(item=>{
           return(
-            <div className="restaurant-info" onClick={()=>handleClick(item._id)} key={item._id}>
+            <div className="restaurant-info" onClick={()=>handleClick(item._id)}>
               <img src={item.image} />
               <span className='restaurant-name'>{item.name}</span>
               <span className='restaurant-rating'>{item.rating}</span>
@@ -43,4 +44,4 @@ const Restaurants = () => {
   )
 }
 
-export default Restaurants
+export default Cuisinehome

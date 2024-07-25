@@ -5,7 +5,6 @@ import MenuCard from './MenuCard';
 import { useSelector } from 'react-redux';
 
 const RestaurantHome = () => {
-  const restaurant = useSelector(state=>state.singleRestaurant.restaurant)
   return (
     <div className='main'>
       <Info />
