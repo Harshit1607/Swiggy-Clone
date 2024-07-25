@@ -1,24 +1,39 @@
-import React, {useState} from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import { getRestaurantByCuisine } from '../../Redux/actions'
-import { useNavigate } from 'react-router-dom'
-
+import React, { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { getRestaurantByCuisine } from '../../Redux/actions';
+import { useNavigate } from 'react-router-dom';
 
 const Recomendation = () => {
-  const cuisines = useSelector(state=>state.cuisines)
-  const dispatch = useDispatch()
-  const navigate = useNavigate()
-  const [slide, setSlide] = useState([0, 1, 2, 3])
-  function nextSlide(){
-    setSlide(slide.map(item=>item+1));
+  const { cuisines, loading, error } = useSelector(state => state);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const [slide, setSlide] = useState([0, 1, 2, 3]);
+
+  function nextSlide() {
+    setSlide(slide.map(item => item + 1));
   }
-  function prevSlide(){
-    setSlide(slide.map(item=>item-1));
+
+  function prevSlide() {
+    setSlide(slide.map(item => item - 1));
   }
-  function handleClick(cuisine){
-    dispatch(getRestaurantByCuisine(cuisine))
-    navigate('/cuisine')
+
+  function handleClick(cuisine) {
+    dispatch(getRestaurantByCuisine(cuisine));
+    navigate('/cuisine');
   }
+
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+
+  if (error) {
+    return <div>Error: {error}</div>;
+  }
+
+  if (!cuisines || cuisines.length === 0) {
+    return <div>No cuisines available</div>;
+  }
+
   return (
     <div className="recomendation">
       <div className="recom-heading">
@@ -41,4 +56,4 @@ const Recomendation = () => {
   )
 }
 
-export default Recomendation
+export default Recomendation;

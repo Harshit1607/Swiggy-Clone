@@ -1,32 +1,44 @@
-import axios from 'axios'
-import { Fetch_Restaurants, Restaurant_By_cuisine, Single_Restaurant } from './actiontypes'
+import axios from 'axios';
+import { 
+  Fetch_Restaurants_Request, 
+  Fetch_Restaurants_Success, 
+  Fetch_Restaurants_Failure, 
+  Single_Restaurant_Request, 
+  Single_Restaurant_Success, 
+  Single_Restaurant_Failure, 
+  Restaurant_By_Cuisine_Request, 
+  Restaurant_By_Cuisine_Success, 
+  Restaurant_By_Cuisine_Failure 
+} from './actiontypes';
 
-const API_URL = 'http://localhost:5000/'
+const API_URL = 'http://localhost:5000/';
 
-export const fetchRestaurants =  () => async (dispatch)=>{
-  try{
+export const fetchRestaurants = () => async (dispatch) => {
+  dispatch({ type: Fetch_Restaurants_Request });
+  try {
     const result = await axios.get(`${API_URL}restaurants`);
-    dispatch({ type: Fetch_Restaurants, payload: result.data });
-  } catch (err){
-    alert(err.message);
+    dispatch({ type: Fetch_Restaurants_Success, payload: result.data });
+  } catch (error) {
+    dispatch({ type: Fetch_Restaurants_Failure, error: error.message });
   }
 }
 
-export const getSingleRestaurant = ({id}) => async (dispatch)=>{
+export const getSingleRestaurant = ({ id }) => async (dispatch) => {
+  dispatch({ type: Single_Restaurant_Request });
   try {
     const result = await axios.get(`${API_URL}restaurants/${id}`);
-    dispatch({ type: Single_Restaurant, payload: result.data })
+    dispatch({ type: Single_Restaurant_Success, payload: result.data });
   } catch (error) {
-    alert(error.message)
+    dispatch({ type: Single_Restaurant_Failure, error: error.message });
   }
 }
 
-export const getRestaurantByCuisine = (cuisine) => async (dispatch)=>{
+export const getRestaurantByCuisine = (cuisine) => async (dispatch) => {
+  dispatch({ type: Restaurant_By_Cuisine_Request });
   try {
-    console.log(cuisine)
-    const result = await axios.get(`${API_URL}restaurants/cuisine/${cuisine}`)
-    dispatch({type: Restaurant_By_cuisine, payload: result.data})
+    const result = await axios.get(`${API_URL}restaurants/cuisine/${cuisine}`);
+    dispatch({ type: Restaurant_By_Cuisine_Success, payload: result.data });
   } catch (error) {
-    alert(error.message)
+    dispatch({ type: Restaurant_By_Cuisine_Failure, error: error.message });
   }
 }

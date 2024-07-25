@@ -1,18 +1,31 @@
-import React from 'react'
-import Recomendation from './Recomendation'
-import Restaurants from './Restaurants'
-import { useDispatch } from 'react-redux'
-import { fetchRestaurants } from '../../Redux/actions'
+import React, { useEffect } from 'react';
+import Recomendation from './Recomendation';
+import Restaurants from './Restaurants';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchRestaurants } from '../../Redux/actions';
 
 const Home = () => {
   const dispatch = useDispatch();
-  dispatch(fetchRestaurants());
+  const { loading, error } = useSelector(state => state);
+
+  useEffect(() => {
+    dispatch(fetchRestaurants());
+  }, [dispatch]);
+
+  if (loading) {
+    return <div className='loading'>Loading...</div>;
+  }
+
+  if (error) {
+    return <div className='loading'>Error: {error}</div>;
+  }
+
   return (
     <div className="main">
       <Recomendation />
       <Restaurants />
     </div>
-  )
-}
+  );
+};
 
-export default Home
+export default Home;

@@ -14,6 +14,21 @@ code {
     monospace;
 }
 
+/* loading box */
+
+.loading{
+  width: 60%;
+  height: 300px;
+  background-color: #282c3f;
+  color: white;
+  font-size: x-large;
+  font-weight: bold;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 /* Navbar styling */
 
 .Navbar{
@@ -36,6 +51,7 @@ code {
 .Navbar-Left > img {
   width: 55px;
   height: 55px;
+  cursor: pointer;
 }
 .Navbar-Right{
   height: 100%;
@@ -80,9 +96,10 @@ code {
   border: none;
   height: 30px;
   width: 30px;
-  background-color: #ffffff;
+  background-color: #e8e8e8;
   color: black;
   cursor: pointer;
+  margin: 0 5px;
 }
 
 
@@ -120,6 +137,7 @@ code {
   flex-direction: column;
   align-items: start;
   justify-content: space-between;
+  margin: 0 auto;
 }
 .restaurant-heading{
   font-size: x-large;

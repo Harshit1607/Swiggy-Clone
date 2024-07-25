@@ -5,21 +5,28 @@ import { useNavigate } from 'react-router-dom';
 
 
 const Cuisinehome = () => {
-  const restaurants = useSelector(state=>state.restaurants)
-  const restaurant = useSelector(state=>state.singleRestaurant)
+  const { restaurants, loading, error } = useSelector(state => state);
   const dispatch = useDispatch();
   const navigate = useNavigate()
 
 
   function handleClick(id){
-    dispatch(getSingleRestaurant({id}))
+    dispatch(getSingleRestaurant({id}));
+    navigate('/restaurant');
   }
 
-  useEffect(() => {
-    if (restaurant) {
-      navigate('/restaurant');
-    }
-  }, [restaurant, navigate]);
+  if (loading) {
+    return <div className='loading'>Loading...</div>;
+  }
+
+  if (error) {
+    return <div className='loading'>Error: {error}</div>;
+  }
+
+  if (!restaurants || restaurants.length === 0) {
+    return <div>No restaurants available</div>;
+  }
+
 
   return (
     <div className='restaurants'>

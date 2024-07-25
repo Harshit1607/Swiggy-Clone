@@ -1,24 +1,30 @@
-import React, { useEffect } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
+import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { getSingleRestaurant } from '../../Redux/actions';
 import { useNavigate } from 'react-router-dom';
 
 const Restaurants = () => {
-  const restaurants = useSelector(state=>state.restaurants)
-  const restaurant = useSelector(state=>state.singleRestaurant)
+  const { restaurants, loading, error } = useSelector(state => state);
   const dispatch = useDispatch();
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
-
-  function handleClick(id){
-    dispatch(getSingleRestaurant({id}))
+  function handleClick(id) {
+    dispatch(getSingleRestaurant({ id }));
+    navigate('/restaurant');
   }
 
-  useEffect(() => {
-    if (restaurant) {
-      navigate('/restaurant');
-    }
-  }, [restaurant, navigate]);
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+
+  if (error) {
+    return <div>Error: {error}</div>;
+  }
+
+  if (!restaurants || restaurants.length === 0) {
+    return <div>No restaurants available</div>;
+  }
+
 
   return (
     <div className='restaurants'>
