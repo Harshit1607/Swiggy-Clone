@@ -1,8 +1,9 @@
-import { Fetch_Restaurants } from './actiontypes'
+import { Fetch_Restaurants, Single_Restaurant } from './actiontypes'
 
 const initialState = {
   cuisines : [],
   restaurants : [],
+  singleRestaurant: null
 }
 
 function restaurantReducer(state = initialState, action){
@@ -14,7 +15,12 @@ function restaurantReducer(state = initialState, action){
           restaurants : action.payload.restaurants
         }
 
-        
+    case Single_Restaurant:
+        return{
+          ...state,
+          singleRestaurant: action.payload
+        }
+
     default:
         return state;
 }

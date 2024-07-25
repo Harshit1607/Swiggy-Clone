@@ -1,6 +1,8 @@
 import React from 'react'
+import { useSelector } from 'react-redux'
 
-const Info = ({restaurant}) => {
+const Info = () => {
+  const restaurant = useSelector(state=>state.singleRestaurant.restaurant)
   return (
     <div className='Menu-page-info'>
       <div className='Menu-res-name'>Home  /  {restaurant.name}</div>
