@@ -27,10 +27,19 @@ export const getRestaurantById = async (req, res) => {
 export const getRestaurantBycuisine = async (req, res) => {
   const cuisine = req.params.cuisine;
   try {
-    console.log(cuisine)
     const restaurants = await Restaurant.find({cuisine: {$regex: cuisine}});
     res.status(200).json({restaurants});
   } catch (error) {
+    res.status(500).json({ error: 'Failed to get restaurant' });
+  }
+}
+export const getRestaurantBysearch = async (req, res) => {
+  const text = req.params.search;
+  try {
+    const restaurants = await Restaurant.find({name: {$regex: text, $options: 'i'}});
+    res.status(200).json({restaurants});
+  } catch (error) {
+    console.log(error)
     res.status(500).json({ error: 'Failed to get restaurant' });
   }
 }
