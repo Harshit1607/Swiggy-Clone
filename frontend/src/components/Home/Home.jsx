@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import Recomendation from './Recomendation';
 import Restaurants from './Restaurants';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchRestaurants } from '../../Redux/actions';
+import { fetchRestaurants } from '../../Redux/restaurantActions';
 
 const Home = () => {
   const dispatch = useDispatch();

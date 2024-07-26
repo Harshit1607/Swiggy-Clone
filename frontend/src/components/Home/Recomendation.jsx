@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getRestaurantByCuisine } from '../../Redux/actions';
+import { getRestaurantByCuisine } from '../../Redux/restaurantActions';
 import { useNavigate } from 'react-router-dom';
 
 const Recomendation = () => {
@@ -37,7 +37,7 @@ const Recomendation = () => {
   return (
     <div className="recomendation">
       <div className="recom-heading">
-        <span>Whats on Your mind</span>
+        <span>Whats on Your mind?</span>
         <div>
           <button onClick={prevSlide} style={slide[0]===0 ? {display: 'none'}: null}>&lt;</button>
           <button onClick={nextSlide} style={slide[3]===cuisines.length-1 ? {display: 'none'}: null}>&gt;</button>

@@ -1,6 +1,6 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getSingleRestaurant } from '../../Redux/actions';
+import { getSingleRestaurant } from '../../Redux/restaurantActions';
 import { useNavigate } from 'react-router-dom';
 
 const Restaurants = () => {
