@@ -1,7 +1,7 @@
 import React ,{useState}from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom';
-import { fetchRestaurants, getRestaurantBySearch, getSingleRestaurant, getRestaurantByCuisine } from '../../Redux/actions';
+import { fetchRestaurants, getRestaurantBySearch, getSingleRestaurant, getRestaurantByCuisine } from '../../Redux/restaurantActions';
 
 const SearchPage = () => {
   const { searchRestaurant, loading, error, cuisines } = useSelector(state => state);

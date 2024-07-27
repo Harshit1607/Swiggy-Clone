@@ -1,9 +1,11 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { addToCart } from '../../Redux/cartActions';
 
 const MenuCard = () => {
   const { singleRestaurant, loading, error } = useSelector(state => state);
   const restaurants = singleRestaurant
+  const dispatch = useDispatch()
  
 
   if (loading) {
@@ -20,6 +22,10 @@ const MenuCard = () => {
     return <div>No menu available</div>;
   }
 
+  function addItem(Item){
+    const restId = singleRestaurant._id;
+    dispatch(addToCart({Item, restId}))
+  }
   
 
   return (
@@ -35,7 +41,7 @@ const MenuCard = () => {
                   <span>{menuItem.item}</span>
                   <span>{menuItem.price}</span>
                 </div>
-                <button>Add</button>
+                <button onClick={()=>{addItem(menuItem)}}>Add</button>
               </div>
             ))}
           </div>

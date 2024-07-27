@@ -7,16 +7,15 @@ const cartItemSchema = new mongoose.Schema({
     ref: 'Item',
     required: true
   },
-  itemName: {
+  item: {
     type: String,
     required: true
   },
   quantity: {
     type: Number,
-    required: true
   },
   price: {
-    type: Number,
+    type: String,
     required: true
   }
 });

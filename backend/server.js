@@ -5,7 +5,7 @@ import cors from 'cors';
 import dotenv from 'dotenv';
 
 import restaurantRoutes from './routes/restaurantRoutes.js';
-
+import cartRoutes from './routes/cartRoutes.js'
 
 dotenv.config();
 
@@ -19,6 +19,7 @@ app.use(cors())
 mongoose.connect("mongodb://localhost:27017/Swiggy");
 
 app.use('/restaurants', restaurantRoutes);
+app.use('/cart', cartRoutes)
 
 app.listen(port, '0.0.0.0', () => {
   console.log(`Server running on port ${port}`);
