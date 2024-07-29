@@ -445,14 +445,25 @@ background: linear-gradient(rgba(255,255,255,0.062237394957983194) 0%, rgba(230,
   align-items: center;
   justify-content: space-between;
 }
+.cart-item-info > span:first-child{
+  width: 40%;
+}
 
 .quantity-button{
-  width: 50px;
+  width: 20%;
   height: fit-content;
   border: 0.2px solid #282c3f;
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.quantity-button > button{
+  background-color: #ffffff;
+  border: none;
+  color: #656875;
+  font-size: medium;
+  cursor: pointer;
 }
 
 .cart-bill{
@@ -462,6 +473,7 @@ background: linear-gradient(rgba(255,255,255,0.062237394957983194) 0%, rgba(230,
   align-items: start;
   justify-content: space-between;
   margin-top: 20px;
+  margin-bottom: 10px;
 }
 
 .cart-bill > span{

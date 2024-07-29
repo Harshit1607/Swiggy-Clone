@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { getSingleRestaurant } from '../../Redux/restaurantActions';
-import { fetchCart } from '../../Redux/cartActions';
+import { addToCart, deleteFromCart, fetchCart } from '../../Redux/cartActions';
 
 const Cart = () => {
   const { cart, loading: cartLoading, error: cartError } = useSelector(state => state.cartReducer);
@@ -38,22 +38,32 @@ const Cart = () => {
   }
 
   return (
-    cart && !cartLoading && !restaurantLoading ? 
+    cart && cart.items.length > 0 && !cartLoading && !restaurantLoading ? 
       <div className="cart-main">
         <div className="cart-left"></div>
         <div className="cart-right">
           {singleRestaurant && (
             <div className='cart-rest-info'>
-              <img src={singleRestaurant.image} alt={singleRestaurant.name} />
+              <img src={singleRestaurant.image} alt={singleRestaurant.name} onClick={()=>{navigate('/restaurant');}} />
               <div className="cart-rest-name">
-                <span>{singleRestaurant.name}</span>
+                <span onClick={()=>{navigate('/restaurant');}}>{singleRestaurant.name}</span>
               </div>
             </div>
           )}
           {cart.items && cart.items.map((item, index) => (
             <div className="cart-item-info" key={index}>
-              <span>{item.item}</span>
-              <div className='quantity-button'>{item.quantity}</div>
+              <span>{item.item.substring(0, 15) + '...'}</span>
+              <div className='quantity-button'>
+                <button onClick={()=>{const Item = item;
+                  const restId = cart.restaurantId;
+                  dispatch(deleteFromCart({Item, restId}));
+                }}>-</button>
+                <span>{item.quantity}</span>
+                <button onClick={()=>{const Item = item;
+                  const restId = cart.restaurantId;
+                  dispatch(addToCart({Item, restId}));
+                }}>+</button>
+              </div>
               <span>₹{item.price}</span>
             </div>
           ))}
