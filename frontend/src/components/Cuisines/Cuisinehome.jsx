@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom';
 
 
 const Cuisinehome = () => {
-  const { restaurants, loading, error } = useSelector(state => state);
+  const { restaurants, loading, error } = useSelector(state => state.restaurantReducer);
   const dispatch = useDispatch();
   const navigate = useNavigate()
 

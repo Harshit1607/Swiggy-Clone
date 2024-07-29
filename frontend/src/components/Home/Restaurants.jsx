@@ -4,7 +4,7 @@ import { getSingleRestaurant } from '../../Redux/restaurantActions';
 import { useNavigate } from 'react-router-dom';
 
 const Restaurants = () => {
-  const { restaurants, loading, error } = useSelector(state => state);
+  const { restaurants, loading, error } = useSelector(state => state.restaurantReducer);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 

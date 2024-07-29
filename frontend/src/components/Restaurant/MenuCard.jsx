@@ -3,10 +3,12 @@ import { useDispatch, useSelector } from 'react-redux';
 import { addToCart } from '../../Redux/cartActions';
 
 const MenuCard = () => {
-  const { singleRestaurant, loading, error } = useSelector(state => state);
+  const { singleRestaurant, loading, error } = useSelector(state => state.restaurantReducer);
+  const {cart} = useSelector(state => state.cartReducer);
   const restaurants = singleRestaurant
   const dispatch = useDispatch()
  
+  console.log(cart)
 
   if (loading) {
     return <div>Loading...</div>;

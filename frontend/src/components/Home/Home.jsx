@@ -6,7 +6,7 @@ import { fetchRestaurants } from '../../Redux/restaurantActions';
 
 const Home = () => {
   const dispatch = useDispatch();
-  const { loading, error } = useSelector(state => state);
+  const { loading, error } = useSelector(state => state.restaurantReducer);
 
   useEffect(() => {
     dispatch(fetchRestaurants());

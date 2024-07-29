@@ -12,7 +12,7 @@ const Navbar = () => {
         <div className="Navbar-Right">
           <span className="nav-elem" onClick={()=>{navigate('/search')}}>Search</span>
           <span className="nav-elem">Sign-in/up</span>
-          <span className="nav-elem">Cart</span>
+          <span className="nav-elem" onClick={()=>{navigate('/cart')}}>Cart</span>
         </div>
     </div>
   )

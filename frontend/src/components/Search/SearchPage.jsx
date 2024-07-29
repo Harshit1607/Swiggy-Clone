@@ -4,11 +4,10 @@ import { useNavigate } from 'react-router-dom';
 import { fetchRestaurants, getRestaurantBySearch, getSingleRestaurant, getRestaurantByCuisine } from '../../Redux/restaurantActions';
 
 const SearchPage = () => {
-  const { searchRestaurant, loading, error, cuisines } = useSelector(state => state);
+  const { searchRestaurant, loading, error, cuisines } = useSelector(state => state.restaurantReducer);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  console.log(cuisines);
 
   function handleChange(e) {
     const text = e.target.value;
@@ -67,7 +66,7 @@ const SearchPage = () => {
             </div>
           </div>
         : searchRestaurant.length > 0 && searchRestaurant.map((item) => (
-          <div className="search-rest-col" key={item.id} onClick={()=>handleRestaurant(item._id)}>
+          <div className="search-rest-col" key={item.id}  onClick={()=>handleRestaurant(item._id)}>
             <img src={item.image} alt={item.name} />
             <div className="search-rest-info">
               <span>{item.name}</span>

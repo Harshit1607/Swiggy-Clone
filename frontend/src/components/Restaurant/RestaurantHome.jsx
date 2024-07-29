@@ -4,7 +4,7 @@ import MenuCard from './MenuCard';
 import { useSelector } from 'react-redux';
 
 const RestaurantHome = () => {
-  const { singleRestaurant, loading, error } = useSelector(state => state);
+  const { singleRestaurant, loading, error } = useSelector(state => state.restaurantReducer);
 
   if (loading) {
     return <div className='loading'>Loading...</div>;

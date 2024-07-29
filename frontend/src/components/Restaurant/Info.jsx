@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
 const Info = () => {
-  const { singleRestaurant, loading, error } = useSelector(state => state);
+  const { singleRestaurant, loading, error } = useSelector(state => state.restaurantReducer);
   const navigate = useNavigate();
 
   if (loading) {

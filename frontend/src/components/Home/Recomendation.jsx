@@ -4,7 +4,7 @@ import { getRestaurantByCuisine } from '../../Redux/restaurantActions';
 import { useNavigate } from 'react-router-dom';
 
 const Recomendation = () => {
-  const { cuisines, loading, error } = useSelector(state => state);
+  const { cuisines, loading, error } = useSelector(state => state.restaurantReducer);
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [slide, setSlide] = useState([0, 1, 2, 3]);

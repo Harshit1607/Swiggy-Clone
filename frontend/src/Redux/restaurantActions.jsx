@@ -29,6 +29,7 @@ export const fetchRestaurants = () => async (dispatch) => {
 export const getSingleRestaurant = ({ id }) => async (dispatch) => {
   dispatch({ type: Single_Restaurant_Request });
   try {
+    console.log(id)
     const result = await axios.get(`${API_URL}restaurants/${id}`);
     dispatch({ type: Single_Restaurant_Success, payload: result.data });
   } catch (error) {

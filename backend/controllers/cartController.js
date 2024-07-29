@@ -1,5 +1,14 @@
 import Cart from '../models/cart.js'
 
+export const getCart = async (req, res) =>{
+  try {
+    const cart = await Cart.find({});
+    res.status(200).json({ cart });
+  } catch (error) {
+    res.status(500).json({ error: 'Failed to get cart' });
+  }
+}
+
 export const addItemToCart = async (req, res)=>{
   const {Item} = req.body
   const {restId} = req.body
@@ -8,6 +17,10 @@ export const addItemToCart = async (req, res)=>{
     let cart = await Cart.findOne({ restaurantId: restId });
 
     if (!cart) {
+
+      // Deleting the old cart before adding item from new restaurant;
+      await Cart.deleteMany({});
+
       // If no cart exists for the restaurant, create a new cart
       cart = new Cart({
         restaurantId: restId,
@@ -41,8 +54,6 @@ export const addItemToCart = async (req, res)=>{
       const itemQuantity = parseInt(item.quantity);
       const itemTotal = itemPrice * itemQuantity;
 
-      console.log(`Item Price: ${itemPrice}, Item Quantity: ${itemQuantity}, Item Total: ${itemTotal}`);
-
       if (isNaN(itemTotal)) {
         throw new Error(`Invalid item total: ${itemTotal}`);
       }
@@ -55,7 +66,6 @@ export const addItemToCart = async (req, res)=>{
 
     res.status(200).json({ cart });
   } catch (error) {
-    console.log(error)
     res.status(500).json({ error: 'Failed to add Item' });
   }
 }
