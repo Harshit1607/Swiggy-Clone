@@ -38,7 +38,7 @@ const Cart = () => {
   }
 
   return (
-    cart && cart.items.length > 0 && !cartLoading && !restaurantLoading ? 
+    (cart && !cartLoading && !restaurantLoading && cart.items ? cart.items.length > 0 : false)  ? 
       <div className="cart-main">
         <div className="cart-left"></div>
         <div className="cart-right">

@@ -16,7 +16,7 @@ export const addItemToCart = async (req, res)=>{
 
     // Find the cart for the specified restaurant
     let cart = await Cart.findOne({ restaurantId: restId });
-    console.log(cart)
+
     if (!cart) {
 
       // Deleting the old cart before adding item from new restaurant;
