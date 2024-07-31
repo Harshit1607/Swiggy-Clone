@@ -2,6 +2,8 @@ import React from 'react';
 import Info from './Info';
 import MenuCard from './MenuCard';
 import { useSelector } from 'react-redux';
+import HiddenMenu from './HiddenMenu';
+import Cartdiv from './Cartdiv';
 
 const RestaurantHome = () => {
   const { singleRestaurant, loading, error } = useSelector(state => state.restaurantReducer);
@@ -19,10 +21,15 @@ const RestaurantHome = () => {
   }
 
   return (
-    <div className="main">
+    <>
+    <div className="main main-relative">
       <Info />
       <MenuCard />
+      
     </div>
+    <HiddenMenu />
+    <Cartdiv />
+    </>
   );
 }
 

@@ -8,7 +8,6 @@ const MenuCard = () => {
   const restaurants = singleRestaurant
   const dispatch = useDispatch()
 
-  console.log(cart)
 
   if (loading) {
     return <div>Loading...</div>;
@@ -37,7 +36,7 @@ const MenuCard = () => {
         .map(category => (
           <div key={category}>
             <div className="divider"></div>
-            <div className="menu-single">
+            <div className="menu-single" id={category}>
               <span>{category}</span>
               {menu[category].map(menuItem => (
                 <div className="menu-single-item" key={menuItem.itemId}>
