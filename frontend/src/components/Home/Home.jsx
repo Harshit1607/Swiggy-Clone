@@ -3,6 +3,7 @@ import Recomendation from './Recomendation';
 import Restaurants from './Restaurants';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchRestaurants } from '../../Redux/restaurantActions';
+import TopRestaurants from './TopRestaurants';
 
 const Home = () => {
   const dispatch = useDispatch();
@@ -23,6 +24,9 @@ const Home = () => {
   return (
     <div className="main">
       <Recomendation />
+      <div className="home-divider"></div>
+      <TopRestaurants />
+      <div className="home-divider"></div>
       <Restaurants />
     </div>
   );

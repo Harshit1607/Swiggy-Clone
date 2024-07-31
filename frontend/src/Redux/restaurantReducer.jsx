@@ -1,3 +1,4 @@
+import TopRestaurants from '../components/Home/TopRestaurants';
 import { 
   Fetch_Restaurants_Request, 
   Fetch_Restaurants_Success, 
@@ -11,7 +12,6 @@ import {
   Restaurant_By_Search_Request,
   Restaurant_By_Search_Failure,
   Restaurant_By_Search_Success,
-  Restaurant_By_Search_Zero
 } from './actiontypes';
 
 const initialState = {
@@ -20,7 +20,8 @@ const initialState = {
   singleRestaurant: null,
   loading: false,
   error: null,
-  searchRestaurant: []
+  searchRestaurant: [],
+  topRestaurants: []
 };
 
 function restaurantReducer(state = initialState, action) {
@@ -41,6 +42,7 @@ function restaurantReducer(state = initialState, action) {
         loading: false,
         cuisines: action.payload.cuisines,
         restaurants: action.payload.restaurants,
+        topRestaurants: action.payload.topRestaurants,
         searchRestaurant: [],
       };
     case Single_Restaurant_Success:
