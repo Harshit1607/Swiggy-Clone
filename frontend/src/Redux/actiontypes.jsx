@@ -25,3 +25,7 @@ export const Add_CartItem_Failure = 'Add_CartItem_Failure'
 export const Delete_CartItem_Request = 'Delete_CartItem_Request'
 export const Delete_CartItem_Success = 'Delete_CartItem_Success'
 export const Delete_CartItem_Failure = 'Delete_CartItem_Failure'
+
+export const Search_Dish_Request = 'Search_Dish_Request'
+export const Search_Dish_Success = 'Search_Dish_Success'
+export const Search_Dish_Failure = 'Search_Dish_Failure'

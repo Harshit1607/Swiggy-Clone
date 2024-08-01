@@ -12,6 +12,9 @@ import {
   Restaurant_By_Search_Request,
   Restaurant_By_Search_Failure,
   Restaurant_By_Search_Success,
+  Search_Dish_Request,
+  Search_Dish_Failure,
+  Search_Dish_Success,
 } from './actiontypes';
 
 const initialState = {
@@ -21,7 +24,8 @@ const initialState = {
   loading: false,
   error: null,
   searchRestaurant: [],
-  topRestaurants: []
+  topRestaurants: [],
+  searchDishes: [],
 };
 
 function restaurantReducer(state = initialState, action) {
@@ -30,6 +34,7 @@ function restaurantReducer(state = initialState, action) {
     case Single_Restaurant_Request:
     case Restaurant_By_Cuisine_Request:
     case Restaurant_By_Search_Request:
+    case Search_Dish_Request:
       return {
         ...state,
         loading: true,
@@ -44,6 +49,7 @@ function restaurantReducer(state = initialState, action) {
         restaurants: action.payload.restaurants,
         topRestaurants: action.payload.topRestaurants,
         searchRestaurant: [],
+        searchDishes: []
       };
     case Single_Restaurant_Success:
       return {
@@ -66,10 +72,18 @@ function restaurantReducer(state = initialState, action) {
         searchRestaurant: action.payload.restaurants,
         cuisines: []
       };
+    case Search_Dish_Success:
+      return{
+        ...state,
+        loading: false,
+        searchDishes: action.payload,
+        searchRestaurant: [],
+      }
     case Fetch_Restaurants_Failure:
     case Single_Restaurant_Failure:
     case Restaurant_By_Cuisine_Failure:
     case Restaurant_By_Search_Failure:
+    case Search_Dish_Failure:
       return {
         ...state,
         loading: false,

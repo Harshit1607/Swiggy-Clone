@@ -12,6 +12,9 @@ import {
   Restaurant_By_Search_Request,
   Restaurant_By_Search_Success,
   Restaurant_By_Search_Failure,
+  Search_Dish_Request,
+  Search_Dish_Failure,
+  Search_Dish_Success,
 } from './actiontypes';
 
 const API_URL = 'http://localhost:5000/';
@@ -54,5 +57,17 @@ export const getRestaurantBySearch = (text) => async (dispatch) => {
     dispatch({ type: Restaurant_By_Search_Success, payload: result.data });
   } catch (error) {
     dispatch({ type: Restaurant_By_Search_Failure, error: error.message });
+  }
+}
+
+export const getDishBySearch = (id, text) => async (dispatch) => {
+  dispatch({type: Search_Dish_Request});
+  try {
+    const result = await axios.get(`${API_URL}restaurants/search/menu/items`, {
+      params: {text, id},
+    })
+    dispatch({type: Search_Dish_Success, payload: result.data});
+  } catch (error) {
+    dispatch({type: Search_Dish_Failure, error: error.message})
   }
 }

@@ -108,6 +108,13 @@ code {
   position: relative;
 }
 
+
+/* extra */
+
+.no-border-bottom{
+  border-bottom: none;
+}
+
 /* Home and cuisine page Styling */
 
 .recomendation{
@@ -418,6 +425,31 @@ background: linear-gradient(rgba(255,255,255,0.062237394957983194) 0%, rgba(230,
   color: white;
 }
 
+.menu-search-div{
+  margin-top: 30px;
+  width: 75%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.menu-search-div > span{
+  font-size: large;
+  font-weight: bold;
+}
+
+.search-box > div{
+  background-color: #e1e2e4;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 90%;
+  height: 50px;
+  border: 0.5px solid rgba(40, 44, 63, 0.5) ;
+  padding: 0 10px;
+  border-radius: 5px;
+}
+
 /* Search page styling */
 
 .search-box{
@@ -492,8 +524,17 @@ background: linear-gradient(rgba(255,255,255,0.062237394957983194) 0%, rgba(230,
 }
 
 
+/* Menu Seach Page styling */
 
+.menu-search-page > input {
+  border: none;
+  border-bottom: 0.5px solid rgba(40, 44, 63, 0.5) ;
+  background-color: #e8e8e8;
+}
 
+.menu-search-dishes{
+  width: 75%;
+}
 
 /* Cart Page Styling */
 

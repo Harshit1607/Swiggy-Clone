@@ -21,8 +21,8 @@ const Navbar = () => {
           <span className="nav-elem" onClick={()=>{navigate('/search')}}>Search</span>
           <span className="nav-elem">Sign-in/up</span>
           <div className="nav-elem" onClick={()=>{navigate('/cart')}}>
-            <div className='nav-cart-quant'>
-             <span>{cart ? cart.items  ? cart.items.length > 0 ? cart.items.length : null : null : null}</span> 
+            <div className='nav-cart-quant' style={{display: cart ? cart.items  ? cart.items.length > 0 ? "" : "none" : "none" : "none"}}>
+             <span >{cart ? cart.items  ? cart.items.length > 0 ? cart.items.length : null : null : null}</span> 
             </div> 
             <span>Cart</span>
           </div>
