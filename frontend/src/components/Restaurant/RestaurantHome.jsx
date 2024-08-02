@@ -5,9 +5,13 @@ import { useSelector } from 'react-redux';
 import HiddenMenu from './HiddenMenu';
 import Cartdiv from './Cartdiv';
 import SearchBar from './SearchBar';
+import Navbar from '../Navbar';
+import Login from '../Auth/Login';
+import Signup from '../Auth/Signup';
 
 const RestaurantHome = () => {
   const { singleRestaurant, loading, error } = useSelector(state => state.restaurantReducer);
+  const {hiddenLogin, hiddenSignup} = useSelector(state => state.userReducer)
 
   if (loading) {
     return <div className='loading'>Loading...</div>;
@@ -23,7 +27,10 @@ const RestaurantHome = () => {
 
   return (
     <>
-    <div className="main main-relative">
+    <Login />
+    <Signup />
+    <Navbar />
+    <div className="main main-relative" style={!hiddenLogin || !hiddenSignup ? {overflow: "hidden", height: "calc(100vh - 150px)"} : null}>
       <Info />
       <SearchBar />
       <MenuCard />

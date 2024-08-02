@@ -1,10 +1,14 @@
 import React ,{useState}from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom';
+import Navbar from '../Navbar'
 import { fetchRestaurants, getRestaurantBySearch, getSingleRestaurant, getRestaurantByCuisine } from '../../Redux/restaurantActions';
+import Login from '../Auth/Login';
+import Signup from '../Auth/Signup';
 
 const SearchPage = () => {
   const { searchRestaurant, loading, error, cuisines } = useSelector(state => state.restaurantReducer);
+  const {hiddenLogin, hiddenSignup} = useSelector(state => state.userReducer)
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -45,7 +49,11 @@ const SearchPage = () => {
   // }
 
   return (
-    <div className="main">
+    <>
+    <Login />
+    <Signup />
+    <Navbar />
+    <div className="main" style={!hiddenLogin || !hiddenSignup ? {overflow: "hidden", height: "calc(100vh - 80px)"} : null}>
       <div className='search-box'>
         <input placeholder='Search...' onChange={handleChange} />
       </div>
@@ -82,6 +90,7 @@ const SearchPage = () => {
         ))}
       </div>
     </div>
+    </>
   )
 }
 

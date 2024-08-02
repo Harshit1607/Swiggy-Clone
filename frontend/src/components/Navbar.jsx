@@ -2,6 +2,7 @@ import React, { useEffect } from 'react'
 import { useDispatch, useSelector  } from 'react-redux';
 import { useNavigate } from 'react-router-dom'
 import { fetchCart } from '../Redux/cartActions';
+import { getLogin } from '../Redux/userAction';
 
 const Navbar = () => {
   const navigate = useNavigate();
@@ -19,7 +20,7 @@ const Navbar = () => {
         </div>
         <div className="Navbar-Right">
           <span className="nav-elem" onClick={()=>{navigate('/search')}}>Search</span>
-          <span className="nav-elem">Sign-in/up</span>
+          <span className="nav-elem" onClick={()=>dispatch(getLogin)}>Sign-in/up</span>
           <div className="nav-elem" onClick={()=>{navigate('/cart')}}>
             <div className='nav-cart-quant' style={{display: cart ? cart.items  ? cart.items.length > 0 ? "" : "none" : "none" : "none"}}>
              <span >{cart ? cart.items  ? cart.items.length > 0 ? cart.items.length : null : null : null}</span> 

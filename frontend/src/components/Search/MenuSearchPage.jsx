@@ -2,6 +2,7 @@ import React from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { getDishBySearch,fetchRestaurants } from '../../Redux/restaurantActions';
 import { deleteFromCart, addToCart } from '../../Redux/cartActions';
+import Navbar from '../Navbar'
 
 const MenuSearchPage = () => {
   const {singleRestaurant, searchDishes, loading, error} = useSelector(state=>state.restaurantReducer);
@@ -33,6 +34,8 @@ const MenuSearchPage = () => {
   // }
 
   return (
+    <>
+    <Navbar />
     singleRestaurant ? <div className="main">
       <div className="search-box menu-search-page">
         <input onChange={(e)=>handleChange(e)}/>
@@ -79,6 +82,7 @@ const MenuSearchPage = () => {
         }
       </div>
     </div> : null
+    </>
   ) 
 }
 

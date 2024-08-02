@@ -2,10 +2,14 @@ import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { getSingleRestaurant } from '../../Redux/restaurantActions';
 import { useNavigate } from 'react-router-dom';
+import Navbar from '../Navbar';
+import Login from '../Auth/Login';
+import Signup from '../Auth/Signup';
 
 
 const Cuisinehome = () => {
   const { restaurants, loading, error } = useSelector(state => state.restaurantReducer);
+  const {hiddenLogin, hiddenSignup} = useSelector(state => state.userReducer)
   const dispatch = useDispatch();
   const navigate = useNavigate()
 
@@ -29,7 +33,11 @@ const Cuisinehome = () => {
 
 
   return (
-    <div className='restaurants'>
+    <>
+    <Login />
+    <Signup />
+    <Navbar />
+    <div className='restaurants' style={!hiddenLogin || !hiddenSignup ? {overflow: "hidden", height: "calc(100vh - 80px)"} : null}>
       <div className="restaurant-heading">
         <span>Restaurants with online food delivery in Delhi</span>
       </div>
@@ -48,6 +56,7 @@ const Cuisinehome = () => {
         }
       </div>
     </div>
+    </>
   )
 }
 

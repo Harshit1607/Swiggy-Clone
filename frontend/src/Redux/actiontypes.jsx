@@ -29,3 +29,7 @@ export const Delete_CartItem_Failure = 'Delete_CartItem_Failure'
 export const Search_Dish_Request = 'Search_Dish_Request'
 export const Search_Dish_Success = 'Search_Dish_Success'
 export const Search_Dish_Failure = 'Search_Dish_Failure'
+
+export const Get_Login = 'Get_Login'
+export const Get_Signup = 'Get_Signup'
+export const Close_Auth = 'Close_Auth'

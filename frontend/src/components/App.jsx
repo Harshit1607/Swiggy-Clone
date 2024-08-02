@@ -7,13 +7,16 @@ import Cuisinehome from './Cuisines/Cuisinehome';
 import SearchPage from './Search/SearchPage';
 import Cart from './Cart/Cart';
 import MenuSearchPage from './Search/MenuSearchPage';
+import Login from './Auth/Login'
+import Signup from './Auth/Signup'
 
 const App = () => {
   return (
     <Router>
     <div>
-      <Navbar />
       <Routes>
+      {/* <Route path='/login' element={<Login />} />
+      <Route path='/signup' element={<Signup />} /> */}
       <Route path='/' element={<Home />} />
       <Route path='/restaurant' element={<RestaurantHome />} />
       <Route path='/cuisine' element={<Cuisinehome />} />

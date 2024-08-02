@@ -3,10 +3,14 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { getSingleRestaurant } from '../../Redux/restaurantActions';
 import { addToCart, deleteFromCart, fetchCart } from '../../Redux/cartActions';
+import Navbar from '../Navbar';
+import Login from '../Auth/Login';
+import Signup from '../Auth/Signup';
 
 const Cart = () => {
   const { cart, loading: cartLoading, error: cartError } = useSelector(state => state.cartReducer);
   const { singleRestaurant, loading: restaurantLoading, error: restaurantError } = useSelector(state => state.restaurantReducer);
+  const {hiddenLogin, hiddenSignup} = useSelector(state => state.userReducer)
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -38,8 +42,12 @@ const Cart = () => {
   }
 
   return (
-    (cart && !cartLoading && !restaurantLoading && cart.items ? cart.items.length > 0 : false)  ? 
-      <div className="cart-main">
+    <>
+    <Login />
+    <Signup />
+    <Navbar />
+    {(cart && !cartLoading && !restaurantLoading && cart.items ? cart.items.length > 0 : false)  ? 
+      <div className="cart-main" style={!hiddenLogin || !hiddenSignup ? {overflow: "hidden", height: "calc(100vh - 80px)"} : null}>
         <div className="cart-left"></div>
         <div className="cart-right">
           {singleRestaurant && (
@@ -93,7 +101,8 @@ const Cart = () => {
           <span>Your cart is empty</span>
           <button onClick={() => navigate('/')}>See restaurants near you</button>
         </div>
-      </div>
+      </div>}
+  </>
   );
 };
 
