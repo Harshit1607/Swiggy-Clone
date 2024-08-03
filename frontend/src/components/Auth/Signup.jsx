@@ -15,7 +15,9 @@ const Signup = () => {
           <span></span>
           <span onClick={()=>dispatch(getLogin)}>Login</span>
         </div>
-        <div className="auth-type-right"></div>
+        <div className="auth-type-right">
+        <img src='https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_147,h_140/Image-login_btpq7r' alt=''/>
+        </div>
       </div>
       <div className="auth-fields">
         <input type="text" />

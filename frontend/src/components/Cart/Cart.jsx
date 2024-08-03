@@ -47,56 +47,101 @@ const Cart = () => {
     <Signup />
     <Navbar />
     {(cart && !cartLoading && !restaurantLoading && cart.items ? cart.items.length > 0 : false)  ? 
-      <div className="cart-main" style={!hiddenLogin || !hiddenSignup ? {overflow: "hidden", height: "calc(100vh - 80px)"} : null}>
-        <div className="cart-left"></div>
+      <div className="cart-main" style={!hiddenLogin || !hiddenSignup ? {overflow: "hidden", height: "calc(100vh - 120px)"} : null}>
+        <div className="cart-left">
+          <div className="cart-account">
+            <div className="cart-account-left">
+              <span>Account</span>
+              <span>To place your order now, log in to your existing account or sign up.</span>
+              <div className="cart-account-auth-buttons">
+                <button>
+                  <span>Have an account</span>
+                  <span>Login</span>
+                </button>
+                <button>
+                  <span>New to Swiggy?</span>
+                  <span>Signup</span>
+                </button>
+              </div>
+            </div>
+            <div className="cart-account-right">
+              <img src="https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_147,h_140/Image-login_btpq7r" alt="img"/>
+            </div>
+          </div>
+          <div className="cart-delivery"></div>
+          <div className="cart-payment"></div>
+        </div>
         <div className="cart-right">
           {singleRestaurant && (
-            <div className='cart-rest-info'>
-              <img src={singleRestaurant.image} alt={singleRestaurant.name} onClick={()=>{navigate('/restaurant');}} />
-              <div className="cart-rest-name">
-                <span onClick={()=>{navigate('/restaurant');}}>{singleRestaurant.name}</span>
+                <div className='cart-rest-info'>
+                  <img src={singleRestaurant.image} alt={singleRestaurant.name} onClick={()=>{navigate('/restaurant');}} />
+                  <div className="cart-rest-name">
+                    <span onClick={()=>{navigate('/restaurant');}}>{singleRestaurant.name}</span>
+                  </div>
+                </div>
+              )}
+          <div className="cart-right-1">
+            {cart.items && cart.items.map((item, index) => (
+              <div className="cart-item-info" key={index}>
+                <span>{item.item.substring(0, 20) + '...'}</span>
+                <div className='quantity-button'>
+                  <button onClick={()=>{const Item = item;
+                    const restId = cart.restaurantId;
+                    dispatch(deleteFromCart({Item, restId}));
+                  }}>-</button>
+                  <span>{item.quantity}</span>
+                  <button onClick={()=>{const Item = item;
+                    const restId = cart.restaurantId;
+                    dispatch(addToCart({Item, restId}));
+                  }}>+</button>
+                </div>
+                <span>₹{item.price}</span>
+              </div>
+            ))}
+            
+            <input className="cart-suggestion"placeholder='Any suggestions? We will pass it on..'/>
+
+            <div className="cart-no-contact">
+              <div className="no-contact-left">
+                <input type="checkbox" />
+              </div>
+              <div className="no-contact-right">
+                <span>Opt in for No-contact Delivery</span>
+                <span>Unwell, or avoiding contact? Please select no-contact delivery. Partner will safely place the order outside your door (not for COD)</span>
               </div>
             </div>
-          )}
-          {cart.items && cart.items.map((item, index) => (
-            <div className="cart-item-info" key={index}>
-              <span>{item.item.substring(0, 15) + '...'}</span>
-              <div className='quantity-button'>
-                <button onClick={()=>{const Item = item;
-                  const restId = cart.restaurantId;
-                  dispatch(deleteFromCart({Item, restId}));
-                }}>-</button>
-                <span>{item.quantity}</span>
-                <button onClick={()=>{const Item = item;
-                  const restId = cart.restaurantId;
-                  dispatch(addToCart({Item, restId}));
-                }}>+</button>
+            
+            <div className="cart-bill">
+              <span>Bill Detail</span>
+              <div className="cart-bill-info">
+                <span>Items Total</span><span>₹{cart.totalPrice}</span>
               </div>
-              <span>₹{item.price}</span>
+              <div className="cart-bill-info">
+                <span>Delivery fee</span><span>₹{deliverFee}</span>
+              </div>
+              <div className="cart-bill-info">
+                <span>Platform Fee</span><span>₹{platformFee}</span>
+              </div>
+              <div className="cart-bill-info">
+                <span>Gst</span><span>₹{gst.toFixed(2)}</span>
+              </div>
             </div>
-          ))}
-          <div className="cart-bill">
-            <span>Bill Detail</span>
-            <div className="cart-bill-info">
-              <span>Items Total</span><span>₹{cart.totalPrice}</span>
-            </div>
-            <div className="cart-bill-info">
-              <span>Delivery fee</span><span>₹{deliverFee}</span>
-            </div>
-            <div className="cart-bill-info">
-              <span>Platform Fee</span><span>₹{platformFee}</span>
-            </div>
-            <div className="cart-bill-info">
-              <span>Gst</span><span>₹{gst.toFixed(2)}</span>
-            </div>
-            <div className="cart-bill-info to-pay">
-              <span>To pay</span><span>₹{toPay.toFixed(2)}</span>
+          </div>
+          <div className="cart-bill-info to-pay">
+                <span>To pay</span><span>₹{toPay.toFixed(2)}</span>
+              </div>
+          <div className="cart-right-2">
+            <div>
+              <span>Review your order and address details to avoid cancellations</span>
+              <span>Note: If you cancel within 60 seconds of placing your order, a 100% refund will be issued. No refund for cancellations made after 60 seconds.
+              </span>
+              <span>Avoid cancellation as it leads to food wastage.</span>
             </div>
           </div>
         </div>
       </div>
     :
-      <div className="cart-main">
+      <div className="cart-main" style={!hiddenLogin || !hiddenSignup ? {overflow: "hidden", height: "calc(100vh - 120px)"} : null}>
         <div className='empty-cart'>
           <span>Your cart is empty</span>
           <button onClick={() => navigate('/')}>See restaurants near you</button>
