@@ -578,9 +578,11 @@ background: linear-gradient(rgba(255,255,255,0.062237394957983194) 0%, rgba(230,
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-start;
+  gap:20px;
   border-radius: 5px;
   min-height: 425px;
+  max-height: 650px;
   background-color: rgb(233,236,238);
 }
 .cart-left > div {
@@ -643,6 +645,42 @@ background: linear-gradient(rgba(255,255,255,0.062237394957983194) 0%, rgba(230,
   font-size: medium;
 }
 
+.cart-auth-container{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: start;
+  justify-content: space-evenly;
+  margin-top: 20px
+}
+
+.cart-auth-container >span:first-child{
+  font-size: small;
+  color:#989a9e;
+  margin-bottom: 20px;
+}
+.cart-auth-type > span{
+  color:#fc8019
+}
+.cart-auth-fields, .cart-auth-button{
+  width: 70%;
+  border: none;
+  height: 60px;
+}
+.cart-auth-fields{
+  border: 0.2px solid #e8e8e8
+}
+.cart-auth-fields:focus{
+  outline: none;
+}
+.cart-auth-button{
+  margin-top: 20px;
+  height: 50px;
+  width: 71%;
+  color: white;
+  background-color: #60b246;
+}
+
 .cart-right{
   width: 28%;
   display: flex;
@@ -684,6 +722,18 @@ background: linear-gradient(rgba(255,255,255,0.062237394957983194) 0%, rgba(230,
 }
 .cart-right-2 > div > span{
   width: 90%;
+  font-size: small;
+}
+.cart-right-2 > div > span:first-child{
+  font-size: medium;
+  font-weight: 500;
+  color: black
+}
+.cart-right-2 > div > span:last-child{
+  color: #bfc1c6;
+}
+.cart-right-2 > div > span > span{
+  color:#fc8019
 }
 
 .cart-rest-info{
@@ -887,6 +937,12 @@ background: linear-gradient(rgba(255,255,255,0.062237394957983194) 0%, rgba(230,
   align-items: start;
   justify-content: center;
   height: 100%;
+}
+.auth-type-right{
+  align-items: end;
+}
+.auth-type-right > img{
+  height: 65%;
 }
 
 .auth-fields{

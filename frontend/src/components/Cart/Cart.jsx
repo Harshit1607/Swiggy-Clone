@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { getSingleRestaurant } from '../../Redux/restaurantActions';
@@ -11,8 +11,12 @@ const Cart = () => {
   const { cart, loading: cartLoading, error: cartError } = useSelector(state => state.cartReducer);
   const { singleRestaurant, loading: restaurantLoading, error: restaurantError } = useSelector(state => state.restaurantReducer);
   const {hiddenLogin, hiddenSignup} = useSelector(state => state.userReducer)
+  const [hideLog, setHideLog] = useState(true)
+  const [hideSign, setHideSign] = useState(true)
   const dispatch = useDispatch();
   const navigate = useNavigate();
+
+  console.log(hideLog)
 
   useEffect(() => {
     dispatch(fetchCart());
@@ -25,13 +29,14 @@ const Cart = () => {
     }
   }, [cart, dispatch]);
 
-  // if (cartLoading || restaurantLoading) {
-  //   return <div className='loading'>Loading...</div>;
-  // }
-
-  // if (cartError || restaurantError) {
-  //   return <div className='loading'>Error: {cartError || restaurantError}</div>;
-  // }
+  function displayLogin(){
+    setHideLog(false);
+    setHideSign(true)
+  }
+  function displaySignup(){
+    setHideLog(true);
+    setHideSign(false)
+  }
 
   let deliverFee, platformFee, gst, toPay;
   if (cart) {
@@ -53,16 +58,43 @@ const Cart = () => {
             <div className="cart-account-left">
               <span>Account</span>
               <span>To place your order now, log in to your existing account or sign up.</span>
-              <div className="cart-account-auth-buttons">
-                <button>
+              { hideLog && hideSign ?
+                <div className="cart-account-auth-buttons">
+                <button onClick={displayLogin}>
                   <span>Have an account</span>
                   <span>Login</span>
                 </button>
-                <button>
+                <button onClick={displaySignup}>
                   <span>New to Swiggy?</span>
                   <span>Signup</span>
                 </button>
+              </div> 
+              : hideLog ? hideSign ? 
+              <div className="cart-account-auth-buttons">
+                <button onClick={displayLogin}>
+                  <span>Have an account</span>
+                  <span>Login</span>
+                </button>
+                <button onClick={displaySignup}>
+                  <span>New to Swiggy?</span>
+                  <span>Signup</span>
+                </button>
+              </div> : 
+              <div className='cart-auth-container'>
+                <span className="cart-auth-type">Sign up
+                <span onClick={displayLogin}>or Log in to your account</span></span>
+                <input type="text" className="cart-auth-fields" placeholder='Phone Number'/>
+                <input type="text" className="cart-auth-fields" placeholder='Name'/>
+                <input type="text" className="cart-auth-fields" placeholder='Email'/>
+                <button className="cart-auth-button">Signup</button>
+              </div> :
+              <div className='cart-auth-container'>
+                <span className="cart-auth-type">Enter login details
+                <span onClick={displaySignup}> or Create Account</span></span>
+                <input type="text" className="cart-auth-fields" placeholder='Phone Number'/>
+                <button className="cart-auth-button" >Login</button>
               </div>
+              }
             </div>
             <div className="cart-account-right">
               <img src="https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_147,h_140/Image-login_btpq7r" alt="img"/>
@@ -133,7 +165,7 @@ const Cart = () => {
           <div className="cart-right-2">
             <div>
               <span>Review your order and address details to avoid cancellations</span>
-              <span>Note: If you cancel within 60 seconds of placing your order, a 100% refund will be issued. No refund for cancellations made after 60 seconds.
+              <span><span>Note:</span> If you cancel within 60 seconds of placing your order, a 100% refund will be issued. No refund for cancellations made after 60 seconds.
               </span>
               <span>Avoid cancellation as it leads to food wastage.</span>
             </div>

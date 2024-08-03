@@ -20,7 +20,7 @@ const Login = () => {
         </div>
       </div>
       <div className="auth-fields">
-        <input type="text" />
+        <input type="text" placeholder='Phone Number'/>
         <button>Login</button>
       </div>
     </div>
