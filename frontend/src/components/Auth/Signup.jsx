@@ -13,7 +13,8 @@ const Signup = () => {
       <div className="auth-type">
         <div className="auth-type-left">
           <span>Sign up</span>
-          <span onClick={()=>dispatch(getLogin)}>or login to your account</span>
+          <span>or<span onClick={()=>dispatch(getLogin)}> login to your account</span></span>
+          <div className="small-dash"></div>
         </div>
         <div className="auth-type-right">
         <img src='https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_147,h_140/Image-login_btpq7r' alt=''/>
@@ -23,7 +24,7 @@ const Signup = () => {
         <input type="text" placeholder='Phone Number'/>
         <input type="text" placeholder='Name'/>
         <input type="text" placeholder='Email'/>
-        <button>Signup</button>
+        <button>CONTINUE</button>
       </div>
     </div>
   )

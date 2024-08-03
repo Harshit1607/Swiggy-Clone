@@ -117,6 +117,12 @@ code {
   border-bottom: none;
 }
 
+.small-dash{
+  background-color: #282c3f;
+  width: 20px;
+  height: 1px;
+}
+
 /* Home and cuisine page Styling */
 
 .recomendation{
@@ -674,6 +680,7 @@ background: linear-gradient(rgba(255,255,255,0.062237394957983194) 0%, rgba(230,
   outline: none;
 }
 .cart-auth-button{
+  font-size: medium;
   margin-top: 20px;
   height: 50px;
   width: 71%;
@@ -712,7 +719,7 @@ background: linear-gradient(rgba(255,255,255,0.062237394957983194) 0%, rgba(230,
 }
 
 .cart-right-2 > div{
-  width: 90%;
+  width: 80%;
   height: 90%;
   display: flex;
   flex-direction: column;
@@ -765,7 +772,8 @@ background: linear-gradient(rgba(255,255,255,0.062237394957983194) 0%, rgba(230,
   flex-direction: column;
   align-items: start;
   justify-content: flex-start;
-  font-weight: bold
+  font-weight: bold;
+  gap:10px;
 }
 
 .cart-item-info{
@@ -928,6 +936,7 @@ background: linear-gradient(rgba(255,255,255,0.062237394957983194) 0%, rgba(230,
   display: flex;
   align-items: center;
   justify-content: space-between;
+  height: 80px;
 }
 
 .auth-type-left, .auth-type-right{
@@ -935,14 +944,27 @@ background: linear-gradient(rgba(255,255,255,0.062237394957983194) 0%, rgba(230,
   display: flex;
   flex-direction: column;
   align-items: start;
-  justify-content: center;
+  justify-content: space-between;
   height: 100%;
+  gap:10px
+}
+.auth-type-left > span:last-child{
+  font-size: small;
+  color:#bfc1c6;
+}
+.auth-type-left > span > span{
+  color:#fc8019;
+}
+.auth-type-left > span:first-child{
+  font-size: x-large;
+  font-weight: bold;
 }
 .auth-type-right{
+  justify-content: center;
   align-items: end;
 }
 .auth-type-right > img{
-  height: 65%;
+  height: 100%;
 }
 
 .auth-fields{

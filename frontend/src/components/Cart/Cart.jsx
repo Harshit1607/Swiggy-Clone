@@ -109,6 +109,7 @@ const Cart = () => {
                   <img src={singleRestaurant.image} alt={singleRestaurant.name} onClick={()=>{navigate('/restaurant');}} />
                   <div className="cart-rest-name">
                     <span onClick={()=>{navigate('/restaurant');}}>{singleRestaurant.name}</span>
+                    <div style={{display: "flex"}}><div className="small-dash"></div><div className="small-dash"></div></div>
                   </div>
                 </div>
               )}
