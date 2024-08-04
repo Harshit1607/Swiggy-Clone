@@ -21,15 +21,18 @@ const Info = () => {
   return (
     <div className="Menu-page-info">
       <div className="Menu-res-name"><span onClick={()=>{navigate('/')}} style={{cursor: 'pointer'}}>Home</span> / {singleRestaurant.name}</div>
-      <div className="menu-box">
+      <div className="menu-box" style={{background: singleRestaurant.image}}>
         <span>{singleRestaurant.name}</span>
         <div className="menu-smallbox">
+          <div>
           <div>
             <span>{singleRestaurant.rating} ({singleRestaurant.num_of_rating} ratings)</span>
             <span>{singleRestaurant.price_for_two}</span>
           </div>
           <span>{singleRestaurant.cuisine}</span>
           <span>3.0 Kms</span>
+          </div>
+          <img src={singleRestaurant.image}/>
         </div>
       </div>
     </div>

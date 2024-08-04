@@ -1,0 +1,83 @@
+.search-box{
+  margin-top: 50px;
+  width: 75%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 50px;
+}
+
+.search-box > input{
+  width: 90%;
+  height: 50px;
+  border: 0.5px solid rgba(40, 44, 63, 0.5) ;
+  padding: 0 10px;
+  border-radius: 5px;
+}
+
+.search-restaurants{
+  width: 75%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: start;
+}
+
+.search-rest-col{
+  width: 90%;
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: start;
+}
+
+.search-rest-col > img{
+  height: 60%;
+  width: 8%;
+  margin-right: 20px;
+  border-radius: 5px;
+}
+
+.search-rest-info{
+  width: 75%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: center;
+}
+.search-rest-info span:nth-child(1) {
+  margin: 1px 0;
+  font-size: small;
+  font-weight: bold;
+  color: #282c3f;
+}
+
+.search-rest-info span:nth-child(2) {
+  margin: 1px 0;
+  font-size: smaller;
+  color: #656875;
+  font-weight: normal;
+}
+
+.search-recomendation{
+  width: 100%;
+  height: 250px;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: flex-start;
+}
+
+
+/* Menu Seach Page styling */
+
+.menu-search-page > input {
+  border: none;
+  border-bottom: 0.5px solid rgba(40, 44, 63, 0.5) ;
+  background-color: #e8e8e8;
+}
+
+.menu-search-dishes{
+  width: 75%;
+}

@@ -36,7 +36,7 @@ const MenuSearchPage = () => {
   return (
     <>
     <Navbar />
-    singleRestaurant ? <div className="main">
+    {singleRestaurant ? <div className="main">
       <div className="search-box menu-search-page">
         <input onChange={(e)=>handleChange(e)}/>
       </div>
@@ -81,7 +81,7 @@ const MenuSearchPage = () => {
           : null : null
         }
       </div>
-    </div> : null
+    </div> : null}
     </>
   ) 
 }

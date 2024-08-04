@@ -1,0 +1,83 @@
+.auth-container{
+  height: 100vh;
+  width: 35%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  float: right;
+  background-color: #fff;
+  position: absolute;
+  right: 0;
+  z-index: 101;
+}
+.auth-container > div{
+  width: 80%;
+  margin: 20px 0;
+}
+.auth-cut{
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.auth-type{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 80px;
+}
+
+.auth-type-left, .auth-type-right{
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: space-between;
+  height: 100%;
+  gap:10px
+}
+.auth-type-left > span:last-child{
+  font-size: small;
+  color:#bfc1c6;
+}
+.auth-type-left > span > span{
+  color:#fc8019;
+}
+.auth-type-left > span:first-child{
+  font-size: x-large;
+  font-weight: bold;
+}
+.auth-type-right{
+  justify-content: center;
+  align-items: end;
+}
+.auth-type-right > img{
+  height: 100%;
+}
+
+.auth-fields{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.auth-fields > *{
+  width: 100%;
+  height: 50px;
+  border: none;
+  margin: 10px 0; 
+}
+.auth-fields > input{
+  border: 0.2px solid #e1e2e4; 
+}
+.auth-fields > input:focus {
+  outline: 0 !important;
+}
+.auth-fields > button{
+  background-color: #fc8019;
+  color: white;
+  font-size: medium;
+  font-weight: bold;
+}
