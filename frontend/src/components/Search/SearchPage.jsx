@@ -1,10 +1,11 @@
-import React ,{useState}from 'react'
+import React ,{useCallback, useState}from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom';
 import Navbar from '../Navbar'
 import { fetchRestaurants, getRestaurantBySearch, getSingleRestaurant, getRestaurantByCuisine } from '../../Redux/restaurantActions';
 import Login from '../Auth/Login';
 import Signup from '../Auth/Signup';
+import { Debouncing } from '../../Utils/Debouncing';
 
 const SearchPage = () => {
   const { searchRestaurant, loading, error, cuisines } = useSelector(state => state.restaurantReducer);
@@ -12,6 +13,10 @@ const SearchPage = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
+  const debouncedSearch = useCallback(Debouncing((text)=>{
+    console.log(text)
+    dispatch(getRestaurantBySearch(text));
+  }, 800), [dispatch])
 
   function handleChange(e) {
     const text = e.target.value;
@@ -19,7 +24,7 @@ const SearchPage = () => {
       dispatch(fetchRestaurants());
       return;
     }
-    dispatch(getRestaurantBySearch(text));
+    debouncedSearch(text);
   }
   function handleRestaurant(id){
     dispatch(getSingleRestaurant({id}));
