@@ -22,13 +22,13 @@ const Recomendation = () => {
     navigate('/cuisine');
   }
 
-  if (loading) {
-    return <div>Loading...</div>;
-  }
+  // if (loading) {
+  //   return <div>Loading...</div>;
+  // }
 
-  if (error) {
-    return <div>Error: {error}</div>;
-  }
+  // if (error) {
+  //   return <div>Error: {error}</div>;
+  // }
 
   if (!cuisines || cuisines.length === 0) {
     return <div>No cuisines available</div>;

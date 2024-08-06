@@ -14,14 +14,12 @@ const SearchPage = () => {
   const navigate = useNavigate();
 
   const debouncedSearch = useCallback(Debouncing((text)=>{
-    console.log(text)
     dispatch(getRestaurantBySearch(text));
   }, 800), [dispatch])
 
   function handleChange(e) {
     const text = e.target.value;
     if(text === ''){
-      dispatch(fetchRestaurants());
       return;
     }
     debouncedSearch(text);

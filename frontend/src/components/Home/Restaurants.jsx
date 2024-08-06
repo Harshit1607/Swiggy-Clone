@@ -13,13 +13,13 @@ const Restaurants = () => {
     navigate('/restaurant');
   }
 
-  if (loading) {
-    return <div>Loading...</div>;
-  }
+  // if (loading) {
+  //   return <div>Loading...</div>;
+  // }
 
-  if (error) {
-    return <div>Error: {error}</div>;
-  }
+  // if (error) {
+  //   return <div>Error: {error}</div>;
+  // }
 
   if (!restaurants || restaurants.length === 0) {
     return <div>No restaurants available</div>;
@@ -41,10 +41,11 @@ const Restaurants = () => {
               <span className='restaurant-cusine'>{item.cuisine.substring(0, 25) + '...'}</span>
             </div>
           )
-        })
-        
+        }) 
         }
+        {loading && <div className='loader' />}
       </div>
+      
     </div>
   )
 }

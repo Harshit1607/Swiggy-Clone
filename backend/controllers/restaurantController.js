@@ -2,15 +2,23 @@ import Restaurant from '../models/restaurants.js';
 import Cuisine from '../models/cuisine.js';
 
 export const getAllRestaurants = async (req, res) => {
+  const page = parseInt(req.query.page) || 1; // Default to page 1 if not provided
+  const limit = 5; 
+  const skip = (page - 1) * limit;
   try {
-      const restaurants = await Restaurant.find();
-      const cuisines = await Cuisine.find();
-      const topRestaurants = await Restaurant.find({rating: { $gte: 4.2 }});
-      res.status(200).json({restaurants, cuisines, topRestaurants});
+    console.log(page)
+    const totalCount = await Restaurant.countDocuments();
+    const restaurants = await Restaurant.find().skip(skip).limit(limit);
+    const cuisines = await Cuisine.find();
+    const topRestaurants = await Restaurant.find({ rating: { $gte: 4.2 } });
+    const hasMore = skip + limit < totalCount;
+    res.status(200).json({ restaurants, cuisines, topRestaurants, totalCount, page, hasMore });
   } catch (error) {
-      res.status(500).json({ error: 'Failed to get restaurants or cuisines' });
+    console.log(error)
+    res.status(500).json({ error: 'Failed to get restaurants or cuisines' });
   }
 };
+
 export const getRestaurantById = async (req, res) => {
   const  {restaurantId } = req.params;
   try {

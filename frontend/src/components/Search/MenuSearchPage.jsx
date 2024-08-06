@@ -1,23 +1,26 @@
-import React from 'react'
+import React, { useCallback } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { getDishBySearch,fetchRestaurants } from '../../Redux/restaurantActions';
 import { deleteFromCart, addToCart } from '../../Redux/cartActions';
 import Navbar from '../Navbar'
+import { Debouncing } from '../../Utils/Debouncing';
 
 const MenuSearchPage = () => {
   const {singleRestaurant, searchDishes, loading, error} = useSelector(state=>state.restaurantReducer);
   const {cart} = useSelector(state => state.cartReducer);
   const dispatch = useDispatch();
 
+  const debouncedSearch = useCallback(Debouncing((id,text)=>{
+    dispatch(getDishBySearch(id, text))
+  }, 800), [dispatch])
 
   function handleChange(e){
     const id = singleRestaurant._id 
     const text = e.target.value;
     if(text === ''){
-      dispatch(fetchRestaurants());
       return;
     }
-    dispatch(getDishBySearch(id, text))
+    debouncedSearch(id, text )
   }
 
   function addItem(Item){

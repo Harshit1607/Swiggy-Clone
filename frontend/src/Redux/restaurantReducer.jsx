@@ -26,6 +26,8 @@ const initialState = {
   searchRestaurant: [],
   topRestaurants: [],
   searchDishes: [],
+  page: 1,
+  hasMore: true,
 };
 
 function restaurantReducer(state = initialState, action) {
@@ -46,8 +48,10 @@ function restaurantReducer(state = initialState, action) {
         ...state,
         loading: false,
         cuisines: action.payload.cuisines,
-        restaurants: action.payload.restaurants,
+        restaurants: [...state.restaurants, ...action.payload.restaurants],
         topRestaurants: action.payload.topRestaurants,
+        hasMore: action.payload.hasMore,
+        page: action.payload.page ,
         searchRestaurant: [],
         searchDishes: []
       };

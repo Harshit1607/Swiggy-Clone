@@ -19,11 +19,12 @@ import {
 
 const API_URL = 'http://localhost:5000/';
 
-export const fetchRestaurants = () => async (dispatch) => {
+export const fetchRestaurants = (page = 1) => async (dispatch) => {
   dispatch({ type: Fetch_Restaurants_Request });
   try {
-    const result = await axios.get(`${API_URL}restaurants`);
-    dispatch({ type: Fetch_Restaurants_Success, payload: result.data });
+    console.log(page)
+    const result = await axios.get(`${API_URL}restaurants`, { params: { page } });
+    dispatch({ type: Fetch_Restaurants_Success, payload: {...result.data, page} });
   } catch (error) {
     dispatch({ type: Fetch_Restaurants_Failure, error: error.message });
   }

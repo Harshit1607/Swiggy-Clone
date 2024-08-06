@@ -23,13 +23,13 @@ const TopRestaurants = () => {
     navigate('/restaurant');
   }
 
-  if (loading) {
-    return <div>Loading...</div>;
-  }
+  // if (loading) {
+  //   return <div>Loading...</div>;
+  // }
 
-  if (error) {
-    return <div>Error: {error}</div>;
-  }
+  // if (error) {
+  //   return <div>Error: {error}</div>;
+  // }
 
   if (!topRestaurants || topRestaurants.length === 0) {
     return <div>No cuisines available</div>;

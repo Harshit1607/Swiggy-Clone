@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useCallback, useEffect, useRef } from 'react';
 import Recomendation from './Recomendation';
 import Restaurants from './Restaurants';
 import { useDispatch, useSelector } from 'react-redux';
@@ -7,17 +7,37 @@ import TopRestaurants from './TopRestaurants';
 import Navbar from '../Navbar';
 import Login from '../Auth/Login';
 import Signup from '../Auth/Signup';
+import { Throttle } from '../../Utils/Throttle';
 
 const Home = () => {
   const dispatch = useDispatch();
-  const { loading, error } = useSelector(state => state.restaurantReducer);
+  const { loading, error, page, hasMore } = useSelector(state => state.restaurantReducer);
   const {hiddenLogin, hiddenSignup} = useSelector(state => state.userReducer)
-
+  
+  const initialFetchRef = useRef(true)
+  console.log(hasMore);
+  console.log(page)
+  
   useEffect(() => {
-    dispatch(fetchRestaurants());
+    if (initialFetchRef.current) {
+      initialFetchRef.current = false;
+      console.log("Initial fetch for page 1");
+      dispatch(fetchRestaurants(1)); // Fetch the first page initially
+    }
   }, [dispatch]);
 
-  if (loading) {
+  const handleScroll = useCallback(Throttle(() => {
+    if (hasMore && !loading && (window.innerHeight + window.scrollY) >= document.body.offsetHeight - 200) {
+      dispatch(fetchRestaurants(page+1));
+    }
+  }, 500), [dispatch, hasMore, page, loading]);
+
+  useEffect(() => {
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [handleScroll]);
+
+  if (loading && page < 1) {
     return <div className='loading'>Loading...</div>;
   }
 
