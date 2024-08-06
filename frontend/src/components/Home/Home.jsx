@@ -16,8 +16,6 @@ const Home = () => {
   const {hiddenLogin, hiddenSignup} = useSelector(state => state.userReducer)
   
   const initialFetchRef = useRef(true)
-  console.log(hasMore);
-  console.log(page)
   
   useEffect(() => {
     if (initialFetchRef.current && hasMore) {
