@@ -6,7 +6,7 @@
   align-items: center;
   justify-content: flex-start;
   float: right;
-  background-color: #fff;
+  background-color: rgb(249, 249, 249);
   position: absolute;
   right: 0;
   z-index: 101;

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { addToCart, deleteFromCart } from '../../Redux/cartActions';
 
@@ -7,6 +7,7 @@ const MenuCard = () => {
   const {cart} = useSelector(state => state.cartReducer);
   const restaurants = singleRestaurant
   const dispatch = useDispatch()
+  const [visible, setVisible] = useState([])
 
 
   if (loading) {
@@ -28,6 +29,21 @@ const MenuCard = () => {
     dispatch(addToCart({Item, restId}))
   }
   
+  function handleVisible(category){
+    console.log(category)
+    if(visible.includes(category)){
+      setVisible(prev=>{
+        return(
+          prev.filter(item=>item !== category)
+        )
+      })
+    } else{
+      setVisible([...visible, category])
+    }
+    
+    
+  }
+  console.log(visible)
 
   return (
     <div className="menucard">
@@ -37,9 +53,9 @@ const MenuCard = () => {
           <div key={category}>
             <div className="divider"></div>
             <div className="menu-single" id={category}>
-              <span>{category}</span>
+              <div><span>{category}</span><span onClick={()=>{handleVisible(category)}} >v</span></div>
               {menu[category].map(menuItem => (
-                <div className="menu-single-item" key={menuItem.itemId}>
+                <div className="menu-single-item" key={menuItem.itemId} style={{display: visible.includes(category)? "" : "none"}}>
                   <div className="item-name-price">
                     <span>{menuItem.item}</span>
                     <span>{menuItem.price}</span>

@@ -83,11 +83,16 @@
   width: 75%;
   margin: 10px auto;
 }
-.menu-single > span{
+.menu-single > div:first-child{
+  width: 100%;
   margin-bottom: 10px;
   font-size: large;
   font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
+
 .menu-single-item{
   margin: 0 auto;
   width: 95%;

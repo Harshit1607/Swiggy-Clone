@@ -8,6 +8,7 @@ import Navbar from '../Navbar';
 import Login from '../Auth/Login';
 import Signup from '../Auth/Signup';
 import { Throttle } from '../../Utils/Throttle';
+import Footer from './Footer';
 
 const Home = () => {
   const dispatch = useDispatch();
@@ -19,15 +20,14 @@ const Home = () => {
   console.log(page)
   
   useEffect(() => {
-    if (initialFetchRef.current) {
+    if (initialFetchRef.current && hasMore) {
       initialFetchRef.current = false;
-      console.log("Initial fetch for page 1");
       dispatch(fetchRestaurants(1)); // Fetch the first page initially
     }
   }, [dispatch]);
 
   const handleScroll = useCallback(Throttle(() => {
-    if (hasMore && !loading && (window.innerHeight + window.scrollY) >= document.body.offsetHeight - 200) {
+    if (hasMore && !loading && (window.innerHeight + window.scrollY) >= document.body.offsetHeight - 500) {
       dispatch(fetchRestaurants(page+1));
     }
   }, 500), [dispatch, hasMore, page, loading]);
@@ -38,7 +38,7 @@ const Home = () => {
   }, [handleScroll]);
 
   if (loading && page < 1) {
-    return <div className='loading'>Loading...</div>;
+    return <div className='loading'>Loading...<div className='loader' /></div>;
   }
 
   if (error) {
@@ -56,6 +56,7 @@ const Home = () => {
       <TopRestaurants />
       <div className="home-divider"></div>
       <Restaurants />
+      <Footer />
     </div>
     </>
   );

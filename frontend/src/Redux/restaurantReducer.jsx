@@ -26,7 +26,7 @@ const initialState = {
   searchRestaurant: [],
   topRestaurants: [],
   searchDishes: [],
-  page: 1,
+  page: 0,
   hasMore: true,
 };
 

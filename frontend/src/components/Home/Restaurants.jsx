@@ -43,9 +43,8 @@ const Restaurants = () => {
           )
         }) 
         }
-        {loading && <div className='loader' />}
       </div>
-      
+      <div className="center">{loading && <div className='loader' />}</div>
     </div>
   )
 }

@@ -6,7 +6,6 @@ export const getAllRestaurants = async (req, res) => {
   const limit = 5; 
   const skip = (page - 1) * limit;
   try {
-    console.log(page)
     const totalCount = await Restaurant.countDocuments();
     const restaurants = await Restaurant.find().skip(skip).limit(limit);
     const cuisines = await Cuisine.find();

@@ -110,3 +110,9 @@
 .restaurant-info-hidden{
   display: none;
 }
+
+.footer{
+  width: 100%;
+  height: calc(100vh - 80px);
+  background-color: rgb(11, 11, 11);
+}
