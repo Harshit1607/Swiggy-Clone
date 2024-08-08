@@ -2,7 +2,7 @@ import React ,{useCallback, useState, useRef}from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom';
 import Navbar from '../Navbar'
-import { fetchRestaurants, getRestaurantBySearch, getSingleRestaurant, getRestaurantByCuisine } from '../../Redux/restaurantActions';
+import { fetchRestaurants, getRestaurantBySearch, getSingleRestaurant, getRestaurantByCuisine, noText } from '../../Redux/restaurantActions';
 import Login from '../Auth/Login';
 import Signup from '../Auth/Signup';
 import { Debouncing } from '../../Utils/Debouncing';
@@ -20,6 +20,7 @@ const SearchPage = () => {
   function handleChange(e) {
     const text = e.target.value;
     if(text === ''){
+      dispatch(noText());
       return;
     }
     debouncedSearch(text);

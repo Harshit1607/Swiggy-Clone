@@ -15,6 +15,7 @@ import {
   Search_Dish_Request,
   Search_Dish_Failure,
   Search_Dish_Success,
+  No_Text,
 } from './actiontypes';
 
 const API_URL = 'http://localhost:5000/';
@@ -71,4 +72,8 @@ export const getDishBySearch = (id, text) => async (dispatch) => {
   } catch (error) {
     dispatch({type: Search_Dish_Failure, error: error.message})
   }
+}
+
+export const noText = () => (dispatch) => {
+  dispatch({type: No_Text})
 }

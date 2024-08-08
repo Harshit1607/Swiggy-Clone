@@ -1,6 +1,6 @@
 import React, { useCallback } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
-import { getDishBySearch,fetchRestaurants } from '../../Redux/restaurantActions';
+import { getDishBySearch,fetchRestaurants, noText } from '../../Redux/restaurantActions';
 import { deleteFromCart, addToCart } from '../../Redux/cartActions';
 import Navbar from '../Navbar'
 import { Debouncing } from '../../Utils/Debouncing';
@@ -11,6 +11,7 @@ const MenuSearchPage = () => {
   const dispatch = useDispatch();
 
   const debouncedSearch = useCallback(Debouncing((id,text)=>{
+    
     dispatch(getDishBySearch(id, text))
   }, 800), [dispatch])
 
@@ -18,6 +19,7 @@ const MenuSearchPage = () => {
     const id = singleRestaurant._id 
     const text = e.target.value;
     if(text === ''){
+      dispatch(noText)
       return;
     }
     debouncedSearch(id, text )

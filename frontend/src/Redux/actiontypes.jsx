@@ -33,3 +33,5 @@ export const Search_Dish_Failure = 'Search_Dish_Failure'
 export const Get_Login = 'Get_Login'
 export const Get_Signup = 'Get_Signup'
 export const Close_Auth = 'Close_Auth'
+
+export const No_Text = 'No_Text'
