@@ -12,17 +12,17 @@ import Footer from './Footer';
 
 const Home = () => {
   const dispatch = useDispatch();
-  const { loading, error, page, hasMore } = useSelector(state => state.restaurantReducer);
+  const { loading, error, page, hasMore, restaurants } = useSelector(state => state.restaurantReducer);
   const {hiddenLogin, hiddenSignup} = useSelector(state => state.userReducer)
   
   const initialFetchRef = useRef(true)
   
   useEffect(() => {
-    if (initialFetchRef.current && hasMore) {
+    if (initialFetchRef.current && hasMore && restaurants.length === 0) {
       initialFetchRef.current = false;
       dispatch(fetchRestaurants(1)); // Fetch the first page initially
     }
-  }, [dispatch]);
+  }, []);
 
   const handleScroll = useCallback(Throttle(() => {
     if (hasMore && !loading && (window.innerHeight + window.scrollY) >= document.body.offsetHeight - 500) {
