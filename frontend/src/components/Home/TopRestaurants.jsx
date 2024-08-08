@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getSingleRestaurant } from '../../Redux/restaurantActions';
 import { useNavigate } from 'react-router-dom';
@@ -8,15 +8,24 @@ const TopRestaurants = () => {
   const { topRestaurants, loading, error } = useSelector(state => state.restaurantReducer);
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const [slide, setSlide] = useState([0, 1, 2, 3]);
 
-  function nextSlide() {
-    setSlide(slide.map(item => item + 1));
-  }
+  const carouselRef = useRef(null);
+  const slidesToShow = 3
 
-  function prevSlide() {
-    setSlide(slide.map(item => item - 1));
-  }
+  const nextSlide = () => {
+    if (carouselRef.current) {
+        const scrollAmount = carouselRef.current.clientWidth / slidesToShow;
+        carouselRef.current.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+    }
+  };
+
+  const prevSlide = () => {
+      if (carouselRef.current) {
+          const scrollAmount = carouselRef.current.clientWidth / slidesToShow;
+          carouselRef.current.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+      }
+  };
+
 
   function handleClick(id) {
     dispatch(getSingleRestaurant({ id }));
@@ -40,14 +49,14 @@ const TopRestaurants = () => {
       <div className="recom-heading">
         <span>Top Restaurants in India</span>
         <div>
-          <button onClick={prevSlide} style={slide[0]===0 ? {display: 'none'}: null}>&lt;</button>
-          <button onClick={nextSlide} style={slide[3]===topRestaurants.length-1 ? {display: 'none'}: null}>&gt;</button>
+          <button onClick={prevSlide} >&lt;</button>
+          <button onClick={nextSlide} >&gt;</button>
         </div>
       </div>
-      <div className="recom-container">
+      <div className="recom-container" ref={carouselRef}>
         { topRestaurants.map((item,index)=>{
           return(
-            <div  className = {slide.includes(index)? "restaurant-info" : "restaurant-info restaurant-info-hidden"} onClick={()=>handleClick(item._id)} key={item._id}>
+            <div  className = "restaurant-info" onClick={()=>handleClick(item._id)} key={item._id}>
               <img  src={item.image} />
               <span className='restaurant-name'>{item.name}</span>
               <span className='restaurant-rating'>{item.rating}</span>

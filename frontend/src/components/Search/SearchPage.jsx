@@ -1,4 +1,4 @@
-import React ,{useCallback, useState}from 'react'
+import React ,{useCallback, useState, useRef}from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom';
 import Navbar from '../Navbar'
@@ -28,20 +28,28 @@ const SearchPage = () => {
     dispatch(getSingleRestaurant({id}));
     navigate('/restaurant');
   }
-  const [slide, setSlide] = useState([0, 1, 2, 3]);
-
-  function nextSlide() {
-    setSlide(slide.map(item => item + 1));
-  }
-
-  function prevSlide() {
-    setSlide(slide.map(item => item - 1));
-  }
 
   function handleCuisine(cuisine) {
     dispatch(getRestaurantByCuisine(cuisine));
     navigate('/cuisine');
   }
+
+  const carouselRef = useRef(null);
+  const slidesToShow = 5
+
+  const nextSlide = () => {
+    if (carouselRef.current) {
+        const scrollAmount = carouselRef.current.clientWidth / slidesToShow;
+        carouselRef.current.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+    }
+  };
+
+  const prevSlide = () => {
+      if (carouselRef.current) {
+          const scrollAmount = carouselRef.current.clientWidth / slidesToShow;
+          carouselRef.current.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+      }
+  };
 
   // if (loading) {
   //   return <div>Loading...</div>;
@@ -68,14 +76,14 @@ const SearchPage = () => {
             <div className="recom-heading">
               <span>Popular Cuisines</span>
               <div>
-                <button onClick={prevSlide} style={slide[0]===0 ? {display: 'none'}: null}>&lt;</button>
-                <button onClick={nextSlide} style={slide[3]===cuisines.length-1 ? {display: 'none'}: null}>&gt;</button>
+                <button onClick={prevSlide} >&lt;</button>
+                <button onClick={nextSlide} >&gt;</button>
               </div>
             </div>
-            <div className="recom-container">
+            <div className="recom-container" ref={carouselRef}>
               {cuisines.map((item, index)=>{
                 return(
-                  <div className = {slide.includes(index)? "recom-img" : "recom-img recon-img-hidden"}>
+                  <div className = "recom-img">
                     <img src={item.image} onClick={()=>handleCuisine(item.cuisine)}/>
                   </div>
                 )

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getRestaurantByCuisine } from '../../Redux/restaurantActions';
 import { useNavigate } from 'react-router-dom';
@@ -7,15 +7,23 @@ const Recomendation = () => {
   const { cuisines, loading, error } = useSelector(state => state.restaurantReducer);
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const [slide, setSlide] = useState([0, 1, 2, 3]);
 
-  function nextSlide() {
-    setSlide(slide.map(item => item + 1));
-  }
+  const carouselRef = useRef(null);
+  const slidesToShow = 5
 
-  function prevSlide() {
-    setSlide(slide.map(item => item - 1));
-  }
+  const nextSlide = () => {
+    if (carouselRef.current) {
+        const scrollAmount = carouselRef.current.clientWidth / slidesToShow;
+        carouselRef.current.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+    }
+  };
+
+  const prevSlide = () => {
+      if (carouselRef.current) {
+          const scrollAmount = carouselRef.current.clientWidth / slidesToShow;
+          carouselRef.current.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+      }
+  };
 
   function handleClick(cuisine) {
     dispatch(getRestaurantByCuisine(cuisine));
@@ -39,14 +47,14 @@ const Recomendation = () => {
       <div className="recom-heading">
         <span>Whats on Your mind?</span>
         <div>
-          <button onClick={prevSlide} style={slide[0]===0 ? {display: 'none'}: null}>&lt;</button>
-          <button onClick={nextSlide} style={slide[3]===cuisines.length-1 ? {display: 'none'}: null}>&gt;</button>
+          <button onClick={prevSlide} >&lt;</button>
+          <button onClick={nextSlide} >&gt;</button>
         </div>
       </div>
-      <div className="recom-container">
+      <div className="recom-container" ref={carouselRef}>
         {cuisines.map((item, index)=>{
           return(
-            <div className = {slide.includes(index)? "recom-img" : "recom-img recon-img-hidden"}>
+            <div className = "recom-img">
               <img src={item.image} onClick={()=>handleClick(item.cuisine)}/>
             </div>
           )

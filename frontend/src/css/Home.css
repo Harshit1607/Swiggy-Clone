@@ -34,19 +34,24 @@
   width: 100%;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: start;
+  gap: 60px;
   scroll-behavior: smooth;
-  overflow: hidden;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  scrollbar-width: none;  /* Firefox */
   height: fit-content;
+}
+.recom-container::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
 }
 
 .recom-img{
   display: flex;
   align-items: center;
   justify-content: center;
-  flex: 0 0 25%;
   height: 190px;
-  width: 150px;
+  width: 160px;
   background-color: #ffffff;
   /* margin-left: 25px;
   margin-right: 25px; */
