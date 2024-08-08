@@ -62,7 +62,6 @@ function restaurantReducer(state = initialState, action) {
         loading: false,
         singleRestaurant: action.payload.restaurant,
         searchRestaurant: [],
-        restaurants: []
       };
     case Restaurant_By_Cuisine_Success:
       return {
