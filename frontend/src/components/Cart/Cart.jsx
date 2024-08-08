@@ -8,7 +8,7 @@ import Login from '../Auth/Login';
 import Signup from '../Auth/Signup';
 
 const Cart = () => {
-  const { cart, loading: cartLoading, error: cartError } = useSelector(state => state.cartReducer);
+  const { cart, loading: cartLoading, error: cartError, deliverFee, platformFee, gst, toPay } = useSelector(state => state.cartReducer);
   const { singleRestaurant, loading: restaurantLoading, error: restaurantError } = useSelector(state => state.restaurantReducer);
   const {hiddenLogin, hiddenSignup} = useSelector(state => state.userReducer)
   const [hideLog, setHideLog] = useState(true)
@@ -38,13 +38,13 @@ const Cart = () => {
     setHideSign(false)
   }
 
-  let deliverFee, platformFee, gst, toPay;
-  if (cart) {
-    deliverFee = 39;
-    platformFee = 6;
-    gst = 0.18 * platformFee + 0.18 * cart.totalPrice;
-    toPay = deliverFee + platformFee + gst + cart.totalPrice;
-  }
+  // let deliverFee, platformFee, gst, toPay;
+  // if (cart) {
+  //   deliverFee = 39;
+  //   platformFee = 6;
+  //   gst = 0.18 * platformFee + 0.18 * cart.totalPrice;
+  //   toPay = deliverFee + platformFee + gst + cart.totalPrice;
+  // }
 
   return (
     <>
@@ -82,7 +82,7 @@ const Cart = () => {
               </div> : 
               <div className='cart-auth-container'>
                 <span className="cart-auth-type">Sign up
-                <span onClick={displayLogin}>or Log in to your account</span></span>
+                <span onClick={displayLogin}> or Log in to your account</span></span>
                 <input type="text" className="cart-auth-fields" placeholder='Phone Number'/>
                 <input type="text" className="cart-auth-fields" placeholder='Name'/>
                 <input type="text" className="cart-auth-fields" placeholder='Email'/>
@@ -162,7 +162,7 @@ const Cart = () => {
           </div>
           <div className="cart-bill-info to-pay">
                 <span>To pay</span><span>₹{toPay.toFixed(2)}</span>
-              </div>
+          </div>
           <div className="cart-right-2">
             <div>
               <span>Review your order and address details to avoid cancellations</span>

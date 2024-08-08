@@ -56,18 +56,20 @@
 }
 
 .cart-hover-div{
-  width: 325px;
-  height: 175px;
+  z-index: 105;
+  width: 350px;
+  min-height: 175px;
+  max-height: fit-content;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  position: relative;
+  position: fixed;
   box-shadow: rgba(121, 118, 118, 0.04) 0px 8px 16px 0px;
-  border-radius: 10px;
-  top: 0;
+  top: 80px;
   left: 65%;
   background-color: rgb(255, 255, 255);
+  padding: 10px 0;
 }
 .cart-hover-div > span{
   width: 70%;
@@ -84,4 +86,31 @@
 }
 .cart-hover-div:hover{
   display: flex !important;
+}
+.cart-hover-div > div {
+  padding: 0;
+}
+.cart-hover-total{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 80%;
+  margin-top: 15px;
+}
+
+.cart-hover-div > button {
+  width: 80%;
+  height: 40px;
+  color: white;
+  background-color: #fc8019;
+  margin: 20px 0;
+  border: none;
+}
+
+.cart-rest-name > a{
+  font-size: medium;
+  font-weight: normal;
+  text-decoration: underline;
+  color: blue;
+  margin-top: -5px
 }

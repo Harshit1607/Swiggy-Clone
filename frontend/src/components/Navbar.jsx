@@ -3,7 +3,7 @@ import { useDispatch, useSelector  } from 'react-redux';
 import { useNavigate } from 'react-router-dom'
 import { fetchCart } from '../Redux/cartActions';
 import { getLogin } from '../Redux/userAction';
-import EmptyCartHome from './Cart/EmptyCartHome';
+import CartHover from './Cart/CartHover';
 
 const Navbar = () => {
   const navigate = useNavigate();
@@ -30,10 +30,9 @@ const Navbar = () => {
             </div> 
             <span>Cart</span>
           </div>
-          
         </div>
     </div>
-    <EmptyCartHome visibleCart={visibleCart} />
+    <CartHover visibleCart={visibleCart} />
     </>
   )
 }

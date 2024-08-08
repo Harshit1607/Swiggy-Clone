@@ -4,6 +4,10 @@ const initialState = {
   cart : [],
   loading: false,
   error: null,
+  deliverFee : 39,
+  platformFee : 6,
+  gst : 0,
+  toPay : 0,
 }
 
 function cartReducer(state=initialState, action){
@@ -27,7 +31,9 @@ function cartReducer(state=initialState, action){
       return{
         ...state,
         loading: false,
-        cart: action.payload.cart[0]
+        cart: action.payload.cart[0],
+        gst : 0.18 * state.platformFee + 0.18 * state.cart.totalPrice,
+        toPay : state.deliverFee + state.platformFee + state.gst + state.cart.totalPrice,
       }
 
     case Delete_CartItem_Success:

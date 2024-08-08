@@ -20,7 +20,7 @@ import {
 const initialState = {
   cuisines: [],
   restaurants: [],
-  singleRestaurant: null,
+  singleRestaurant:  localStorage.getItem('singleRestaurant')? JSON.parse(localStorage.getItem('singleRestaurant')): null,
   loading: false,
   error: null,
   searchRestaurant: [],
@@ -56,6 +56,8 @@ function restaurantReducer(state = initialState, action) {
         searchDishes: []
       };
     case Single_Restaurant_Success:
+      console.log(action.payload.restaurant)
+      localStorage.setItem('singleRestaurant', JSON.stringify(action.payload.restaurant))
       return {
         ...state,
         loading: false,
