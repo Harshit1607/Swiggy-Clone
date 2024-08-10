@@ -1,10 +1,12 @@
-import React from 'react'
+import React, {useState} from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { closeAuth, getLogin } from '../../Redux/userAction'
+import Otp from '../../Utils/Otp'
 
 const Signup = () => {
   const {hiddenSignup} = useSelector(state=>state.userReducer)
   const dispatch = useDispatch()
+  const [getOtp, setGetOtp] = useState(false)
   return (
     <div className="auth-container" style={{display: hiddenSignup? "none" : ""}}>
       <div className="auth-cut">
@@ -24,7 +26,8 @@ const Signup = () => {
         <input type="text" placeholder='Phone Number'/>
         <input type="text" placeholder='Name'/>
         <input type="text" placeholder='Email'/>
-        <button>CONTINUE</button>
+        {getOtp?<Otp length={4} />: null}
+        <button onClick={()=>{setGetOtp(!getOtp)}}>CONTINUE</button>
       </div>
     </div>
   )

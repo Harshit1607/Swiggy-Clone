@@ -4,12 +4,14 @@ import { getDishBySearch,fetchRestaurants, noText } from '../../Redux/restaurant
 import { deleteFromCart, addToCart } from '../../Redux/cartActions';
 import Navbar from '../Navbar'
 import { Debouncing } from '../../Utils/Debouncing';
+import { useNavigate } from 'react-router-dom';
 
 const MenuSearchPage = () => {
   const {singleRestaurant, searchDishes, loading, error} = useSelector(state=>state.restaurantReducer);
   const {cart} = useSelector(state => state.cartReducer);
   const dispatch = useDispatch();
-
+  const navigate = useNavigate();
+  
   const debouncedSearch = useCallback(Debouncing((id,text)=>{
     
     dispatch(getDishBySearch(id, text))
@@ -43,7 +45,8 @@ const MenuSearchPage = () => {
     <Navbar />
     {singleRestaurant ? <div className="main">
       <div className="search-box menu-search-page">
-        <input onChange={(e)=>handleChange(e)}/>
+        <input onChange={(e)=>handleChange(e)} placeholder= {`Search in the ${singleRestaurant.name}`}/>
+        <span onClick={()=>{navigate('/restaurant')}}>&lt;-</span>
       </div>
       <div className='menu-search-dishes menu-single'>
         {
