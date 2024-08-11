@@ -1,7 +1,7 @@
 import { Add_CartItem_Failure, Add_CartItem_Request, Add_CartItem_Success, Delete_CartItem_Failure, Delete_CartItem_Request, Delete_CartItem_Success, Fetch_Cart_Request, Fetch_Cart_Success, Fetch_Restaurants_Failure } from "./actiontypes";
 
 const initialState = {
-  cart : [],
+  cart : localStorage.getItem('cart') ? JSON.parse(localStorage.getItem('cart')):[],
   loading: false,
   error: null,
   deliverFee : 39,
@@ -21,13 +21,14 @@ function cartReducer(state=initialState, action){
         error: null,
       }
     case Add_CartItem_Success:
+      localStorage.setItem('cart', JSON.stringify(action.payload.cart))
       return{
         ...state,
         loading: false,
         cart: action.payload.cart
       }
-
     case Fetch_Cart_Success:
+      localStorage.setItem('cart', JSON.stringify(action.payload.cart[0]))
       return{
         ...state,
         loading: false,
@@ -37,6 +38,7 @@ function cartReducer(state=initialState, action){
       }
 
     case Delete_CartItem_Success:
+      localStorage.setItem('cart', JSON.stringify(action.payload.cart))
       return{
         ...state,
         loading: false,
