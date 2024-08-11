@@ -6,19 +6,28 @@ import { Close_Auth,
   Get_Signup, 
   Get_Signup_Otp_Failure, 
   Get_Signup_Otp_Request, 
-  Get_Signup_Otp_Success } from "./actiontypes";
+  Get_Signup_Otp_Success, 
+  Login_Failure, 
+  Login_Request, 
+  Login_Success, 
+  Signup_Failure, 
+  Signup_Request,
+  Signup_Success} from "./actiontypes";
 
   
 const initialState = {
   hiddenLogin: true,
   hiddenSignup: true,
   showOtp: false,
+  user: null
 }
 
 function userReducer(state=initialState, action){
   switch(action.type){
     case Get_Login_Otp_Request:
     case Get_Signup_Otp_Request:
+    case Signup_Request:
+    case Login_Request:
       return{
         ...state,
         loading: true,
@@ -47,6 +56,7 @@ function userReducer(state=initialState, action){
         showOtp: false,
       }
     case Get_Login_Otp_Success:
+      console.log("hi")
       return{
         ...state,
         showOtp: true,
@@ -56,8 +66,22 @@ function userReducer(state=initialState, action){
         ...state,
         showOtp: true,
       }
+    case Signup_Success:
+      return{
+        ...state,
+        showOtp: false,
+        user: action.payload.newUser
+      }
+    case Login_Success:
+      return{
+        ...state,
+        showOtp: false,
+        user: action.payload.existingUser
+      }
     case Get_Login_Otp_Failure:
     case Get_Signup_Otp_Failure:
+    case Signup_Failure:
+    case Login_Failure:
       return {
         ...state,
         loading: false,

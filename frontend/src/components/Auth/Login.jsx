@@ -1,13 +1,15 @@
 import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { closeAuth, getLoginOtp, getSignup } from '../../Redux/userAction'
+import { closeAuth, getLoginOtp, getSignup, login } from '../../Redux/userAction'
 import Otp from '../../Utils/Otp'
 
 const Login = () => {
   const {hiddenLogin, showOtp} = useSelector(state=>state.userReducer);
   const dispatch = useDispatch();
   const [email, setEmail] = useState("");
-
+  const [userOtp, setUserOtp] = useState("");
+  console.log(showOtp);
+  
   const handleEmail = (e) =>{
     const text = e.target.value;
     setEmail(text)
@@ -19,6 +21,12 @@ const Login = () => {
       return;
     }
     dispatch(getLoginOtp(email))
+  }
+  const handleOtpChange = (fullOtp)=>{
+    setUserOtp(fullOtp)
+  }
+  const handleVerify = () => {
+    dispatch(login(email, userOtp))
   }
 
   return (
@@ -38,8 +46,8 @@ const Login = () => {
       </div>
       <div className="auth-fields">
         <input type="email" placeholder='email' onChange={(e)=>handleEmail(e)} value={email}/>
-        {showOtp?<Otp length={4} />: null}
-        <button onClick={()=>{handleContinue()}}>{showOtp? "VERIFY OTP": "CONTINUE"}</button>
+        {showOtp ? <Otp length={4} handleOtpChange={handleOtpChange}/>: null}
+        <button onClick={showOtp? ()=>{handleVerify()} :()=>{handleContinue()}}>{showOtp? "VERIFY OTP": "CONTINUE"}</button>
       </div>
     </div>
   )

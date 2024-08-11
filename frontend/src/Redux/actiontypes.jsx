@@ -43,3 +43,11 @@ export const Get_Login_Otp_Failure = 'Get_Login_Otp_Failure'
 export const Get_Signup_Otp_Success = 'Get_Signup_Otp_Success'
 export const Get_Signup_Otp_Request = 'Get_Signup_Otp_Request'
 export const Get_Signup_Otp_Failure = 'Get_Signup_Otp_Failure'
+
+export const Signup_Request = 'Signup_Request'
+export const Signup_Success = 'Signup_Success'
+export const Signup_Failure = 'Signup_Failure'
+
+export const Login_Request = 'Login_Request'
+export const Login_Success = 'Login_Success'
+export const Login_Failure = 'Login_Failure'

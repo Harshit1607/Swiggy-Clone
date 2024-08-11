@@ -1,6 +1,6 @@
 import React, {useState} from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { closeAuth, getLogin, getSignupOtp } from '../../Redux/userAction'
+import { closeAuth, getLogin, getSignupOtp, signup } from '../../Redux/userAction'
 import Otp from '../../Utils/Otp'
 
 const Signup = () => {
@@ -9,6 +9,7 @@ const Signup = () => {
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
   const [name, setName] = useState("");
+  const [userOtp, setUserOtp] = useState("");
 
   const handleEmail = (e) =>{
     const text = e.target.value;
@@ -22,6 +23,9 @@ const Signup = () => {
     const text = e.target.value;
     setPhone(text)
   }
+  const handleOtpChange = (fullOtp)=>{
+    setUserOtp(fullOtp)
+  }
   const handleContinue = () => {
     const regex = /^$/;
     if(regex.test(email) || regex.test(name) || regex.test(phone)){
@@ -29,6 +33,9 @@ const Signup = () => {
       return;
     }
     dispatch(getSignupOtp(email, phone, name))
+  }
+  const handleVerify = () => {
+    dispatch(signup(email, phone, name, userOtp))
   }
 
   return (
@@ -50,8 +57,8 @@ const Signup = () => {
         <input type="text" placeholder='Phone Number' onChange={(e)=>{handlePhone(e)}} value={phone}/>
         <input type="text" placeholder='Name' onChange={(e)=>{handleName(e)}} value={name}/>
         <input type="text" placeholder='Email' onChange={(e)=>handleEmail(e)} value={email}/>
-        {showOtp?<Otp length={4} />: null}
-        <button onClick={()=>{handleContinue()}}>{showOtp? "VERIFY OTP": "CONTINUE"}</button>
+        {showOtp?<Otp length={4} handleOtpChange={handleOtpChange}/>: null}
+        <button onClick={showOtp? ()=>{handleVerify()}:()=>{handleContinue()}}>{showOtp? "VERIFY OTP": "CONTINUE"}</button>
       </div>
     </div>
   )

@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react'
 
-const Otp = ({length = 4}) => {
+const Otp = ({length = 4, handleOtpChange}) => {
   const [otp, setOtp] =useState(new Array(length).fill(""));
   const inputRef = useRef([]);
   useEffect(()=>{
@@ -18,7 +18,9 @@ const Otp = ({length = 4}) => {
     setOtp(newOtp);
 
     const fullOtp = newOtp.join("");
-    console.log(fullOtp)
+    if(fullOtp.length === length){
+      handleOtpChange(fullOtp)
+    }
 
     if(value && index < length-1 && inputRef.current[index+1]){
       inputRef.current[index + 1].focus();

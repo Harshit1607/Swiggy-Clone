@@ -1,9 +1,11 @@
 import express from 'express';
-import { sendOtpLogin, sendOtpSignup } from '../controllers/userController.js';
+import { login, sendOtpLogin, sendOtpSignup, signup } from '../controllers/userController.js';
 
 
 const router = express.Router();
 
 router.post('/loginOtp', sendOtpLogin);
 router.post('/signupOtp', sendOtpSignup);
+router.post('/login', login);
+router.post('/signup', signup);
 export default router;

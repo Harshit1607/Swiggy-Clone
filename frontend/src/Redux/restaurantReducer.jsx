@@ -55,7 +55,6 @@ function restaurantReducer(state = initialState, action) {
         page: action.payload.page ,
       };
     case Single_Restaurant_Success:
-      console.log(action.payload.restaurant)
       localStorage.setItem('singleRestaurant', JSON.stringify(action.payload.restaurant))
       return {
         ...state,
