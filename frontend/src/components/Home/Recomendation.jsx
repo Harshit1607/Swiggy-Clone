@@ -54,7 +54,7 @@ const Recomendation = () => {
       <div className="recom-container" ref={carouselRef}>
         {cuisines.map((item, index)=>{
           return(
-            <div className = "recom-img">
+            <div className = "recom-img" key={index}>
               <img src={item.image} onClick={()=>handleClick(item.cuisine)}/>
             </div>
           )

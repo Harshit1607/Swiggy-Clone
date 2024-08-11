@@ -23,7 +23,7 @@ const Navbar = () => {
         </div>
         <div className="Navbar-Right">
           <span className="nav-elem" onClick={()=>{navigate('/search')}}>Search</span>
-          <span className="nav-elem" onClick={()=>dispatch(getLogin)}>Sign-in/up</span>
+          <span className="nav-elem" onClick={()=>dispatch(getLogin())}>Sign-in/up</span>
           <div className="nav-elem" onClick={()=>{navigate('/cart')}} onMouseOver={()=>{setVisibleCart(true)}} onMouseOut={()=>{setVisibleCart(false)}} >
             <div className='nav-cart-quant' style={{display: cart ? cart.items  ? cart.items.length > 0 ? "" : "none" : "none" : "none"}}>
              <span >{cart ? cart.items ? cart.items.length : null : null }</span> 

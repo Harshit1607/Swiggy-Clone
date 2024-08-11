@@ -35,3 +35,11 @@ export const Get_Signup = 'Get_Signup'
 export const Close_Auth = 'Close_Auth'
 
 export const No_Text = 'No_Text'
+
+export const Get_Login_Otp_Success = 'Get_Login_Otp_Success'
+export const Get_Login_Otp_Request = 'Get_Login_Otp_Request'
+export const Get_Login_Otp_Failure = 'Get_Login_Otp_Failure'
+
+export const Get_Signup_Otp_Success = 'Get_Signup_Otp_Success'
+export const Get_Signup_Otp_Request = 'Get_Signup_Otp_Request'
+export const Get_Signup_Otp_Failure = 'Get_Signup_Otp_Failure'

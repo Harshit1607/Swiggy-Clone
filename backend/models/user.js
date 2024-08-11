@@ -1,10 +1,10 @@
 import mongoose from "mongoose";
 
 const userSchema = new mongoose.Schema({
-  name: {type : Text, required: true},
+  name: {type : String, required: true},
   phoneNumber: {type : Number, required: true},
-  email: {type : Text, required: true},
-  address: {type: Text}
+  email: {type : String, required: true},
+  address: {type: String}
 })
 
-export default  mongoose.model('User', restaurantSchema);
+export default  mongoose.model('User', userSchema);

@@ -16,7 +16,6 @@ const Cart = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  console.log(hideLog)
 
   useEffect(() => {
     dispatch(fetchCart());

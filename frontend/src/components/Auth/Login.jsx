@@ -1,21 +1,35 @@
 import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { closeAuth, getSignup } from '../../Redux/userAction'
+import { closeAuth, getLoginOtp, getSignup } from '../../Redux/userAction'
 import Otp from '../../Utils/Otp'
 
 const Login = () => {
-  const {hiddenLogin} = useSelector(state=>state.userReducer)
-  const dispatch = useDispatch()
-  const [getOtp, setGetOtp] = useState(false)
+  const {hiddenLogin, showOtp} = useSelector(state=>state.userReducer);
+  const dispatch = useDispatch();
+  const [email, setEmail] = useState("");
+
+  const handleEmail = (e) =>{
+    const text = e.target.value;
+    setEmail(text)
+  }
+  const handleContinue = () => {
+    const regex = /^$/;
+    if(regex.test(email)){
+      alert("Enter a valid email address");
+      return;
+    }
+    dispatch(getLoginOtp(email))
+  }
+
   return (
     <div className="auth-container" style={{display: hiddenLogin? "none" : ""}}>
       <div className="auth-cut">
-        <span onClick={()=>dispatch(closeAuth)}>X</span>
+        <span onClick={()=>dispatch(closeAuth())}>X</span>
       </div>
       <div className="auth-type">
         <div className="auth-type-left">
           <span>Login</span>
-          <span>or<span onClick={()=>dispatch(getSignup)}>Create Account</span></span>
+          <span> or<span onClick={()=>dispatch(getSignup())}> Create Account</span></span>
           <div className="small-dash"></div>
         </div>
         <div className="auth-type-right">
@@ -23,9 +37,9 @@ const Login = () => {
         </div>
       </div>
       <div className="auth-fields">
-        <input type="email" placeholder='email'/>
-        {getOtp?<Otp length={4} />: null}
-        <button onClick={()=>{setGetOtp(!getOtp)}}>CONTINUE</button>
+        <input type="email" placeholder='email' onChange={(e)=>handleEmail(e)} value={email}/>
+        {showOtp?<Otp length={4} />: null}
+        <button onClick={()=>{handleContinue()}}>{showOtp? "VERIFY OTP": "CONTINUE"}</button>
       </div>
     </div>
   )

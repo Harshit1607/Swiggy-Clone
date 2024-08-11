@@ -13,7 +13,6 @@ export const getAllRestaurants = async (req, res) => {
     const hasMore = skip + limit < totalCount;
     res.status(200).json({ restaurants, cuisines, topRestaurants, totalCount, page, hasMore });
   } catch (error) {
-    console.log(error)
     res.status(500).json({ error: 'Failed to get restaurants or cuisines' });
   }
 };

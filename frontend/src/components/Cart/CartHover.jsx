@@ -5,11 +5,7 @@ import { useNavigate } from 'react-router-dom';
 const CartHover = ({visibleCart}) => {
   const { cart, loading: cartLoading, error: cartError, toPay } = useSelector(state => state.cartReducer);
   const { singleRestaurant, loading: restaurantLoading, error: restaurantError } = useSelector(state => state.restaurantReducer);
-  const navigate = useNavigate()
-  console.log(cart);
-
-
-  
+  const navigate = useNavigate()  
   
   return (
     cart && cart.items && cart.items.length > 0 ? 
