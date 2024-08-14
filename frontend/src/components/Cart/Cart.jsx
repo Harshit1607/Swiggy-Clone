@@ -6,13 +6,13 @@ import { addToCart, deleteFromCart, fetchCart } from '../../Redux/cartActions';
 import Navbar from '../Navbar';
 import Login from '../Auth/Login';
 import Signup from '../Auth/Signup';
+import CartAccount from './CartAccount';
 
 const Cart = () => {
   const { cart, loading: cartLoading, error: cartError, deliverFee, platformFee, gst, toPay } = useSelector(state => state.cartReducer);
   const { singleRestaurant, loading: restaurantLoading, error: restaurantError } = useSelector(state => state.restaurantReducer);
   const {hiddenLogin, hiddenSignup} = useSelector(state => state.userReducer)
-  const [hideLog, setHideLog] = useState(true)
-  const [hideSign, setHideSign] = useState(true)
+  
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -28,23 +28,6 @@ const Cart = () => {
     }
   }, [cart, dispatch]);
 
-  function displayLogin(){
-    setHideLog(false);
-    setHideSign(true)
-  }
-  function displaySignup(){
-    setHideLog(true);
-    setHideSign(false)
-  }
-
-  // let deliverFee, platformFee, gst, toPay;
-  // if (cart) {
-  //   deliverFee = 39;
-  //   platformFee = 6;
-  //   gst = 0.18 * platformFee + 0.18 * cart.totalPrice;
-  //   toPay = deliverFee + platformFee + gst + cart.totalPrice;
-  // }
-
   return (
     <>
     <Login />
@@ -53,52 +36,7 @@ const Cart = () => {
     {(cart && !cartLoading && !restaurantLoading && cart.items ? cart.items.length > 0 : false)  ? 
       <div className="cart-main" style={!hiddenLogin || !hiddenSignup ? {overflow: "hidden", height: "calc(100vh - 120px)"} : null}>
         <div className="cart-left">
-          <div className="cart-account">
-            <div className="cart-account-left">
-              <span>Account</span>
-              <span>To place your order now, log in to your existing account or sign up.</span>
-              { hideLog && hideSign ?
-                <div className="cart-account-auth-buttons">
-                <button onClick={displayLogin}>
-                  <span>Have an account</span>
-                  <span>Login</span>
-                </button>
-                <button onClick={displaySignup}>
-                  <span>New to Swiggy?</span>
-                  <span>Signup</span>
-                </button>
-              </div> 
-              : hideLog ? hideSign ? 
-              <div className="cart-account-auth-buttons">
-                <button onClick={displayLogin}>
-                  <span>Have an account</span>
-                  <span>Login</span>
-                </button>
-                <button onClick={displaySignup}>
-                  <span>New to Swiggy?</span>
-                  <span>Signup</span>
-                </button>
-              </div> : 
-              <div className='cart-auth-container'>
-                <span className="cart-auth-type">Sign up
-                <span onClick={displayLogin}> or Log in to your account</span></span>
-                <input type="text" className="cart-auth-fields" placeholder='Phone Number'/>
-                <input type="text" className="cart-auth-fields" placeholder='Name'/>
-                <input type="text" className="cart-auth-fields" placeholder='Email'/>
-                <button className="cart-auth-button">Signup</button>
-              </div> :
-              <div className='cart-auth-container'>
-                <span className="cart-auth-type">Enter login details
-                <span onClick={displaySignup}> or Create Account</span></span>
-                <input type="text" className="cart-auth-fields" placeholder='Phone Number'/>
-                <button className="cart-auth-button" >Login</button>
-              </div>
-              }
-            </div>
-            <div className="cart-account-right">
-              <img src="https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_147,h_140/Image-login_btpq7r" alt="img"/>
-            </div>
-          </div>
+          <CartAccount />
           <div className="cart-delivery"></div>
           <div className="cart-payment"></div>
         </div>

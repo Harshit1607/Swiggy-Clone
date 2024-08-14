@@ -1,4 +1,6 @@
 import { Close_Auth,
+  Get_Cart_Login,
+  Get_Cart_Signup,
   Get_Login, 
   Get_Login_Otp_Failure, 
   Get_Login_Otp_Request, 
@@ -19,7 +21,9 @@ const initialState = {
   hiddenLogin: true,
   hiddenSignup: true,
   showOtp: false,
-  user: null
+  user: null,
+  hideCartSign: true,
+  hideCartLog: true, 
 }
 
 function userReducer(state=initialState, action){
@@ -55,8 +59,19 @@ function userReducer(state=initialState, action){
         hiddenSignup: true,
         showOtp: false,
       }
+    case Get_Cart_Login:
+      return{
+        ...state,
+        hideCartLog: false,
+        hideCartSign: true,
+      }
+    case Get_Cart_Signup:
+      return{
+        ...state,
+        hideCartLog: true,
+        hideCartSign: false,
+      }
     case Get_Login_Otp_Success:
-      console.log("hi")
       return{
         ...state,
         showOtp: true,

@@ -138,7 +138,9 @@
   color: white;
   background-color: #60b246;
 }
-
+.cart-auth-container > div{
+  width: 71%;
+}
 .cart-right{
   width: 28%;
   display: flex;
@@ -280,7 +282,6 @@
 .cart-suggestion:focus{
   outline: none;
 }
-
 
 .cart-no-contact{
   margin-top: 15px;

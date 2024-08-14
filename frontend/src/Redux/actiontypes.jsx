@@ -34,6 +34,9 @@ export const Get_Login = 'Get_Login'
 export const Get_Signup = 'Get_Signup'
 export const Close_Auth = 'Close_Auth'
 
+export const Get_Cart_Login = 'Get_Cart_Login'
+export const Get_Cart_Signup = 'Get_Cart_Signup'
+
 export const No_Text = 'No_Text'
 
 export const Get_Login_Otp_Success = 'Get_Login_Otp_Success'
