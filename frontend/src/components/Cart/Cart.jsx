@@ -10,6 +10,7 @@ import CartAccount from './CartAccount';
 
 const Cart = () => {
   const { cart, loading: cartLoading, error: cartError, deliverFee, platformFee, gst, toPay } = useSelector(state => state.cartReducer);
+  const {user} = useSelector(state=>state.userReducer)
   const { singleRestaurant, loading: restaurantLoading, error: restaurantError } = useSelector(state => state.restaurantReducer);
   const {hiddenLogin, hiddenSignup} = useSelector(state => state.userReducer)
   
@@ -36,9 +37,9 @@ const Cart = () => {
     {(cart && !cartLoading && !restaurantLoading && cart.items ? cart.items.length > 0 : false)  ? 
       <div className="cart-main" style={!hiddenLogin || !hiddenSignup ? {overflow: "hidden", height: "calc(100vh - 120px)"} : null}>
         <div className="cart-left">
-          <CartAccount />
-          <div className="cart-delivery"></div>
-          <div className="cart-payment"></div>
+          {user? null : <CartAccount />}
+          <div className="cart-delivery">Address</div>
+          <div className="cart-payment">Payment</div>
         </div>
         <div className="cart-right">
           {singleRestaurant && (

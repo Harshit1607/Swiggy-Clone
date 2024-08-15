@@ -3,6 +3,7 @@ import otpGenerator from "../Utils/otpGenerator.js";
 import generateToken from "../Utils/generateOtpToken.js";
 import verifyToken from "../Utils/verifyOtpToken.js";
 import NodeCache from 'node-cache';
+import sendOtpEmail from "../Utils/sendEmail.js";
 const otpCache = new NodeCache({ stdTTL: 300 });
 
 let otp;
@@ -18,6 +19,7 @@ export const sendOtpLogin = async(req, res)=>{
     const token = generateToken(otp, email);
     otpCache.set(email, token);
     console.log(otp);
+    await sendOtpEmail(email, otp);
     res.json({otp, message: 'otp sent'})
   } catch (error) {
     res.status(500).json({ error: 'Failed to send otp' });
@@ -37,6 +39,7 @@ try {
   const token = generateToken(otp, email);
   otpCache.set(email, token);
   console.log(otp);
+  await sendOtpEmail(email, otp);
   res.json({message: 'otp sent', otp})
 } catch (error) {
   res.status(500).json({ error: 'Failed to send otp' });
