@@ -25,7 +25,7 @@ const Home = () => {
   }, []);
 
   const handleScroll = useCallback(Throttle(() => {
-    if (hasMore && !loading && (window.innerHeight + window.scrollY) >= document.body.offsetHeight - 500) {
+    if (hasMore && !loading && (window.innerHeight + window.scrollY) >= document.body.offsetHeight - 300) {
       dispatch(fetchRestaurants(page+1));
     }
   }, 500), [dispatch, hasMore, page, loading]);

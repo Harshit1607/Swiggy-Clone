@@ -9,20 +9,23 @@ import Cart from './Cart/Cart';
 import MenuSearchPage from './Search/MenuSearchPage';
 import Login from './Auth/Login'
 import Signup from './Auth/Signup'
+import PrivateUser from './Private/PrivateUser';
+import UserHome from './User/UserHome';
 
 const App = () => {
   return (
     <Router>
     <div>
       <Routes>
-      {/* <Route path='/login' element={<Login />} />
-      <Route path='/signup' element={<Signup />} /> */}
-      <Route path='/' element={<Home />} />
-      <Route path='/restaurant' element={<RestaurantHome />} />
-      <Route path='/cuisine' element={<Cuisinehome />} />
-      <Route path='/search' element={<SearchPage />} />
-      <Route path='/cart' element={<Cart />}/>
-      <Route path='/search/menu' element={<MenuSearchPage />} />
+        <Route element={<PrivateUser />}>
+          <Route path='/user' element={<UserHome />}/>
+        </Route>
+        <Route path='/' element={<Home />} />
+        <Route path='/restaurant' element={<RestaurantHome />} />
+        <Route path='/cuisine' element={<Cuisinehome />} />
+        <Route path='/search' element={<SearchPage />} />
+        <Route path='/cart' element={<Cart />}/>
+        <Route path='/search/menu' element={<MenuSearchPage />} />
       </Routes>
     </div>
     </Router>

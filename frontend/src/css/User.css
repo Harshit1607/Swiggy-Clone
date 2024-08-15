@@ -1,0 +1,47 @@
+.user-main{
+  min-height: calc(100vh - 80px);
+  width: 100%;
+  background-color: #37718e;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: start;
+}
+
+.user-info-container{
+  width: 90%;
+  height: 150px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.user-info{
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: center;
+}
+.user-info-name{
+  font-weight: bold;
+  font-size: xx-large;
+}
+.user-info-other{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+}
+
+.edit-info{
+  background-color: #37718e;
+  color: white;
+  border: 0.2px solid white;
+  padding: 10px 20px;
+  font-size: 1rem;
+}
+.edit-info:hover{
+  background-color: white;
+  color: #37718e;
+}

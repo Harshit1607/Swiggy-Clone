@@ -6,6 +6,7 @@
 @import url(Cart.css);
 @import url(Search.css);
 @import url(Auth.css);
+@import url(User.css);
 
 button {
   cursor: pointer;

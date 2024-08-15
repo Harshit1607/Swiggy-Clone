@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { Close_Auth, Get_Login, Get_Login_Otp_Request, Get_Signup,  Get_Login_Otp_Success, Get_Login_Otp_Failure, Get_Signup_Otp_Request, Get_Signup_Otp_Success, Get_Signup_Otp_Failure, Signup_Request, Signup_Success, Signup_Failure, Login_Request, Login_Success, Login_Failure, Get_Cart_Login, Get_Cart_Signup } from './actiontypes';
+import { Close_Auth, Get_Login, Get_Login_Otp_Request, Get_Signup,  Get_Login_Otp_Success, Get_Login_Otp_Failure, Get_Signup_Otp_Request, Get_Signup_Otp_Success, Get_Signup_Otp_Failure, Signup_Request, Signup_Success, Signup_Failure, Login_Request, Login_Success, Login_Failure, Get_Cart_Login, Get_Cart_Signup, Logout } from './actiontypes';
 
 const API_URL = 'http://localhost:5000/';
 
@@ -12,6 +12,8 @@ export const getCartLogin = () => ({ type: Get_Cart_Login });
 export const getCartSignup = () => ({ type: Get_Cart_Signup });
 
 export const closeAuth = () => ({ type: Close_Auth });
+
+export const logout = () => ({type: Logout})
 
 export const getLoginOtp = (email) => async (dispatch) => {
   dispatch({type: Get_Login_Otp_Request});

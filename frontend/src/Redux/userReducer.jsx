@@ -12,6 +12,7 @@ import { Close_Auth,
   Login_Failure, 
   Login_Request, 
   Login_Success, 
+  Logout, 
   Signup_Failure, 
   Signup_Request,
   Signup_Success} from "./actiontypes";
@@ -21,7 +22,7 @@ const initialState = {
   hiddenLogin: true,
   hiddenSignup: true,
   showOtp: false,
-  user: null,
+  user: localStorage.getItem('user') ? JSON.parse(localStorage.getItem('user')) : null,
   hideCartSign: true,
   hideCartLog: true, 
 }
@@ -71,6 +72,12 @@ function userReducer(state=initialState, action){
         hideCartLog: true,
         hideCartSign: false,
       }
+    case Logout:
+      localStorage.removeItem('user')
+      return{
+        ...state,
+        user: null  // This will ensure the Redux state is updated and the Navbar re-renders
+      }
     case Get_Login_Otp_Success:
       return{
         ...state,
@@ -82,16 +89,22 @@ function userReducer(state=initialState, action){
         showOtp: true,
       }
     case Signup_Success:
+      localStorage.setItem('user', JSON.stringify(action.payload.newUser));
       return{
         ...state,
         showOtp: false,
-        user: action.payload.newUser
+        user: action.payload.newUser,
+        hiddenLogin: true,
+        hiddenSignup: true,
       }
     case Login_Success:
+      localStorage.setItem('user', JSON.stringify(action.payload.existingUser));
       return{
         ...state,
         showOtp: false,
-        user: action.payload.existingUser
+        user: action.payload.existingUser,
+        hiddenLogin: true,
+        hiddenSignup: true,
       }
     case Get_Login_Otp_Failure:
     case Get_Signup_Otp_Failure:
