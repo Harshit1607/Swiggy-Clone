@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom'
 import { fetchCart } from '../Redux/cartActions';
 import { getLogin } from '../Redux/userAction';
 import CartHover from './Cart/CartHover';
+import UserHover from './User/UserHover';
 
 const Navbar = () => {
   const navigate = useNavigate();
@@ -11,8 +12,8 @@ const Navbar = () => {
   const { cart } = useSelector(state=>state.cartReducer)
   const {user} = useSelector(state=>state.userReducer);
   const [visibleCart, setVisibleCart] = useState(false);
+  const [visibleUser, setVisibleUser] = useState(false);
 
-  console.log(user)
 
   useEffect(()=>{
     dispatch(fetchCart())
@@ -26,7 +27,10 @@ const Navbar = () => {
       </div>
       <div className="Navbar-Right">
         <span className="nav-elem" onClick={()=>{navigate('/search')}}>Search</span>
-        <span className="nav-elem" onClick={user ? ()=>navigate('/user') : ()=>dispatch(getLogin())}>{user ? `${user.name}` : "Sign in"}</span>
+        <span className="nav-elem" onClick={user ? ()=>navigate('/user') : ()=>dispatch(getLogin())}
+         onMouseOver={()=>{setVisibleUser(true)}}
+         onMouseOut={()=>{setVisibleUser(false)}}
+        >{user ? `${user.name}` : "Sign in"}</span>
         <div className="nav-elem" onClick={()=>{navigate('/cart')}} onMouseOver={()=>{setVisibleCart(true)}} onMouseOut={()=>{setVisibleCart(false)}} >
           <div className='nav-cart-quant' style={{display: cart ? cart.items  ? cart.items.length > 0 ? "" : "none" : "none" : "none"}}>
             <span >{cart ? cart.items ? cart.items.length : null : null }</span> 
@@ -36,6 +40,7 @@ const Navbar = () => {
       </div>
     </div>
     <CartHover visibleCart={visibleCart} />
+    {user? <UserHover visibleUser={visibleUser} />: null}
     </>
   )
 }

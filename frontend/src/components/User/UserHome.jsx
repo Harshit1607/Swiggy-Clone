@@ -17,9 +17,7 @@ const UserHome = () => {
             <div className="user-info-name">{user.name}</div>
             <div className="user-info-other"><span>{user.phone}</span><span>.</span><span>{user.email}</span></div>
           </div>
-          <button className="edit-info" onClick={()=>{
-            dispatch(logout());
-          }}>Logout</button>
+          <button className="edit-info">Edit Profile</button>
         </div>
       </div>
     </>
