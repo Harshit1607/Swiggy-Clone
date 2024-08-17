@@ -39,6 +39,8 @@ export const Get_Cart_Signup = 'Get_Cart_Signup'
 
 export const Logout = 'Logout'
 
+export const Get_Edit = 'Get_Edit'
+
 export const No_Text = 'No_Text'
 
 export const Get_Login_Otp_Success = 'Get_Login_Otp_Success'
@@ -56,3 +58,11 @@ export const Signup_Failure = 'Signup_Failure'
 export const Login_Request = 'Login_Request'
 export const Login_Success = 'Login_Success'
 export const Login_Failure = 'Login_Failure'
+
+export const Edit_Otp_Request = 'Edit_Otp_Request'
+export const Edit_Otp_Success = 'Edit_Otp_Success'
+export const Edit_Otp_Failure = 'Edit_Otp_Failure'
+
+export const Edit_Request = 'Edit_Request'
+export const Edit_Success = 'Edit_Success'
+export const Edit_Failure = 'Edit_Failure'

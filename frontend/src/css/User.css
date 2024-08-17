@@ -45,3 +45,14 @@
   background-color: white;
   color: #37718e;
 }
+
+.chagefields{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.chagefields > span:last-child{
+  color: #fc8019;
+  cursor: pointer;
+}

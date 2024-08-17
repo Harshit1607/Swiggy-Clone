@@ -19,6 +19,9 @@
   display: flex;
   align-items: center;
   justify-content: flex-start;
+  gap: 10px;
+  font-weight: bold;
+  cursor: pointer;
 }
 
 .auth-type{
@@ -68,6 +71,10 @@
   height: 50px;
   border: none;
   margin: 10px 0; 
+}
+
+.auth-fields > span {
+  margin: 0;
 }
 .auth-fields > input{
   border: 0.2px solid #e1e2e4; 

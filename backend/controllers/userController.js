@@ -85,3 +85,40 @@ export const login = async(req,res)=>{
     res.status(500).json({ error: 'Failed to sign up' });
   }
 }
+
+export const editOtp = async(req, res) => {
+  const {email, phone} = req.body;
+  try {
+    otp = otpGenerator();
+    const token = generateToken(otp, email);
+    otpCache.set(email, token);
+    console.log(otp);
+    await sendOtpEmail(email, otp);
+    res.json({message: 'otp sent', show: true})
+  } catch (error) {
+    
+  }
+}
+
+export const editUser = async (req, res) => {
+  const {email, phone, newEmail, newPhone, userOtp} = req.body;
+  try {
+    const token = otpCache.get(email);
+    if (!token) {
+      return res.json({ message: 'OTP expired or not found' });
+    }
+    const decoded = verifyToken(token);
+    if(decoded.otp == userOtp){
+      otpCache.del(email); // Delete OTP after successful verification
+      const updatedUser = await User.findOneAndUpdate(
+        { email: email }, // Filter to find the user
+        { email: newEmail, phone: newPhone }, // Fields to update
+        { new: true } // Option to return the updated document
+      );
+      return res.json({updatedUser, message: 'updated user'})
+    }
+    return res.json({message: 'Wrong Otp'});
+  } catch (error) {
+    
+  }
+}

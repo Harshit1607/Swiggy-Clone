@@ -1,6 +1,11 @@
 import { Close_Auth,
+  Edit_Otp_Failure,
+  Edit_Otp_Request,
+  Edit_Otp_Success,
+  Edit_Success,
   Get_Cart_Login,
   Get_Cart_Signup,
+  Get_Edit,
   Get_Login, 
   Get_Login_Otp_Failure, 
   Get_Login_Otp_Request, 
@@ -25,6 +30,7 @@ const initialState = {
   user: localStorage.getItem('user') ? JSON.parse(localStorage.getItem('user')) : null,
   hideCartSign: true,
   hideCartLog: true, 
+  hiddenEdit: true
 }
 
 function userReducer(state=initialState, action){
@@ -33,6 +39,7 @@ function userReducer(state=initialState, action){
     case Get_Signup_Otp_Request:
     case Signup_Request:
     case Login_Request:
+    case Edit_Otp_Request:
       return{
         ...state,
         loading: true,
@@ -58,7 +65,13 @@ function userReducer(state=initialState, action){
         ...state,
         hiddenLogin: true,
         hiddenSignup: true,
+        hiddenEdit: true,
         showOtp: false,
+      }
+    case Get_Edit:
+      return{
+        ...state,
+        hiddenEdit: false
       }
     case Get_Cart_Login:
       return{
@@ -88,6 +101,11 @@ function userReducer(state=initialState, action){
         ...state,
         showOtp: true,
       }
+    case Edit_Otp_Success:
+      return{
+        ...state,
+        showOtp: true,
+      }
     case Signup_Success:
       localStorage.setItem('user', JSON.stringify(action.payload.newUser));
       return{
@@ -106,10 +124,19 @@ function userReducer(state=initialState, action){
         hiddenLogin: true,
         hiddenSignup: true,
       }
+    case Edit_Success:
+      localStorage.setItem('user', JSON.stringify(action.payload.updatedUser));
+      return{
+        ...state,
+        showOtp: false,
+        user: action.payload.updatedUser,
+        hiddenEdit: true,
+      }
     case Get_Login_Otp_Failure:
     case Get_Signup_Otp_Failure:
     case Signup_Failure:
     case Login_Failure:
+    case Edit_Otp_Failure:
       return {
         ...state,
         loading: false,

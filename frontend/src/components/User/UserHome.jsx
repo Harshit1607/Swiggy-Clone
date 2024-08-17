@@ -2,7 +2,8 @@ import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import Navbar from '../Navbar'
 import { useNavigate } from 'react-router-dom';
-import { logout } from '../../Redux/userAction';
+import { getEdit } from '../../Redux/userAction';
+import EditCotainer from './EditCotainer';
 
 const UserHome = () => {
   const {user} = useSelector(state=>state.userReducer);
@@ -10,6 +11,7 @@ const UserHome = () => {
   const dispatch = useDispatch();
   return (
     <>
+      <EditCotainer />
       <Navbar />
       <div className="user-main">
         <div className='user-info-container'>
@@ -17,7 +19,7 @@ const UserHome = () => {
             <div className="user-info-name">{user.name}</div>
             <div className="user-info-other"><span>{user.phone}</span><span>.</span><span>{user.email}</span></div>
           </div>
-          <button className="edit-info">Edit Profile</button>
+          <button className="edit-info" onClick={()=>{dispatch(getEdit())}}>Edit Profile</button>
         </div>
       </div>
     </>

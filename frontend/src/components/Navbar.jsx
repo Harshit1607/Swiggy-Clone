@@ -24,6 +24,7 @@ const Navbar = () => {
     <div className='Navbar'>
       <div className='Navbar-Left'>
         <img src='https://cdn.iconscout.com/icon/free/png-256/free-swiggy-1613371-1369418.png' onClick={()=>{navigate('/')}}/>
+        <span className="nav-elem" >Address</span>
       </div>
       <div className="Navbar-Right">
         <span className="nav-elem" onClick={()=>{navigate('/search')}}>Search</span>
