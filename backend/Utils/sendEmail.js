@@ -13,7 +13,7 @@ const sendOtpEmail = async (email, otp) => {
     to: [{ email }],
     subject: 'Your OTP Code',
     textContent: `Your OTP code is ${otp}. It will expire in 5 minutes`,
-    sender: { email: 'hbareja.07@gmail.com' },
+    sender: { email: 'fooddeliverywebapp@gmail.com' },
   };
 
   try {
