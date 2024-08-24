@@ -66,3 +66,5 @@ export const Edit_Otp_Failure = 'Edit_Otp_Failure'
 export const Edit_Request = 'Edit_Request'
 export const Edit_Success = 'Edit_Success'
 export const Edit_Failure = 'Edit_Failure'
+
+export const Get_Address = 'Get_Address'

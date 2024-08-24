@@ -9,6 +9,7 @@ import Login from '../Auth/Login';
 import Signup from '../Auth/Signup';
 import { Throttle } from '../../Utils/Throttle';
 import Footer from './Footer';
+import Address from '../User/Address';
 
 const Home = () => {
   const dispatch = useDispatch();
@@ -47,6 +48,7 @@ const Home = () => {
     <>
     <Login />
     <Signup />
+    <Address />
     <Navbar />
     <div className="main" style={!hiddenLogin || !hiddenSignup ? {overflow: "hidden", height: "calc(100vh - 80px)"} : null}>
       <Recomendation />

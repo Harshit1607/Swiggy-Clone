@@ -56,3 +56,25 @@
   color: #fc8019;
   cursor: pointer;
 }
+
+.address-container{
+  float: left;
+  left: 0;
+}
+
+.saved-address{
+  width: 80%;
+  border: 0.2px solid rgb(231, 231, 231);
+  height: 120px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 20px;
+}
+
+.saved-address > span:last-child{
+  color: rgb(216, 216, 216);
+  font-size: small;
+}

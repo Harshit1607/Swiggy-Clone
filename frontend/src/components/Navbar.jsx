@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector  } from 'react-redux';
 import { useNavigate } from 'react-router-dom'
 import { fetchCart } from '../Redux/cartActions';
-import { getLogin } from '../Redux/userAction';
+import { getLogin, getAddress } from '../Redux/userAction';
 import CartHover from './Cart/CartHover';
 import UserHover from './User/UserHover';
 
@@ -24,7 +24,7 @@ const Navbar = () => {
     <div className='Navbar'>
       <div className='Navbar-Left'>
         <img src='https://cdn.iconscout.com/icon/free/png-256/free-swiggy-1613371-1369418.png' onClick={()=>{navigate('/')}}/>
-        <span className="nav-elem" >Address</span>
+        {user?<span className="nav-elem" onClick={()=>dispatch(getAddress())}>Address</span>:null}
       </div>
       <div className="Navbar-Right">
         <span className="nav-elem" onClick={()=>{navigate('/search')}}>Search</span>
@@ -33,8 +33,8 @@ const Navbar = () => {
          onMouseOut={()=>{setVisibleUser(false)}}
         >{user ? `${user.name}` : "Sign in"}</span>
         <div className="nav-elem" onClick={()=>{navigate('/cart')}} onMouseOver={()=>{setVisibleCart(true)}} onMouseOut={()=>{setVisibleCart(false)}} >
-          <div className='nav-cart-quant' style={{display: cart ? cart.items  ? cart.items.length > 0 ? "" : "none" : "none" : "none"}}>
-            <span >{cart ? cart.items ? cart.items.length : null : null }</span> 
+          <div className='nav-cart-quant' style={{display: cart && cart.items  && cart.items.length > 0 ? "" : "none" }}>
+            <span >{cart && cart.items ? cart.items.length : null}</span> 
           </div> 
           <span>Cart</span>
         </div>

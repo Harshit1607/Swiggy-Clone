@@ -3,6 +3,7 @@ import { Close_Auth,
   Edit_Otp_Request,
   Edit_Otp_Success,
   Edit_Success,
+  Get_Address,
   Get_Cart_Login,
   Get_Cart_Signup,
   Get_Edit,
@@ -30,7 +31,8 @@ const initialState = {
   user: localStorage.getItem('user') ? JSON.parse(localStorage.getItem('user')) : null,
   hideCartSign: true,
   hideCartLog: true, 
-  hiddenEdit: true
+  hiddenEdit: true,
+  hiddenAddress: true
 }
 
 function userReducer(state=initialState, action){
@@ -66,6 +68,7 @@ function userReducer(state=initialState, action){
         hiddenLogin: true,
         hiddenSignup: true,
         hiddenEdit: true,
+        hiddenAddress: true,
         showOtp: false,
       }
     case Get_Edit:
@@ -90,6 +93,12 @@ function userReducer(state=initialState, action){
       return{
         ...state,
         user: null  // This will ensure the Redux state is updated and the Navbar re-renders
+      }
+    case Get_Address: 
+      console.log("hi")
+      return{
+        ...state,
+        hiddenAddress: false,
       }
     case Get_Login_Otp_Success:
       return{

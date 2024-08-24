@@ -8,7 +8,6 @@ const Login = () => {
   const dispatch = useDispatch();
   const [email, setEmail] = useState("");
   const [userOtp, setUserOtp] = useState("");
-  console.log(showOtp);
   
   const handleEmail = (e) =>{
     const text = e.target.value;
