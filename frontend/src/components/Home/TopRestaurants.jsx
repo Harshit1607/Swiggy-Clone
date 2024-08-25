@@ -2,30 +2,13 @@ import React, { useState, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getSingleRestaurant } from '../../Redux/restaurantActions';
 import { useNavigate } from 'react-router-dom';
+import Carousel from '../../Utils/Carousel';
 
 
 const TopRestaurants = () => {
   const { topRestaurants, loading, error } = useSelector(state => state.restaurantReducer);
   const dispatch = useDispatch();
   const navigate = useNavigate();
-
-  const carouselRef = useRef(null);
-  const slidesToShow = 3
-
-  const nextSlide = () => {
-    if (carouselRef.current) {
-        const scrollAmount = carouselRef.current.clientWidth / slidesToShow;
-        carouselRef.current.scrollBy({ left: scrollAmount, behavior: 'smooth' });
-    }
-  };
-
-  const prevSlide = () => {
-      if (carouselRef.current) {
-          const scrollAmount = carouselRef.current.clientWidth / slidesToShow;
-          carouselRef.current.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
-      }
-  };
-
 
   function handleClick(id) {
     dispatch(getSingleRestaurant({ id }));
@@ -48,12 +31,8 @@ const TopRestaurants = () => {
     <div className="recomendation">
       <div className="recom-heading">
         <span>Top Restaurants in India</span>
-        <div>
-          <button onClick={prevSlide} >&lt;</button>
-          <button onClick={nextSlide} >&gt;</button>
-        </div>
       </div>
-      <div className="recom-container" ref={carouselRef}>
+      <Carousel length={3}>
         { topRestaurants.map((item,index)=>{
           return(
             <div  className = "restaurant-info" onClick={()=>handleClick(item._id)} key={item._id}>
@@ -65,7 +44,7 @@ const TopRestaurants = () => {
           )
         })
         }
-      </div>
+      </Carousel>
     </div>
   )
 }

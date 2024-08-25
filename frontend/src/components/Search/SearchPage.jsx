@@ -6,6 +6,7 @@ import { fetchRestaurants, getRestaurantBySearch, getSingleRestaurant, getRestau
 import Login from '../Auth/Login';
 import Signup from '../Auth/Signup';
 import { Debouncing } from '../../Utils/Debouncing';
+import Carousel from '../../Utils/Carousel';
 
 const SearchPage = () => {
   const { searchRestaurant, loading, error, cuisines } = useSelector(state => state.restaurantReducer);
@@ -35,22 +36,6 @@ const SearchPage = () => {
     navigate('/cuisine');
   }
 
-  const carouselRef = useRef(null);
-  const slidesToShow = 5
-
-  const nextSlide = () => {
-    if (carouselRef.current) {
-        const scrollAmount = carouselRef.current.clientWidth / slidesToShow;
-        carouselRef.current.scrollBy({ left: scrollAmount, behavior: 'smooth' });
-    }
-  };
-
-  const prevSlide = () => {
-      if (carouselRef.current) {
-          const scrollAmount = carouselRef.current.clientWidth / slidesToShow;
-          carouselRef.current.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
-      }
-  };
 
   // if (loading) {
   //   return <div>Loading...</div>;
@@ -76,12 +61,8 @@ const SearchPage = () => {
             <div className="search-recomendation">
             <div className="recom-heading">
               <span>Popular Cuisines</span>
-              <div>
-                <button onClick={prevSlide} >&lt;</button>
-                <button onClick={nextSlide} >&gt;</button>
-              </div>
             </div>
-            <div className="recom-container" ref={carouselRef}>
+            <Carousel length={5}>
               {cuisines.map((item, index)=>{
                 return(
                   <div className = "recom-img">
@@ -89,7 +70,7 @@ const SearchPage = () => {
                   </div>
                 )
               })}
-            </div>
+            </Carousel>
           </div>
         : searchRestaurant.length > 0 && searchRestaurant.map((item) => (
           <div className="search-rest-col" key={item.id}  onClick={()=>handleRestaurant(item._id)}>

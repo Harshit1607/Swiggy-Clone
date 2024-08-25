@@ -69,3 +69,53 @@
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
 }
+
+.carousel{
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  gap: 60px;
+  scroll-behavior: smooth;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  scrollbar-width: none;  /* Firefox */
+  height: fit-content;
+}
+
+.carousel:-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
+}
+
+.carousel-button-left, .carousel-button-right{
+  position: absolute;
+  top: 35%;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  color: rgb(52, 52, 52);
+  background-color: rgba(238, 238, 238, 0.7);
+  border: none;
+}
+.carousel-button-left:hover, .carousel-button-right:hover{
+  background-color: rgba(238, 238, 238, 1);
+}
+.carousel-button-left{
+  left: 0;
+}
+.carousel-button-right{
+  right: 0;
+}
+.carousel-container{
+  position: relative;
+  width: 100%;
+  overflow: scroll;
+  scroll-behavior: smooth;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  scrollbar-width: none;  /* Firefox */
+  height: fit-content;
+}
+.carousel-container:-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
+}
