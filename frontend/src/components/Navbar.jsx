@@ -10,7 +10,7 @@ const Navbar = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const { cart } = useSelector(state=>state.cartReducer)
-  const {user} = useSelector(state=>state.userReducer);
+  const {user, currentAddress} = useSelector(state=>state.userReducer);
   const [visibleCart, setVisibleCart] = useState(false);
   const [visibleUser, setVisibleUser] = useState(false);
 
@@ -24,7 +24,13 @@ const Navbar = () => {
     <div className='Navbar'>
       <div className='Navbar-Left'>
         <img src='https://cdn.iconscout.com/icon/free/png-256/free-swiggy-1613371-1369418.png' onClick={()=>{navigate('/')}}/>
-        {user?<span className="nav-elem" onClick={()=>dispatch(getAddress())}>Address</span>:null}
+        {user?<span className="nav-elem nav-address" onClick={()=>dispatch(getAddress())}>{currentAddress ? 
+        <>
+        <span>{currentAddress.addressName}</span>
+        <span>{currentAddress.address.substring(0, 35) + '...'}</span>
+        <span>V</span>
+        </>
+        : "Address"}</span>:null}
       </div>
       <div className="Navbar-Right">
         <span className="nav-elem" onClick={()=>{navigate('/search')}}>Search</span>

@@ -1,12 +1,31 @@
 import React, { useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux';
-import { closeAuth } from '../../Redux/userAction'
+import { closeAuth, currentAddress, saveAddress } from '../../Redux/userAction'
 
 const Address = () => {
-  const {hiddenAddress} = useSelector(state=>state.userReducer);
+  const {hiddenAddress, user} = useSelector(state=>state.userReducer);
   const [address, showAddress] = useState(false);
   const dispatch = useDispatch();
-  console.log("hi");
+  const[newAddress, setNewAddress] = useState("");
+  const[name, setName] = useState("");
+
+  const handleName = (e) =>{
+    const text = e.target.value;
+    setName(text);
+  }
+  const handleAddress = (e) =>{
+    const text = e.target.value;
+    setNewAddress(text)
+  }
+  const handleContinue = () =>{
+    const regex = /^$/;
+    if(regex.test(name) || regex.test(address)){
+      alert("Input fields can not be empty");
+      return;
+    }
+    dispatch(saveAddress(newAddress, name, user._id));
+  }
+
   return (
     <div className="auth-container address-container" style={{display: hiddenAddress? "none" : ""}}>
       <div className="auth-cut">
@@ -16,17 +35,30 @@ const Address = () => {
         {
           address?
           <>
-          <input placeholder='Address...'/>
-          <input placeholder='Name...'/>
-          <button>Add Address</button>
+          <input placeholder='Address...' value={newAddress} onChange={(e)=>handleAddress(e)}/>
+          <input placeholder='Name...' value={name} onChange={(e)=>handleName(e)}/>
+          <button onClick={()=>{handleContinue()}}>Add Address</button>
           </>
           :
           <button onClick={()=>showAddress(true)}>Add Address</button>
         }
       </div>
-      <div className="saved-address">
-        <span></span>
-        <span></span>
+      <div className="saved-address-container">
+        <span>Saved Addresses</span>
+        
+          {user.address && user.address.length > 0 ? user.address.map((data,index)=>{
+            return(
+              <div className='saved-addresses' onClick={()=>dispatch(currentAddress(user.address[index]))}>
+              <div className="saved-address-left">
+
+              </div>
+              <div className="saved-address-right" key={index}>
+                <span>{data.addressName}</span>
+                <span>{data.address}</span>
+              </div>
+              </div>
+            )
+          }): null }
       </div>
     </div>
   )

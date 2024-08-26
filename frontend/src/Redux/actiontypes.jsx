@@ -68,3 +68,9 @@ export const Edit_Success = 'Edit_Success'
 export const Edit_Failure = 'Edit_Failure'
 
 export const Get_Address = 'Get_Address'
+
+export const Save_Address_Request = 'Save_Address_Request'
+export const Save_Address_Success = 'Save_Address_Success'
+export const Save_Address_Failure = 'Save_Address_Failure'
+
+export const Current_Address = 'Current_Address'

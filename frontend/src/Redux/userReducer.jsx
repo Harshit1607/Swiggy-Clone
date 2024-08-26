@@ -1,4 +1,5 @@
 import { Close_Auth,
+  Current_Address,
   Edit_Otp_Failure,
   Edit_Otp_Request,
   Edit_Otp_Success,
@@ -19,9 +20,13 @@ import { Close_Auth,
   Login_Request, 
   Login_Success, 
   Logout, 
+  Save_Address_Failure, 
+  Save_Address_Request, 
+  Save_Address_Success, 
   Signup_Failure, 
   Signup_Request,
   Signup_Success} from "./actiontypes";
+
 
   
 const initialState = {
@@ -32,8 +37,12 @@ const initialState = {
   hideCartSign: true,
   hideCartLog: true, 
   hiddenEdit: true,
-  hiddenAddress: true
-}
+  hiddenAddress: true,
+  currentAddress: 
+        localStorage.getItem('user') && JSON.parse(localStorage.getItem('user')).address.length > 0 
+        ? JSON.parse(localStorage.getItem('user')).address[0] 
+        : null,
+      }
 
 function userReducer(state=initialState, action){
   switch(action.type){
@@ -42,6 +51,7 @@ function userReducer(state=initialState, action){
     case Signup_Request:
     case Login_Request:
     case Edit_Otp_Request:
+    case Save_Address_Request:
       return{
         ...state,
         loading: true,
@@ -95,7 +105,6 @@ function userReducer(state=initialState, action){
         user: null  // This will ensure the Redux state is updated and the Navbar re-renders
       }
     case Get_Address: 
-      console.log("hi")
       return{
         ...state,
         hiddenAddress: false,
@@ -141,11 +150,23 @@ function userReducer(state=initialState, action){
         user: action.payload.updatedUser,
         hiddenEdit: true,
       }
+    case Save_Address_Success:
+      localStorage.setItem('user', JSON.stringify(action.payload.user));
+      return{
+        ...state,
+        user: action.payload.user,
+      }
+    case Current_Address:
+      return{
+        ...state,
+        currentAddress: action.payload,
+      }
     case Get_Login_Otp_Failure:
     case Get_Signup_Otp_Failure:
     case Signup_Failure:
     case Login_Failure:
     case Edit_Otp_Failure:
+    case Save_Address_Failure:
       return {
         ...state,
         loading: false,

@@ -71,11 +71,11 @@
 }
 
 .carousel{
-  width: 100%;
+  width: 90%;
   display: flex;
   align-items: center;
   justify-content: start;
-  gap: 60px;
+  gap: 50px;
   scroll-behavior: smooth;
   overflow-x: auto;
   scroll-behavior: smooth;
@@ -115,6 +115,9 @@
   scroll-behavior: smooth;
   scrollbar-width: none;  /* Firefox */
   height: fit-content;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .carousel-container:-webkit-scrollbar {
   display: none; /* Chrome, Safari, Opera */
