@@ -1,0 +1,42 @@
+.recomendation {
+  width: 75%;
+  height: fit-content;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: flex-start;
+}
+
+.recomHeading {
+  height: 20%;
+  margin-bottom: 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: x-large;
+  font-weight: bold;
+  width: 100%;
+}
+
+.restaurantInfo {
+  max-width: 200px;
+  height: 260px;
+  flex: 0 0 25%;
+  margin-bottom: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: flex-start;
+}
+
+.restaurantInfo img {
+  width: 100%;
+  height: 140px;
+  border-radius: 20px;
+  margin-bottom: 15px;
+  object-fit: cover;
+}
+
+.restaurantInfo span {
+  margin-left: 10px;
+}

@@ -1,14 +1,14 @@
 import React, { useCallback, useEffect, useRef } from 'react';
-import Recomendation from './Recomendation';
-import Restaurants from './Restaurants';
+import Recomendation from './Recomendation/Recomendation';
+import Restaurants from './Restaurant/Restaurants';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchRestaurants } from '../../Redux/restaurantActions';
-import TopRestaurants from './TopRestaurants';
+import TopRestaurants from './TopRestaurant/TopRestaurants';
 import Navbar from '../Navbar';
 import Login from '../Auth/Login';
 import Signup from '../Auth/Signup';
 import { Throttle } from '../../Utils/Throttle';
-import Footer from './Footer';
+import Footer from './Footer/Footer';
 import Address from '../User/Address';
 
 const Home = () => {

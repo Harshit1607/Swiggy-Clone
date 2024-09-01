@@ -1,8 +1,7 @@
 @import url(Main.css);
 @import url(Navbar.css);
-@import url(Home.css);
 @import url(Extra.css);
-@import url(Menu.css);
+/* @import url(Menu.css); */
 @import url(Cart.css);
 @import url(Search.css);
 @import url(Auth.css);

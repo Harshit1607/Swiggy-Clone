@@ -1,0 +1,44 @@
+.hiddenMenuBox {
+  background-color: black;
+  width: 50%;
+  height: fit-content;
+  color: white;
+  margin: 0 auto;
+  border-radius: 25px;
+  max-height: 280px;
+  overflow: scroll;
+  scroll-behavior: smooth;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none;  /* Internet Explorer and Edge */
+  padding: 10px 20px;
+  position: sticky;
+  bottom: 5%;
+}
+
+.hiddenMenuBox::-webkit-scrollbar {
+  display: none;
+}
+
+.menuCircle {
+  height: 70px;
+  width: 70px;
+  border-radius: 35px;
+  color: white;
+  background-color: black;
+  position: sticky;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  bottom: 0;
+  /* bottom: 5%;
+  left: 72.5%; */
+}
+
+.hiddenMenuSingleItem {
+  border: none;
+}
+
+.hiddenMenuSingleItem > span > a {
+  text-decoration: none;
+  color: white;
+}

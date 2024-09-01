@@ -4,6 +4,7 @@ import Navbar from '../Navbar'
 import { useNavigate } from 'react-router-dom';
 import { getEdit } from '../../Redux/userAction';
 import EditCotainer from './EditCotainer';
+import UserAddressContainer from './UserAddressContainer';
 
 const UserHome = () => {
   const {user} = useSelector(state=>state.userReducer);
@@ -20,6 +21,14 @@ const UserHome = () => {
             <div className="user-info-other"><span>{user.phone}</span><span>.</span><span>{user.email}</span></div>
           </div>
           <button className="edit-info" onClick={()=>{dispatch(getEdit())}}>Edit Profile</button>
+        </div>
+        <div className="user-display-container">
+          <div className="user-button-container">
+
+          </div>
+          <div>
+            <UserAddressContainer />
+          </div>
         </div>
       </div>
     </>

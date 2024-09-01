@@ -1,0 +1,28 @@
+.cartBox {
+  margin: 0 auto;
+  width: 60%;
+  border-radius: 1px;
+  height: 60px;
+  padding: 0 5px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: sticky;
+  bottom: 0;
+  background-color: #60b246;
+  color: white;
+}
+
+.menuCircle {
+  height: 70px;
+  width: 70px;
+  border-radius: 35px;
+  color: white;
+  background-color: black;
+  position: sticky;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  bottom: 5%;
+  left: 72.5%;
+}

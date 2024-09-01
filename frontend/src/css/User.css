@@ -108,3 +108,29 @@
   font-size: normal;
   font-weight: normal;
 }
+
+.user-display-container{
+  min-height: 70vh;
+  max-height: fit-content;
+  width: 70%;
+  background-color: #fff;
+  padding: 10%;
+  display: flex;
+  align-items: start;
+  justify-content: start;
+}
+
+.user-button-container{
+  width: 30%;
+}
+
+.user-page-address-container{
+  width: 60%;
+  background-color: white;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.user-page-address-container > span{
+  grid-column: span 2;
+}

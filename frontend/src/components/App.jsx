@@ -2,7 +2,7 @@ import React from 'react'
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Navbar from './Navbar'
 import Home from './Home/Home'
-import RestaurantHome from './Restaurant/RestaurantHome'
+import RestaurantHome from './Restaurant/RestaurantHome/RestaurantHome'
 import Cuisinehome from './Cuisines/Cuisinehome';
 import SearchPage from './Search/SearchPage';
 import Cart from './Cart/Cart';

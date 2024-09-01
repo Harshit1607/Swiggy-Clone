@@ -1,0 +1,24 @@
+/* RestaurantHome.module.css */
+
+.main {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #ffffff;
+}
+
+.menuCircle {
+  height: 70px;
+  width: 70px;
+  border-radius: 35px;
+  color: white;
+  background-color: black;
+  position: sticky;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  bottom: 0;
+  /* bottom: 5%;
+  left: 72.5%; */
+}

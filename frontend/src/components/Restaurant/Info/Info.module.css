@@ -1,0 +1,75 @@
+.menuPageInfo {
+  width: 75%;
+  height: 300px;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: space-between;
+}
+
+.menuResName {
+  font-size: x-small;
+  color: rgb(185, 185, 185)
+}
+
+.menuBox {
+  width: 80%;
+  height: 240px;
+  border: solid;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: space-between;
+  border-radius: 20px;
+  margin: 0 auto;
+  border: none;
+  /* background: rgb(255,255,255); */
+  background-size: cover;
+  background-position: center;
+  padding-bottom: 5px;
+}
+
+.menuBox > span{
+  margin-left: 20px;
+  margin-bottom: 20px;
+  font-size: x-large;
+  font-weight: bold;
+}
+.menuSmallBox {
+  width: 90%;
+  height: 180px;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  margin: 10px auto;
+  background-color: #ffffff;
+  background-color: #ffffff;
+  border: none;
+  box-shadow: rgba(0, 0, 0, 0.04) 0px 8px 16px 0px;
+  border-radius: 10px;
+}
+
+.menuSmallBox > div > span:last-child{
+  margin-left: 10px;
+}
+
+.menuSmallBox > img {
+  width: 30%;
+  height: 80%;
+  border-radius: 10px;
+}
+.menuSmallBox > div{
+  width: 60%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: space-evenly;
+  padding: 10px;
+  
+}
+.menuSmallBox >div > div > span:last-child{
+  margin-left: 10px;
+}
+
+

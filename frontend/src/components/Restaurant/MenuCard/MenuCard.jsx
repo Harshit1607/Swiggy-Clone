@@ -1,14 +1,14 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { addToCart, deleteFromCart } from '../../Redux/cartActions';
+import { addToCart, deleteFromCart } from '../../../Redux/cartActions';
+import styles from './MenuCard.module.css'; // Importing CSS module
 
 const MenuCard = () => {
   const { singleRestaurant, loading, error } = useSelector(state => state.restaurantReducer);
-  const {cart} = useSelector(state => state.cartReducer);
-  const restaurants = singleRestaurant
-  const dispatch = useDispatch()
-  const [visible, setVisible] = useState([])
-
+  const { cart } = useSelector(state => state.cartReducer);
+  const restaurants = singleRestaurant;
+  const dispatch = useDispatch();
+  const [visible, setVisible] = useState([]);
 
   if (loading) {
     return <div>Loading...</div>;
@@ -24,43 +24,35 @@ const MenuCard = () => {
     return <div>No menu available</div>;
   }
 
-  function addItem(Item){
+  function addItem(Item) {
     const restId = singleRestaurant._id;
-    dispatch(addToCart({Item, restId}))
+    dispatch(addToCart({ Item, restId }));
   }
-  
-  function handleVisible(category){
-    console.log(category)
-    if(visible.includes(category)){
-      setVisible(prev=>{
-        return(
-          prev.filter(item=>item !== category)
-        )
-      })
-    } else{
-      setVisible([...visible, category])
+
+  function handleVisible(category) {
+    if (visible.includes(category)) {
+      setVisible(prev => prev.filter(item => item !== category));
+    } else {
+      setVisible([...visible, category]);
     }
-    
-    
   }
-  console.log(visible)
 
   return (
-    <div className="menucard">
+    <div className={styles.menuCard}>
       {Object.keys(menu)
         .filter(category => category !== '_id' && category !== 'items')
         .map(category => (
           <div key={category}>
-            <div className="divider"></div>
-            <div className="menu-single" id={category}>
-              <div><span>{category}</span><span onClick={()=>{handleVisible(category)}} >v</span></div>
+            <div className={styles.divider}></div>
+            <div className={styles.menuSingle} id={category}>
+              <div><span>{category}</span><span onClick={() => handleVisible(category)}>v</span></div>
               {menu[category].map(menuItem => (
-                <div className="menu-single-item" key={menuItem.itemId} style={{display: visible.includes(category)? "" : "none"}}>
-                  <div className="item-name-price">
+                <div className={styles.menuSingleItem} key={menuItem.itemId} style={{ display: visible.includes(category) ? "" : "none" }}>
+                  <div className={styles.itemNamePrice}>
                     <span>{menuItem.item}</span>
                     <span>{menuItem.price}</span>
                   </div>
-                  <div className="menucard-quantity-button">
+                  <div className={styles.menuCardQuantityButton}>
                     {cart.restaurantId === restaurants._id ? (
                       cart.items.some(item => item.itemId === menuItem.itemId) ? (
                         <>
@@ -95,4 +87,3 @@ const MenuCard = () => {
 }
 
 export default MenuCard;
-
