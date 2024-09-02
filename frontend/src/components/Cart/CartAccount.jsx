@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import Otp from '../../Utils/Otp';
+import Otp from '../../Utils/Otp/Otp';
 import { getCartLogin, getCartSignup, login,signup, getLogin, getSignup, getLoginOtp, getSignupOtp } from '../../Redux/userAction';
 
 const CartAccount = () => {

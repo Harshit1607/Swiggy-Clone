@@ -2,7 +2,7 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getRestaurantByCuisine } from '../../../Redux/restaurantActions';
 import { useNavigate } from 'react-router-dom';
-import Carousel from '../../../Utils/Carousel';
+import Carousel from '../../../Utils/Carousel/Carousel';
 import styles from './Recomendation.module.css'; // Importing the module CSS
 
 const Recomendation = () => {

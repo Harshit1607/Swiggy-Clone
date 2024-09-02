@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { closeAuth, editUser, getEditOtp } from '../../Redux/userAction';
-import Otp from '../../Utils/Otp'
+import Otp from '../../Utils/Otp/Otp'
 
 const EditCotainer = () => {
   const {hiddenEdit, user, showOtp} = useSelector(state=>state.userReducer);

@@ -1,0 +1,16 @@
+/* Otp.module.css */
+.otpField {
+  width: 100%;
+  height: fit-content;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.otpField > input {
+  width: 40px;
+  height: 40px;
+  text-align: center;
+  font-size: 1em;
+  border: 0.2px solid #e1e2e4;
+}

@@ -6,7 +6,7 @@ import { fetchRestaurants, getRestaurantBySearch, getSingleRestaurant, getRestau
 import Login from '../Auth/Login';
 import Signup from '../Auth/Signup';
 import { Debouncing } from '../../Utils/Debouncing';
-import Carousel from '../../Utils/Carousel';
+import Carousel from '../../Utils/Carousel/Carousel';
 
 const SearchPage = () => {
   const { searchRestaurant, loading, error, cuisines } = useSelector(state => state.restaurantReducer);
