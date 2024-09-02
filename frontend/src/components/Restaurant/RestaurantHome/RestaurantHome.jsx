@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Info from '../Info/Info';
 import MenuCard from '../MenuCard/MenuCard';
 import { useSelector } from 'react-redux';
@@ -10,6 +10,8 @@ import Navbar from '../../Navbar';
 
 const RestaurantHome = () => {
   const { singleRestaurant, loading, error } = useSelector(state => state.restaurantReducer);
+
+  const [menuBox, setMenuBox] = useState(false);
 
   if (loading) {
     return <div>Loading...</div>;
@@ -23,18 +25,21 @@ const RestaurantHome = () => {
     return <div>No restaurant information available</div>;
   }
 
+  const handleMenuBox = () => {
+    setMenuBox(false);
+  }
   return (
     <>
       <Navbar />
       <div className={styles.main}>
-      <HiddenMenu />
       <Info />
       <SearchBar />
       <MenuCard />
-      <Cartdiv />
-      <div className={styles.menuCircle} >
+      <div className={styles.menuCircle} style={{display: !menuBox ?  "" : "none"}} onClick={()=>setMenuBox(true)}>
         Menu
       </div>
+      <HiddenMenu menuBox={menuBox} handleMenuBox={handleMenuBox}/>
+      <Cartdiv />
       </div>
     </>
     

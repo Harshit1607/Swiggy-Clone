@@ -1,24 +1,33 @@
-import React, { useState } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { useSelector } from 'react-redux';
 import styles from './HiddenMenu.module.css'; // Importing CSS module
 
-const HiddenMenu = () => {
+const HiddenMenu = ({menuBox, handleMenuBox}) => {
   const { singleRestaurant, loading, error } = useSelector(state => state.restaurantReducer);
   const restaurants = singleRestaurant;
-  const [menubox, setMenu] = useState(true);
+  const menuRef = useRef(null); // Ref to track the hidden menu box
 
-  const mainbox = document.getElementsByClassName(styles.main)[0];
 
-  if (mainbox) {
-    mainbox.onmousedown = () => {
-      setMenu(true);
+  // if (mainbox) {
+  //   mainbox.onmousedown = () => {
+  //     setMenu(true);
+  //   };
+  // }
+
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (menuRef.current && !menuRef.current.contains(event.target)) {
+        // Only trigger handleMenuBox if the click is outside the hidden menu box
+        handleMenuBox();
+      }
     };
-  }
 
-  function handleClick() {
-    setMenu(!menubox);
-  }
+    document.addEventListener('mousedown', handleClickOutside);
 
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [handleMenuBox]);
   if (loading) {
     return <div className='loading'>Loading...</div>;
   }
@@ -34,17 +43,14 @@ const HiddenMenu = () => {
   const menu = restaurants.menu[0];
   return (
     <>
-      <div className={styles.menuCircle} style={{ display: menubox ? "" : "none" }} onClick={handleClick}>
-        Menu
-      </div>
-      <div className={styles.hiddenMenuBox} style={{ display: !menubox ? "" : "none" }}>
+      <div ref={menuRef} className={styles.hiddenMenuBox} style={{ display: menuBox ? "" : "none" }}>
         {Object.keys(menu)
           .filter(category => category !== '_id' && category !== 'items')
           .map(category => {
             return (
               <div className={`${styles.menuSingleItem} ${styles.hiddenMenuSingleItem}`} key={category}>
-                <span><a href={`#${category}`} onClick={handleClick}>{category}</a></span>
-                <span><a href={`#${category}`} onClick={handleClick}>{menu[category].length}</a></span>
+                <span><a href={`#${category}`} onClick={handleMenuBox}>{category}</a></span>
+                <span><a href={`#${category}`} onClick={handleMenuBox}>{menu[category].length}</a></span>
               </div>
             );
           })}
