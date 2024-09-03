@@ -1,0 +1,100 @@
+.main {
+  width: 75%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.searchBox {
+  margin-top: 50px;
+  width: 75%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 50px;
+}
+
+.searchBox > input {
+  width: 90%;
+  height: 50px;
+  border: 0.5px solid rgba(40, 44, 63, 0.5);
+  padding: 0 10px;
+  border-radius: 5px;
+}
+
+.menuSearchPage > input {
+  border: none;
+  border-bottom: 0.2px solid rgba(105, 106, 116, 0.5);
+  background-color: white;
+  padding: 0 50px;
+}
+
+.menuSearchPage input:focus {
+  outline: none;
+}
+
+.menuSearchPage span {
+  position: sticky;
+  right: 85%;
+  bottom: 10%;
+  cursor: pointer;
+}
+
+.menuSearchDishes {
+  width: 75%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: start;
+}
+
+.menuSingle {
+  width: 75%;
+  margin: 10px auto;
+}
+
+.menuSingleItem {
+  margin: 0 auto;
+  width: 95%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 60px;
+  border-bottom: 0.2px solid rgb(193, 193, 193);
+}
+
+.noBorderBottom {
+  border-bottom: none;
+}
+
+.itemNamePrice {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: space-evenly;
+}
+
+.menucardQuantityButton {
+  background-color: white;
+  border-radius: 5px;
+  color: #1ba672;
+  border: none;
+  width: 60px;
+  height: 30px;
+  cursor: pointer;
+  box-shadow: 0 4px 8px 0 rgba(243, 243, 243, 0.2), 0 6px 20px 0 rgba(243, 243, 243, 0.19);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.menucardQuantityButton button {
+  background-color: #ffffff;
+  color: #1ba672;
+  border: none;
+  font-size: medium;
+  cursor: pointer;
+}

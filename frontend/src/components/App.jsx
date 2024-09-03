@@ -4,9 +4,9 @@ import Navbar from './Navbar'
 import Home from './Home/Home'
 import RestaurantHome from './Restaurant/RestaurantHome/RestaurantHome'
 import Cuisinehome from './Cuisines/Cuisinehome';
-import SearchPage from './Search/SearchPage';
+import SearchPage from './Search/SearchPage/SearchPage';
 import Cart from './Cart/Cart';
-import MenuSearchPage from './Search/MenuSearchPage';
+import MenuSearchPage from './Search/MenuSearchPage/MenuSearchPage';
 import Login from './Auth/Login'
 import Signup from './Auth/Signup'
 import PrivateUser from './Private/PrivateUser';
