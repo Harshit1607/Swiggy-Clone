@@ -10,7 +10,7 @@ import MenuSearchPage from './Search/MenuSearchPage/MenuSearchPage';
 import Login from './Auth/Login'
 import Signup from './Auth/Signup'
 import PrivateUser from './Private/PrivateUser';
-import UserHome from './User/UserHome';
+import UserHome from './User/UserHome/UserHome';
 
 const App = () => {
   return (

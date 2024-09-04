@@ -9,7 +9,7 @@ import Login from '../Auth/Login';
 import Signup from '../Auth/Signup';
 import { Throttle } from '../../Utils/Throttle';
 import Footer from './Footer/Footer';
-import Address from '../User/Address';
+import Address from '../User/Address/Address';
 
 const Home = () => {
   const dispatch = useDispatch();

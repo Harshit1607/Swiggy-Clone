@@ -23,7 +23,7 @@ const Recomendation = () => {
   return (
     <div className={styles.recomendation}>
       <div className={styles.recomHeading}>
-        <span>{user ? user.name : null}, What's on Your Mind?</span>
+        <span>{user ? `${user.name},` : null} What's on Your Mind?</span>
       </div>
       <Carousel length={5}>
         {cuisines.map((item, index) => (

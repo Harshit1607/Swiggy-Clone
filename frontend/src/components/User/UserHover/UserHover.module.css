@@ -1,0 +1,11 @@
+.userHoverContainer {
+  display: none;
+}
+
+.userHoverContainer.visible {
+  display: block;
+}
+
+.userHoverInfo {
+  cursor: pointer;
+}

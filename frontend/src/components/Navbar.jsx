@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom'
 import { fetchCart } from '../Redux/cartActions';
 import { getLogin, getAddress } from '../Redux/userAction';
 import CartHover from './Cart/CartHover';
-import UserHover from './User/UserHover';
+import UserHover from './User/UserHover/UserHover';
 
 const Navbar = () => {
   const navigate = useNavigate();

@@ -1,0 +1,41 @@
+.userPageAddressContainer {
+  padding: 16px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.userPageAddressContainer span {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 12px;
+  display: block;
+}
+
+.savedAddresses {
+  display: flex;
+  align-items: center;
+  padding: 12px;
+  border-bottom: 1px solid #e0e0e0;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.savedAddresses:hover {
+  background-color: #f0f0f0;
+}
+
+.savedAddressLeft {
+  margin-right: 16px;
+  /* You can add an icon or some content here */
+}
+
+.savedAddressRight {
+  display: flex;
+  flex-direction: column;
+}
+
+.savedAddressRight span {
+  font-size: 16px;
+  line-height: 1.5;
+}
