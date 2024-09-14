@@ -1,7 +1,7 @@
 import { Add_CartItem_Failure, Add_CartItem_Request, Add_CartItem_Success, Delete_CartItem_Failure, Delete_CartItem_Request, Delete_CartItem_Success, Fetch_Cart_Request, Fetch_Cart_Success, Fetch_Restaurants_Failure } from "./actiontypes";
 
 const initialState = {
-  cart : localStorage.getItem('cart') ? JSON.parse(localStorage.getItem('cart')):[],
+  cart : localStorage.getItem('cart') ? JSON.parse(localStorage.getItem('cart')) : [],
   loading: false,
   error: null,
   deliverFee : 39,
@@ -21,29 +21,48 @@ function cartReducer(state=initialState, action){
         error: null,
       }
     case Add_CartItem_Success:
-      localStorage.setItem('cart', JSON.stringify(action.payload.cart))
-      return{
+      const updatedCart = action.payload.cart;
+      const updatedGst = 0.18 * state.platformFee + 0.18 * updatedCart.totalPrice;
+      const updatedToPay = state.deliverFee + state.platformFee + updatedGst + updatedCart.totalPrice;
+
+      localStorage.setItem('cart', JSON.stringify(updatedCart));
+
+      return {
         ...state,
         loading: false,
-        cart: action.payload.cart
-      }
+        cart: updatedCart,
+        gst: updatedGst,
+        toPay: updatedToPay,
+      };
     case Fetch_Cart_Success:
-      localStorage.setItem('cart', JSON.stringify(action.payload.cart[0]))
-      return{
+      const newCart = action.payload.cart[0];
+      const newGst = 0.18 * state.platformFee + 0.18 * newCart.totalPrice;
+      const newToPay = state.deliverFee + state.platformFee + newGst + newCart.totalPrice;
+
+      localStorage.setItem('cart', JSON.stringify(newCart));
+
+      return {
         ...state,
         loading: false,
-        cart: action.payload.cart[0],
-        gst : 0.18 * state.platformFee + 0.18 * state.cart.totalPrice,
-        toPay : state.deliverFee + state.platformFee + state.gst + state.cart.totalPrice,
-      }
+        cart: newCart,
+        gst: newGst,
+        toPay: newToPay,
+      };
 
     case Delete_CartItem_Success:
-      localStorage.setItem('cart', JSON.stringify(action.payload.cart))
-      return{
+      const newCartAfterDelete = action.payload.cart;
+      const newGstAfterDelete = 0.18 * state.platformFee + 0.18 * newCartAfterDelete.totalPrice;
+      const newToPayAfterDelete = state.deliverFee + state.platformFee + newGstAfterDelete + newCartAfterDelete.totalPrice;
+
+      localStorage.setItem('cart', JSON.stringify(newCartAfterDelete));
+
+      return {
         ...state,
         loading: false,
-        cart: action.payload.cart
-      }
+        cart: newCartAfterDelete,
+        gst: newGstAfterDelete,
+        toPay: newToPayAfterDelete,
+      };
 
     case Add_CartItem_Failure:
     case Fetch_Restaurants_Failure:

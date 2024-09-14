@@ -10,6 +10,7 @@ const Address = () => {
   const [newAddress, setNewAddress] = useState('');
   const [name, setName] = useState('');
 
+
   const handleName = (e) => {
     setName(e.target.value);
   };
@@ -49,7 +50,7 @@ const Address = () => {
           <div className={styles.savedAddresses} key={index} onClick={() => dispatch(currentAddress(user.address[index]))}>
             <div className={styles.savedAddressLeft}></div>
             <div className={styles.savedAddressRight}>
-              <span>{data.name}</span>
+              <span>{data.addressName}</span>
               <span>{data.address}</span>
             </div>
           </div>

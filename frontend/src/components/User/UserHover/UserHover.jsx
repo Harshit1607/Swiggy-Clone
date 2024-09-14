@@ -7,7 +7,6 @@ import styles from './UserHover.module.css';
 const UserHover = ({ visibleUser }) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  
   return (
     <div className={styles.userHoverContainer} style={{ display: visibleUser ? '' : 'none' }}>
       <div className={styles.userHoverInfo} onClick={() => navigate('/user')}>

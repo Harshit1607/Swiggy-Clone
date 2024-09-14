@@ -38,11 +38,10 @@ const initialState = {
   hideCartLog: true, 
   hiddenEdit: true,
   hiddenAddress: true,
-  currentAddress: 
-        localStorage.getItem('user') && JSON.parse(localStorage.getItem('user')).address.length > 0 
+  currentAddress: localStorage.getItem('user') && JSON.parse(localStorage.getItem('user')).address && JSON.parse(localStorage.getItem('user')).address.length > 0 
         ? JSON.parse(localStorage.getItem('user')).address[0] 
         : null,
-      }
+}
 
 function userReducer(state=initialState, action){
   switch(action.type){
