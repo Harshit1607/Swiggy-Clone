@@ -85,6 +85,10 @@
   border-bottom: 0.2px dashed rgb(216, 216, 216);
 }
 
+.savedAddresses:hover > div > span:first-child{
+  color: #fc8019;
+}
+
 .savedAddresses:last-child {
   border: none;
 }

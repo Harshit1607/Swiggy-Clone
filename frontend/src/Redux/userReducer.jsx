@@ -159,6 +159,7 @@ function userReducer(state=initialState, action){
       return{
         ...state,
         currentAddress: action.payload,
+        hiddenAddress: true,
       }
     case Get_Login_Otp_Failure:
     case Get_Signup_Otp_Failure:

@@ -1,55 +1,88 @@
 import React, { useEffect, useState } from 'react'
-import { useDispatch, useSelector  } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom'
 import { fetchCart } from '../Redux/cartActions';
 import { getLogin, getAddress } from '../Redux/userAction';
 import CartHover from './Cart/CartHover/CartHover';
 import UserHover from './User/UserHover/UserHover';
+import styles from './Navbar.module.css'; // Import the CSS module
 
 const Navbar = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const { cart } = useSelector(state=>state.cartReducer)
-  const {user, currentAddress} = useSelector(state=>state.userReducer);
+  const { cart } = useSelector(state => state.cartReducer);
+  const { user, currentAddress } = useSelector(state => state.userReducer);
   const [visibleCart, setVisibleCart] = useState(false);
   const [visibleUser, setVisibleUser] = useState(false);
 
+  useEffect(() => {
+    dispatch(fetchCart());
+  }, [dispatch]);
 
-  useEffect(()=>{
-    dispatch(fetchCart())
-  }, [dispatch])
-  
   return (
     <>
-    <div className='Navbar'>
-      <div className='Navbar-Left'>
-        <img src='https://cdn.iconscout.com/icon/free/png-256/free-swiggy-1613371-1369418.png' onClick={()=>{navigate('/')}}/>
-        {user?<span className="nav-elem nav-address" onClick={()=>dispatch(getAddress())}>{currentAddress ? 
-        <>
-        <span>{currentAddress.addressName}</span>
-        <span>{currentAddress.address.substring(0, 35) + '...'}</span>
-        <span>V</span>
-        </>
-        : "Address"}</span>:null}
-      </div>
-      <div className="Navbar-Right">
-        <span className="nav-elem" onClick={()=>{navigate('/search')}}>Search</span>
-        <span className="nav-elem" onClick={user ? ()=>navigate('/user') : ()=>dispatch(getLogin())}
-         onMouseOver={()=>{setVisibleUser(true)}}
-         onMouseOut={()=>{setVisibleUser(false)}}
-        >{user ? `${user.name}` : "Sign in"}</span>
-        <div className="nav-elem" onClick={()=>{navigate('/cart')}} onMouseOver={()=>{setVisibleCart(true)}} onMouseOut={()=>{setVisibleCart(false)}} >
-          <div className='nav-cart-quant' style={{display: cart && cart.items  && cart.items.length > 0 ? "" : "none" }}>
-            <span >{cart && cart.items ? cart.items.length : null}</span> 
-          </div> 
-          <span>Cart</span>
+      <div className={styles.Navbar}>
+        <div className={styles.NavbarLeft}>
+          <img
+            src="https://cdn.iconscout.com/icon/free/png-256/free-swiggy-1613371-1369418.png"
+            onClick={() => {
+              navigate('/');
+            }}
+          />
+          {user ? (
+            <span className={`${styles.navElem} ${styles.navAddress}`} onClick={() => dispatch(getAddress())}>
+              {currentAddress ? (
+                <>
+                  <span>{currentAddress.addressName}</span>
+                  <span>{currentAddress.address.substring(0, 35) + '...'}</span>
+                  <span>V</span>
+                </>
+              ) : (
+                'Address'
+              )}
+            </span>
+          ) : null}
+        </div>
+        <div className={styles.NavbarRight}>
+          <span className={styles.navElem} onClick={() => { navigate('/search'); }}>Search</span>
+          <span
+            className={styles.navElem}
+            onClick={user ? () => navigate('/user') : () => dispatch(getLogin())}
+            onMouseOver={() => {
+              setVisibleUser(true);
+            }}
+            onMouseOut={() => {
+              setVisibleUser(false);
+            }}
+          >
+            {user ? `${user.name}` : 'Sign in'}
+          </span>
+          <div
+            className={styles.navElem}
+            onClick={() => {
+              navigate('/cart');
+            }}
+            onMouseOver={() => {
+              setVisibleCart(true);
+            }}
+            onMouseOut={() => {
+              setVisibleCart(false);
+            }}
+          >
+            <div
+              className={styles.navCartQuant}
+              style={{ display: cart && cart.items && cart.items.length > 0 ? '' : 'none' }}
+            >
+              <span>{cart && cart.items ? cart.items.length : null}</span>
+            </div>
+            <span>Cart</span>
+          </div>
         </div>
       </div>
-    </div>
-    <CartHover visibleCart={visibleCart} />
-    {user? <UserHover visibleUser={visibleUser} />: null}
+      <CartHover visibleCart={visibleCart} />
+      {user ? <UserHover visibleUser={visibleUser} /> : null}
     </>
-  )
-}
+  );
+};
 
-export default Navbar
+export default Navbar;
