@@ -1,0 +1,111 @@
+.cartAccount {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.cartAccountLeft {
+  width: 65%;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: space-between;
+}
+
+.cartAccountLeft > span {
+  font-size: medium;
+  color: #989a9e;
+}
+
+.cartAccountLeft > span:first-child {
+  font-weight: bold;
+  color: black;
+}
+
+.cartAccountAuthButtons {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  margin-top: 30px;
+}
+
+.cartAccountAuthButtons > button {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  margin-right: 20px;
+  background-color: #fff;
+  border: 0.2px solid #60b246;
+  color: #60b246;
+  padding: 10px 50px;
+  font-size: x-small;
+}
+
+.cartAccountAuthButtons > button:last-child {
+  background-color: #60b246;
+  border: 0.2px solid #fff;
+  color: #fff;
+}
+
+.cartAccountAuthButtons > button > span:last-child {
+  font-weight: bold;
+  font-size: medium;
+}
+
+.cartAuthContainer {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: start;
+  justify-content: space-evenly;
+  margin-top: 20px;
+}
+
+.cartAuthContainer > span:first-child {
+  font-size: small;
+  color: #989a9e;
+  margin-bottom: 20px;
+}
+
+.cartAuthType > span {
+  color: #fc8019;
+}
+
+.cartAuthFields,
+.cartAuthButton {
+  width: 70%;
+  border: none;
+  height: 60px;
+}
+
+.cartAuthFields {
+  border: 0.2px solid #e8e8e8;
+}
+
+.cartAuthFields:focus {
+  outline: none;
+}
+
+.cartAuthButton {
+  font-size: medium;
+  margin-top: 20px;
+  height: 50px;
+  width: 71%;
+  color: white;
+  background-color: #60b246;
+}
+
+.cartAuthContainer > div {
+  width: 71%;
+}
+
+.cartAccountRight {
+  width: 28%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+}

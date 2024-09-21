@@ -5,7 +5,7 @@ import Home from './Home/Home'
 import RestaurantHome from './Restaurant/RestaurantHome/RestaurantHome'
 import Cuisinehome from './Cuisines/Cuisinehome';
 import SearchPage from './Search/SearchPage/SearchPage';
-import Cart from './Cart/Cart';
+import Cart from './Cart/CartHome/Cart';
 import MenuSearchPage from './Search/MenuSearchPage/MenuSearchPage';
 import Login from './Auth/Login'
 import Signup from './Auth/Signup'

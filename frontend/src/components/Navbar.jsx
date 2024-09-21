@@ -3,7 +3,7 @@ import { useDispatch, useSelector  } from 'react-redux';
 import { useNavigate } from 'react-router-dom'
 import { fetchCart } from '../Redux/cartActions';
 import { getLogin, getAddress } from '../Redux/userAction';
-import CartHover from './Cart/CartHover';
+import CartHover from './Cart/CartHover/CartHover';
 import UserHover from './User/UserHover/UserHover';
 
 const Navbar = () => {
