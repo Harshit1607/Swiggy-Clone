@@ -46,7 +46,7 @@ const Address = () => {
       </div>
       <div className={styles.savedAddressContainer}>
         <span>Saved Addresses</span>
-        {user.address && user.address.length > 0 ? user.address.map((data, index) => (
+        {user && user.address && user.address.length > 0 ? user.address.map((data, index) => (
           <div className={styles.savedAddresses} key={index} onClick={() => dispatch(currentAddress(user.address[index]))}>
             <div className={styles.savedAddressLeft}></div>
             <div className={styles.savedAddressRight}>

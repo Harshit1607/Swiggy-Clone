@@ -29,19 +29,19 @@ import { Close_Auth,
 
 
   
-const initialState = {
-  hiddenLogin: true,
-  hiddenSignup: true,
-  showOtp: false,
-  user: localStorage.getItem('user') ? JSON.parse(localStorage.getItem('user')) : null,
-  hideCartSign: true,
-  hideCartLog: true, 
-  hiddenEdit: true,
-  hiddenAddress: true,
-  currentAddress: localStorage.getItem('user') && JSON.parse(localStorage.getItem('user')).address && JSON.parse(localStorage.getItem('user')).address.length > 0 
+  const initialState = {
+    hiddenLogin: true,
+    hiddenSignup: true,
+    showOtp: false,
+    user: localStorage.getItem('user') ? JSON.parse(localStorage.getItem('user')) : null,
+    hideCartSign: true,
+    hideCartLog: true,
+    hiddenEdit: true,
+    hiddenAddress: true,
+    currentAddress: localStorage.getItem('user') && JSON.parse(localStorage.getItem('user')).address && JSON.parse(localStorage.getItem('user')).address.length > 0 
         ? JSON.parse(localStorage.getItem('user')).address[0] 
         : null,
-}
+  }
 
 function userReducer(state=initialState, action){
   switch(action.type){
@@ -101,7 +101,8 @@ function userReducer(state=initialState, action){
       localStorage.removeItem('user')
       return{
         ...state,
-        user: null  // This will ensure the Redux state is updated and the Navbar re-renders
+        user: null,  // This will ensure the Redux state is updated and the Navbar re-renders
+        currentAddress: null,  // Clear the current address on logout
       }
     case Get_Address: 
       return{

@@ -1,41 +1,70 @@
 .userPageAddressContainer {
-  padding: 16px;
-  background-color: #f9f9f9;
-  border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
 
-.userPageAddressContainer span {
-  font-size: 18px;
+.userPageAddressContainer > span {
+  color: black;
+  font-size: x-large;
   font-weight: bold;
   margin-bottom: 12px;
   display: block;
 }
 
-.savedAddresses {
+.addressRow {
+  width: 100%;
   display: flex;
-  align-items: center;
-  padding: 12px;
-  border-bottom: 1px solid #e0e0e0;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
+  flex-wrap: wrap; /* Wrap addresses into new rows if needed */
+  justify-content: space-between;
 }
 
-.savedAddresses:hover {
-  background-color: #f0f0f0;
+.savedAddresses {
+  width: calc(50% - 15px); /* Two items per row, with some margin */
+  min-height: 100px;
+  display: flex;
+  border: 0.2px solid rgb(9, 9, 9);
+  cursor: pointer;
+  margin: 20px 0;
 }
 
 .savedAddressLeft {
-  margin-right: 16px;
-  /* You can add an icon or some content here */
+  width: 15%;
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .savedAddressRight {
+  width: 85%;
+  height: 100px;
   display: flex;
   flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 5px;
+  font-weight: bold;
+  color: black;
 }
 
-.savedAddressRight span {
-  font-size: 16px;
-  line-height: 1.5;
+.savedAddressRight > span:nth-child(2) {
+  color: rgb(180, 180, 180);
+  font-size: small;
+  font-weight: normal;
+}
+
+.editAddress{
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  gap: 20px;
+  color: #fc8019;
+  font-weight: normal;
+}
+
+.editAddress > span:hover{
+  color: black;
 }

@@ -7,7 +7,7 @@
   justify-content: flex-start;
   background-color: rgb(249, 249, 249);
   position: absolute;
-  z-index: 101;
+  z-index: 110;
   float: left;
   gap: 20px;
 }
@@ -70,7 +70,8 @@
   border: 0.2px solid rgb(231, 231, 231);
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   min-height: 110px;
-  max-height: fit-content;
+  max-height: 60vh;
+  overflow-y: scroll;
 }
 
 .savedAddressContainer > span {

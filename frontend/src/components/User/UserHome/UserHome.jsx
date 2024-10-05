@@ -6,6 +6,7 @@ import { getEdit } from '../../../Redux/userAction';
 import EditContainer from '../EditContainer/EditCotainer';
 import UserAddressContainer from '../UserAddress/UserAddressContainer';
 import styles from './UserHome.module.css';
+import UserButtonContainer from '../UserButtons/UserButtonContainer';
 
 const UserHome = () => {
   const { user } = useSelector(state => state.userReducer);
@@ -27,8 +28,10 @@ const UserHome = () => {
           <button className={styles.editInfo} onClick={() => dispatch(getEdit())}>Edit Profile</button>
         </div>
         <div className={styles.userDisplayContainer}>
-          <div className={styles.userButtonContainer}></div>
-          <div>
+          <div className={styles.userButtonSide}>
+            <UserButtonContainer />
+          </div>
+          <div className={styles.userDisplayRight}>
             <UserAddressContainer />
           </div>
         </div>
