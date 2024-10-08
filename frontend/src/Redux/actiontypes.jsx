@@ -74,3 +74,8 @@ export const Save_Address_Success = 'Save_Address_Success'
 export const Save_Address_Failure = 'Save_Address_Failure'
 
 export const Current_Address = 'Current_Address'
+export const Edit_Address = 'Edit_Address'
+
+export const Update_Address_Request = 'Update_Address_Request'
+export const Update_Address_Success = 'Update_Address_Success'
+export const Update_Address_Failure = 'Update_Address_Failure'

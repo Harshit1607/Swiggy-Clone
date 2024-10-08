@@ -1,11 +1,15 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { currentAddress } from '../../../Redux/userAction';
+import { currentAddress, editAddress } from '../../../Redux/userAction';
 import styles from './UserAddressContainer.module.css';
 
 const UserAddressContainer = () => {
   const { user } = useSelector(state => state.userReducer);
   const dispatch = useDispatch();
+
+  const deleteAddress = ()=>{
+
+  } 
 
   return (
     <div className={styles.userPageAddressContainer}>
@@ -22,8 +26,8 @@ const UserAddressContainer = () => {
               <span>{data.addressName}</span>
               <span>{data.address}</span>
               <div className={styles.editAddress}>
-                <span>Edit</span>
-                <span>Delete</span>
+                <span onClick={()=>dispatch(editAddress(data))}>Edit</span>
+                <span onClick={()=>deleteAddress(data)}>Delete</span>
                 </div>
             </div>
           </div>

@@ -2,7 +2,7 @@ import React from 'react'
 import styles from './UserButtonContainer.module.css';
 
 const UserButtonContainer = () => {
-  console.log("Hi")
+
   return (
     <div className={styles.userButtonContainer}>
       <div className={styles.userButtons}>

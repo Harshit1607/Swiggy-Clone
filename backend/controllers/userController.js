@@ -96,7 +96,7 @@ export const editOtp = async(req, res) => {
     await sendOtpEmail(email, otp);
     res.json({message: 'otp sent', show: true})
   } catch (error) {
-    
+    res.status(500).json({ error: 'Failed to sign up' });
   }
 }
 
@@ -120,7 +120,7 @@ export const editUser = async (req, res) => {
     }
     return res.json({message: 'Wrong Otp'});
   } catch (error) {
-    
+    res.status(500).json({ error: 'Failed to edit' });
   }
 }
 
@@ -147,6 +147,20 @@ export const saveAddress = async (req, res) =>{
 
     return res.status(200).json({ message: 'Address added successfully', user });
   } catch (error) {
-    
+    res.status(500).json({ error: 'Failed to save address' });
+  }
+}
+
+export const updateAddress = async (req, res) => {
+  const {address, userId, newAddress, newName} = req.body;
+  try {
+    const user = await User.findOneAndUpdate(
+      {'address._id':address._id},
+      { $set: { 'address.$.address': newAddress, 'address.$.addressName': newName } },
+      { new: true }   
+    )
+    return res.status(200).json({ message: 'Address added successfully', user });
+  } catch (error) {
+    res.status(500).json({ error: 'Failed to save address' });
   }
 }

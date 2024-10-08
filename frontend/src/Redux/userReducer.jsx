@@ -1,5 +1,6 @@
 import { Close_Auth,
   Current_Address,
+  Edit_Address,
   Edit_Otp_Failure,
   Edit_Otp_Request,
   Edit_Otp_Success,
@@ -25,7 +26,11 @@ import { Close_Auth,
   Save_Address_Success, 
   Signup_Failure, 
   Signup_Request,
-  Signup_Success} from "./actiontypes";
+  Signup_Success,
+  Update_Address_Failure,
+  Update_Address_Request,
+  Update_Address_Success} from "./actiontypes";
+import { editAddress } from "./userAction";
 
 
   
@@ -41,6 +46,8 @@ import { Close_Auth,
     currentAddress: localStorage.getItem('user') && JSON.parse(localStorage.getItem('user')).address && JSON.parse(localStorage.getItem('user')).address.length > 0 
         ? JSON.parse(localStorage.getItem('user')).address[0] 
         : null,
+    editAddress: localStorage.getItem('editAddress') && JSON.parse(localStorage.getItem('editAddress')) ? JSON.parse(localStorage.getItem('editAddress')) : null,
+    hiddenEditAddress: true,
   }
 
 function userReducer(state=initialState, action){
@@ -51,6 +58,7 @@ function userReducer(state=initialState, action){
     case Login_Request:
     case Edit_Otp_Request:
     case Save_Address_Request:
+    case Update_Address_Request:
       return{
         ...state,
         loading: true,
@@ -79,6 +87,7 @@ function userReducer(state=initialState, action){
         hiddenEdit: true,
         hiddenAddress: true,
         showOtp: false,
+        hiddenEditAddress: true,
       }
     case Get_Edit:
       return{
@@ -162,12 +171,27 @@ function userReducer(state=initialState, action){
         currentAddress: action.payload,
         hiddenAddress: true,
       }
+    case Edit_Address:
+      localStorage.setItem('editAddress', JSON.stringify(action.payload));
+      return{
+        ...state,
+        editAddress: action.payload,
+        hiddenEditAddress: false,
+      }
+    case Update_Address_Success:
+      localStorage.setItem('user', JSON.stringify(action.payload.user));
+      return{
+        ...state,
+        user: action.payload.user,
+        hiddenEditAddress: true,
+      }
     case Get_Login_Otp_Failure:
     case Get_Signup_Otp_Failure:
     case Signup_Failure:
     case Login_Failure:
     case Edit_Otp_Failure:
     case Save_Address_Failure:
+    case Update_Address_Failure:
       return {
         ...state,
         loading: false,

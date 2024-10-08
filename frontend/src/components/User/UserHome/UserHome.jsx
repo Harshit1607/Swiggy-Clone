@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Navbar from '../../Navbar';
 import { useNavigate } from 'react-router-dom';
@@ -7,15 +7,21 @@ import EditContainer from '../EditContainer/EditCotainer';
 import UserAddressContainer from '../UserAddress/UserAddressContainer';
 import styles from './UserHome.module.css';
 import UserButtonContainer from '../UserButtons/UserButtonContainer';
+import EditAddressContainer from '../EditAddress/EditAddressContainer';
 
 const UserHome = () => {
   const { user } = useSelector(state => state.userReducer);
   const navigate = useNavigate();
   const dispatch = useDispatch();
+
+  useEffect(()=>{
+      <UserAddressContainer />
+  }, [user])
   
   return (
     <>
       <EditContainer />
+      <EditAddressContainer />
       <Navbar />
       <div className={styles.userMain}>
         <div className={styles.userInfoContainer}>

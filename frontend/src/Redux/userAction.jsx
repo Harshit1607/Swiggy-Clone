@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { Close_Auth, Get_Login, Get_Login_Otp_Request, Get_Signup,  Get_Login_Otp_Success, Get_Login_Otp_Failure, Get_Signup_Otp_Request, Get_Signup_Otp_Success, Get_Signup_Otp_Failure, Signup_Request, Signup_Success, Signup_Failure, Login_Request, Login_Success, Login_Failure, Get_Cart_Login, Get_Cart_Signup, Logout, Get_Edit, Edit_Otp_Request, Edit_Otp_Success, Edit_Otp_Failure, Edit_Request, Edit_Success, Edit_Failure, Get_Address, Save_Address_Request, Save_Address_Failure, Save_Address_Success, Current_Address } from './actiontypes';
+import { Close_Auth, Get_Login, Get_Login_Otp_Request, Get_Signup,  Get_Login_Otp_Success, Get_Login_Otp_Failure, Get_Signup_Otp_Request, Get_Signup_Otp_Success, Get_Signup_Otp_Failure, Signup_Request, Signup_Success, Signup_Failure, Login_Request, Login_Success, Login_Failure, Get_Cart_Login, Get_Cart_Signup, Logout, Get_Edit, Edit_Otp_Request, Edit_Otp_Success, Edit_Otp_Failure, Edit_Request, Edit_Success, Edit_Failure, Get_Address, Save_Address_Request, Save_Address_Failure, Save_Address_Success, Current_Address, Edit_Address, Update_Address_Request, Update_Address_Failure, Update_Address_Success } from './actiontypes';
 
 const API_URL = 'http://localhost:5000/';
 
@@ -109,3 +109,15 @@ export const saveAddress = (address, addressName, userId) => async (dispatch) =>
 }
 
 export const currentAddress = (address) => ({type:Current_Address, payload: address});
+
+export const editAddress = (address) => ({type:Edit_Address, payload: address});
+
+export const updateAddress = (address, userId, newAddress, newName) => async (dispatch) => {
+  dispatch({type: Update_Address_Request});
+  try {
+    const result = await axios.post(`${API_URL}user/updateAddress`, {address, userId, newAddress, newName});
+    dispatch({type: Update_Address_Success, payload: result.data});
+  } catch (error) {
+    dispatch({type: Update_Address_Failure, error: error.message})
+  }
+}
