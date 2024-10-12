@@ -10,7 +10,7 @@ import UserButtonContainer from '../UserButtons/UserButtonContainer';
 import EditAddressContainer from '../EditAddress/EditAddressContainer';
 
 const UserHome = () => {
-  const { user } = useSelector(state => state.userReducer);
+  const { user, activeButton } = useSelector(state => state.userReducer);
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
@@ -38,7 +38,7 @@ const UserHome = () => {
             <UserButtonContainer />
           </div>
           <div className={styles.userDisplayRight}>
-            <UserAddressContainer />
+            {activeButton === 'Address' ?<UserAddressContainer />: null}
           </div>
         </div>
       </div>

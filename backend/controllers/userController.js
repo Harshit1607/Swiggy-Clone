@@ -164,3 +164,17 @@ export const updateAddress = async (req, res) => {
     res.status(500).json({ error: 'Failed to save address' });
   }
 }
+
+export const deleteAddress = async (req, res) => {
+  const {address} = req.body;
+  try {
+    const user = await User.findOneAndUpdate(
+      { 'address._id': address },  
+      { $pull: { address: { _id: address} } },  
+      { new: true }  
+    );
+    return res.status(200).json({ message: 'Address deleted successfully', user });
+  } catch (error) {
+    res.status(500).json({ error: 'Failed to delete address' });
+  }
+}

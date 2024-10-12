@@ -7,6 +7,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: start;
+  border: 2px solid #37718e;
 }
 
 .userButtons{
@@ -19,7 +20,18 @@
   font-size: 1.25rem;
   border-bottom: 2px solid white;
 }
+.userButtons:first-of-type{
+  border-top-left-radius: 25px;
+  border-top-right-radius: 25px;
+}
 
 .userButtons:hover{
   font-size: 1.4rem;
+}
+
+.active{
+  background-color: white;
+}
+.active > span{
+  color: #37718e;
 }

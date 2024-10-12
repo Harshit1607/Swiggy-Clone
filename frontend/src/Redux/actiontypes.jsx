@@ -79,3 +79,9 @@ export const Edit_Address = 'Edit_Address'
 export const Update_Address_Request = 'Update_Address_Request'
 export const Update_Address_Success = 'Update_Address_Success'
 export const Update_Address_Failure = 'Update_Address_Failure'
+
+export const Delete_Address_Request = 'Delete_Address_Request'
+export const Delete_Address_Success = 'Delete_Address_Success'
+export const Delete_Address_Failure = 'Delete_Address_Failure'
+
+export const User_Button = 'User_Button'

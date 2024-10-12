@@ -1,5 +1,8 @@
 import { Close_Auth,
   Current_Address,
+  Delete_Address_Failure,
+  Delete_Address_Request,
+  Delete_Address_Success,
   Edit_Address,
   Edit_Otp_Failure,
   Edit_Otp_Request,
@@ -29,9 +32,8 @@ import { Close_Auth,
   Signup_Success,
   Update_Address_Failure,
   Update_Address_Request,
-  Update_Address_Success} from "./actiontypes";
-import { editAddress } from "./userAction";
-
+  Update_Address_Success,
+  User_Button} from "./actiontypes";
 
   
   const initialState = {
@@ -43,11 +45,12 @@ import { editAddress } from "./userAction";
     hideCartLog: true,
     hiddenEdit: true,
     hiddenAddress: true,
-    currentAddress: localStorage.getItem('user') && JSON.parse(localStorage.getItem('user')).address && JSON.parse(localStorage.getItem('user')).address.length > 0 
+    currentAddress: localStorage.getItem('user') && JSON.parse(localStorage.getItem('user')) && JSON.parse(localStorage.getItem('user')).address && JSON.parse(localStorage.getItem('user')).address.length > 0 
         ? JSON.parse(localStorage.getItem('user')).address[0] 
         : null,
     editAddress: localStorage.getItem('editAddress') && JSON.parse(localStorage.getItem('editAddress')) ? JSON.parse(localStorage.getItem('editAddress')) : null,
     hiddenEditAddress: true,
+    activeButton: 'Address',
   }
 
 function userReducer(state=initialState, action){
@@ -59,6 +62,7 @@ function userReducer(state=initialState, action){
     case Edit_Otp_Request:
     case Save_Address_Request:
     case Update_Address_Request:
+    case Delete_Address_Request:
       return{
         ...state,
         loading: true,
@@ -185,6 +189,17 @@ function userReducer(state=initialState, action){
         user: action.payload.user,
         hiddenEditAddress: true,
       }
+    case Delete_Address_Success:
+      localStorage.setItem('user', JSON.stringify(action.payload.user));
+      return{
+        ...state,
+        user: action.payload.user,
+      }
+    case User_Button:
+      return{
+        ...state,
+        activeButton: action.payload
+      }
     case Get_Login_Otp_Failure:
     case Get_Signup_Otp_Failure:
     case Signup_Failure:
@@ -192,6 +207,7 @@ function userReducer(state=initialState, action){
     case Edit_Otp_Failure:
     case Save_Address_Failure:
     case Update_Address_Failure:
+    case Delete_Address_Failure:
       return {
         ...state,
         loading: false,

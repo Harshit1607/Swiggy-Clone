@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { Close_Auth, Get_Login, Get_Login_Otp_Request, Get_Signup,  Get_Login_Otp_Success, Get_Login_Otp_Failure, Get_Signup_Otp_Request, Get_Signup_Otp_Success, Get_Signup_Otp_Failure, Signup_Request, Signup_Success, Signup_Failure, Login_Request, Login_Success, Login_Failure, Get_Cart_Login, Get_Cart_Signup, Logout, Get_Edit, Edit_Otp_Request, Edit_Otp_Success, Edit_Otp_Failure, Edit_Request, Edit_Success, Edit_Failure, Get_Address, Save_Address_Request, Save_Address_Failure, Save_Address_Success, Current_Address, Edit_Address, Update_Address_Request, Update_Address_Failure, Update_Address_Success } from './actiontypes';
+import { Close_Auth, Get_Login, Get_Login_Otp_Request, Get_Signup,  Get_Login_Otp_Success, Get_Login_Otp_Failure, Get_Signup_Otp_Request, Get_Signup_Otp_Success, Get_Signup_Otp_Failure, Signup_Request, Signup_Success, Signup_Failure, Login_Request, Login_Success, Login_Failure, Get_Cart_Login, Get_Cart_Signup, Logout, Get_Edit, Edit_Otp_Request, Edit_Otp_Success, Edit_Otp_Failure, Edit_Request, Edit_Success, Edit_Failure, Get_Address, Save_Address_Request, Save_Address_Failure, Save_Address_Success, Current_Address, Edit_Address, Update_Address_Request, Update_Address_Failure, Update_Address_Success, Delete_Address_Request, Delete_Address_Success, Delete_Address_Failure, User_Button } from './actiontypes';
 
 const API_URL = 'http://localhost:5000/';
 
@@ -121,3 +121,18 @@ export const updateAddress = (address, userId, newAddress, newName) => async (di
     dispatch({type: Update_Address_Failure, error: error.message})
   }
 }
+
+export const deleteAddress = (address) => async (dispatch) => {
+  dispatch({type: Delete_Address_Request});
+  try {
+    const result = await axios.post(`${API_URL}user/deleteAddress`, {address});
+    dispatch({type: Delete_Address_Success, payload: result.data});
+  } catch (error) {
+    dispatch({type: Delete_Address_Failure, error: error.message})
+  }
+}
+
+export const userButton = (data) => ({
+  type: User_Button,
+  payload: data
+})
