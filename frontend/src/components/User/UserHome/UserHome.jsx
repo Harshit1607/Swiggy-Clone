@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import Navbar from '../../Navbar';
+import UserNav from '../UserNav/UserNav';
 import { useNavigate } from 'react-router-dom';
 import { getEdit } from '../../../Redux/userAction';
 import EditContainer from '../EditContainer/EditCotainer';
@@ -10,9 +10,23 @@ import UserButtonContainer from '../UserButtons/UserButtonContainer';
 import EditAddressContainer from '../EditAddress/EditAddressContainer';
 
 const UserHome = () => {
-  const { user, activeButton } = useSelector(state => state.userReducer);
+  const { user, activeButton, hiddenEdit, hiddenEditAddress } = useSelector(state => state.userReducer);
   const navigate = useNavigate();
   const dispatch = useDispatch();
+
+  useEffect(()=>{
+    const open = !hiddenEditAddress || !hiddenEdit;
+    if(open){
+      document.body.style.overflow = 'hidden';
+    }else {
+      document.body.style.overflow = 'auto';
+    }
+
+    return () => {
+      document.body.style.overflow = 'auto';
+    };
+
+  }, [hiddenEditAddress, hiddenEdit]);
 
   useEffect(()=>{
       <UserAddressContainer />
@@ -22,7 +36,7 @@ const UserHome = () => {
     <>
       <EditContainer />
       <EditAddressContainer />
-      <Navbar />
+      <UserNav />
       <div className={styles.userMain}>
         <div className={styles.userInfoContainer}>
           <div className={styles.userInfo}>

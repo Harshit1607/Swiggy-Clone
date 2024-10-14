@@ -14,10 +14,24 @@ import Address from '../User/Address/Address';
 const Home = () => {
   const dispatch = useDispatch();
   const { loading, error, page, hasMore, restaurants } = useSelector(state => state.restaurantReducer);
-  const {hiddenLogin, hiddenSignup} = useSelector(state => state.userReducer)
+  const {hiddenLogin, hiddenSignup, hiddenAddress} = useSelector(state => state.userReducer)
   
   const initialFetchRef = useRef(true)
   
+  useEffect(()=>{
+    const open = !hiddenAddress || !hiddenLogin || !hiddenSignup;
+    if(open){
+      document.body.style.overflow = 'hidden';
+    }else {
+      document.body.style.overflow = 'auto';
+    }
+
+    return () => {
+      document.body.style.overflow = 'auto';
+    };
+
+  }, [hiddenAddress, hiddenLogin, hiddenSignup]);
+
   useEffect(() => {
     if (initialFetchRef.current && hasMore && restaurants.length === 0) {
       initialFetchRef.current = false;

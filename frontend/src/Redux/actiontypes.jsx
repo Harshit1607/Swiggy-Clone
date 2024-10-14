@@ -85,3 +85,6 @@ export const Delete_Address_Success = 'Delete_Address_Success'
 export const Delete_Address_Failure = 'Delete_Address_Failure'
 
 export const User_Button = 'User_Button'
+
+export const Set_Deliver_Address = 'Set_Deliver_Address'
+export const Delete_Deliver_Address = 'Delete_Deliver_Address'

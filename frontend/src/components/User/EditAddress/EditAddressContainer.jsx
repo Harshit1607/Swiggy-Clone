@@ -11,9 +11,13 @@ const EditAddressContainer = () => {
   const [name, setName] = useState(editAddress && editAddress.addressName ?editAddress.addressName : '');
 
   useEffect(()=>{
-    setName(editAddress.addressName);
-    setNewAddress(editAddress.address);
+    if(editAddress.addressName && editAddress.address){setting();}
   }, [editAddress, dispatch])
+
+  const setting = () => {
+    setName(editAddress.addressName)
+    setNewAddress(editAddress.address)
+  }
 
   const handleName = (e) => {
     setName(e.target.value);

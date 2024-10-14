@@ -89,7 +89,7 @@ export const login = async(req,res)=>{
 export const editOtp = async(req, res) => {
   const {email, phone} = req.body;
   try {
-    otp = otpGenerator();
+    const otp = otpGenerator();
     const token = generateToken(otp, email);
     otpCache.set(email, token);
     console.log(otp);

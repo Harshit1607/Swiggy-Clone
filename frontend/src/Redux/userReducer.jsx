@@ -3,6 +3,7 @@ import { Close_Auth,
   Delete_Address_Failure,
   Delete_Address_Request,
   Delete_Address_Success,
+  Delete_Deliver_Address,
   Edit_Address,
   Edit_Otp_Failure,
   Edit_Otp_Request,
@@ -27,6 +28,7 @@ import { Close_Auth,
   Save_Address_Failure, 
   Save_Address_Request, 
   Save_Address_Success, 
+  Set_Deliver_Address, 
   Signup_Failure, 
   Signup_Request,
   Signup_Success,
@@ -34,6 +36,7 @@ import { Close_Auth,
   Update_Address_Request,
   Update_Address_Success,
   User_Button} from "./actiontypes";
+import { editAddress } from "./userAction";
 
   
   const initialState = {
@@ -51,6 +54,7 @@ import { Close_Auth,
     editAddress: localStorage.getItem('editAddress') && JSON.parse(localStorage.getItem('editAddress')) ? JSON.parse(localStorage.getItem('editAddress')) : null,
     hiddenEditAddress: true,
     activeButton: 'Address',
+    deliveryAddress: localStorage.getItem('deliveryAddress') && JSON.parse(localStorage.getItem('deliveryAddress')) ? JSON.parse(localStorage.getItem('deliveryAddress')) : null,
   }
 
 function userReducer(state=initialState, action){
@@ -111,11 +115,15 @@ function userReducer(state=initialState, action){
         hideCartSign: false,
       }
     case Logout:
-      localStorage.removeItem('user')
+      localStorage.removeItem('user');
+      localStorage.removeItem('editAddress')
+      localStorage.removeItem('deliveryAddress')
       return{
         ...state,
         user: null,  // This will ensure the Redux state is updated and the Navbar re-renders
         currentAddress: null,  // Clear the current address on logout
+        editAddress: null,
+        deliveryAddress: null
       }
     case Get_Address: 
       return{
@@ -168,6 +176,7 @@ function userReducer(state=initialState, action){
       return{
         ...state,
         user: action.payload.user,
+        hiddenAddress: true,
       }
     case Current_Address:
       return{
@@ -199,6 +208,18 @@ function userReducer(state=initialState, action){
       return{
         ...state,
         activeButton: action.payload
+      }
+    case Set_Deliver_Address:
+      localStorage.setItem('deliveryAddress', JSON.stringify(action.payload));
+      return{
+        ...state,
+        deliveryAddress: action.payload
+      }
+    case Delete_Deliver_Address:
+      localStorage.removeItem('deliveryAddress')
+      return{
+        ...state,
+        deliveryAddress: null
       }
     case Get_Login_Otp_Failure:
     case Get_Signup_Otp_Failure:

@@ -1,0 +1,129 @@
+.addressContainer{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: start;
+  width: 100%;
+  gap: 20px;
+}
+
+.deliveryinfo{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 90%;
+}
+.deliveryinfo > span{
+  font-weight: bold;
+  font-size: 1.3rem;
+}
+.deliveryinfo > span:last-child{
+  color: #fc8019;
+  font-size: 0.9rem;
+  cursor: pointer;
+}
+
+.deliveryAddress{
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: space-evenly;
+  width: 90%;
+}
+.deliveryAddress > span{
+  font-weight: 500;
+  font-size: 1.1rem;
+}
+.deliveryAddress > span:nth-child(2){
+  font-size: small;
+  color: rgb(168, 168, 168);
+  margin-bottom: 10px;
+}
+.deliveryAddress > span:nth-child(3){
+  font-size: 0.9rem;
+}
+
+.info{
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: space-between;
+  width: 90%;
+  gap: 5px;
+}
+
+.info > span{
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+.info > span:last-child{
+  font-size: 1rem;
+  font-weight: normal;
+  color: rgb(142, 141, 141);
+}
+
+.addresses{
+  width: 85%;
+  display: flex;
+  flex-wrap: wrap; /* Wrap addresses into new rows if needed */
+  justify-content: space-between;
+}
+
+
+.addressBox{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border: 0.1px solid rgb(225, 225, 225);
+  width: 48%;
+  height: 200px;
+  margin-bottom: 20px;
+}
+.addressBox:last-child{
+  border: 0.1px dashed rgb(225, 225, 225);
+}
+
+.addressBox:hover{
+  cursor: pointer;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2), 0 6px 20px rgba(0, 0, 0, 0.15);
+}
+.addressBox > div{
+  width: 80%;
+  height: 40%;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: start;
+}
+
+.addressBox > div:last-child{
+  justify-content: end;
+}
+
+.addressBox > div:last-child > span{
+  font-size: 0.8rem;
+}
+
+.addressBox > div > button{
+  width: 60%;
+  height: 50%;
+  background-color: #60b246;
+  color: white;
+  border: 0.2px solid #60b246;
+  margin-top: 5px;
+}
+
+.addressBox:last-child > div > button{
+  background-color: white;
+  color: #60b246;
+}
+
+.addressBox > div > span{
+  font-weight: bold;
+}
+
+.addressBox > div > span:nth-child(2){
+  font-weight: normal;
+  color: rgb(141, 141, 141);
+}

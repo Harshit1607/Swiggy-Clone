@@ -14,6 +14,11 @@ const UserAddressContainer = () => {
 
     // Add event listener when Delete is true
     useEffect(() => {
+      if(Delete){
+        document.body.style.overflow = 'hidden';
+      }else{
+        document.body.style.overflow = 'auto';
+      }
       if (Delete) {
         const handleClickOutside = (e) => {
           console.log(e.target);
@@ -28,6 +33,7 @@ const UserAddressContainer = () => {
   
         // Cleanup the event listener on component unmount or when Delete is false
         return () => {
+          document.body.style.overflow = 'auto';
           document.removeEventListener('mousedown', handleClickOutside);
         };
       }

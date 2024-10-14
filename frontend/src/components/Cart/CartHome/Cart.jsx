@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { fetchCart } from '../../../Redux/cartActions';
-import Navbar from '../../Navbar';
+import CartNav from '../CartNav/CartNav';
 import Login from '../../Auth/Login';
 import Signup from '../../Auth/Signup';
 import CartAccount from '../CartAccount/CartAccount';
@@ -11,6 +11,7 @@ import CartAddress from '../CartAddress/CartAddress';
 import CartPayment from '../CartPayment/CartPayment';
 
 import styles from './Cart.module.css'; // Import the CSS module
+import Address from '../../User/Address/Address';
 
 const Cart = () => {
   const { cart, loading: cartLoading } = useSelector(state => state.cartReducer);
@@ -28,7 +29,9 @@ const Cart = () => {
     <>
       <Login />
       <Signup />
-      <Navbar />
+      <Address />
+      <CartNav />
+      
       {(cart && !cartLoading && cart.items && cart.items.length > 0) ? (
         <div className={styles.cartMain} style={!hiddenLogin || !hiddenSignup ? { overflow: "hidden", height: "calc(100vh - 120px)" } : null}>
           <div className={styles.cartLeft}>

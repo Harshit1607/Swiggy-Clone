@@ -1,0 +1,96 @@
+.Navbar {
+  background-color: rgb(249, 249, 249);
+  height: 80px;
+  position: sticky;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 15%;
+  top: 0;
+  z-index: 100;
+}
+
+.NavbarLeft {
+  height: 100%;
+  width: 30%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 20%;
+  padding: 0 30px;
+}
+
+.NavbarLeft > img {
+  width: 55px;
+  height: 55px;
+  cursor: pointer;
+}
+
+.NavbarRight {
+  height: 100%;
+  width: 40%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.NavbarRight > span {
+  cursor: pointer;
+}
+
+.navElem {
+  display: flex;
+  align-items: center;
+  width: fit-content;
+  height: 100%;
+  cursor: pointer;
+  font-weight: 500;
+  font-size: 1.1rem;
+}
+
+.navElem:hover{
+  color: #fc8019;
+}
+
+.navCartQuant {
+  width: 20px;
+  height: 20px;
+  margin-right: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+  color: white;
+  background-color: #1ba672;
+}
+
+.navAddress > span:nth-child(2) {
+  color: rgb(180, 180, 180);
+}
+
+.navAddress:hover > span:first-child {
+  color: #fc8019;
+}
+
+.navAddress:hover > span:nth-child(2) {
+  color: rgb(202, 202, 202);
+}
+
+.navAddress > span:first-child {
+  font-weight: bold;
+  color: black;
+  text-decoration: underline;
+}
+
+.navAddress > span:last-child {
+  color: #fc8019;
+  font-weight: bold;
+}
+
+.navAddress > span {
+  margin-right: 10px;
+}
+
