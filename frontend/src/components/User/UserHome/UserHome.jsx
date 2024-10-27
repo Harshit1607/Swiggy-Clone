@@ -8,6 +8,7 @@ import UserAddressContainer from '../UserAddress/UserAddressContainer';
 import styles from './UserHome.module.css';
 import UserButtonContainer from '../UserButtons/UserButtonContainer';
 import EditAddressContainer from '../EditAddress/EditAddressContainer';
+import UserSettings from '../UserSettings/UserSettings'
 
 const UserHome = () => {
   const { user, activeButton, hiddenEdit, hiddenEditAddress } = useSelector(state => state.userReducer);
@@ -53,6 +54,7 @@ const UserHome = () => {
           </div>
           <div className={styles.userDisplayRight}>
             {activeButton === 'Address' ?<UserAddressContainer />: null}
+            {activeButton === 'Settings' ? <UserSettings /> : null}
           </div>
         </div>
       </div>

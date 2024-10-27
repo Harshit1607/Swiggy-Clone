@@ -28,6 +28,6 @@
   cursor: pointer;
 }
 
-.userHoverInfo:nth-child(2){
+.userHoverInfo:nth-last-child(){
   border: none;
 }

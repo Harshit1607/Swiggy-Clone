@@ -1,0 +1,61 @@
+.userSettings{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  
+}
+
+.settingContainer{
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  border: 0.2px solid black;
+  padding: 1rem;
+  font-size: small;
+  color: rgb(90, 90, 90);
+}
+.settingContainer:first-of-type {
+  border: none;
+  padding: 1rem 0;
+  color: black;
+}
+.settingContainer:first-of-type > span{
+  
+  font-size: x-large;
+  font-weight: bold;
+}
+
+.settingChilds{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 55%;
+  padding: 0 1rem;
+}
+.settingChilds:first-of-type{
+  color: black;
+  font-weight: bold;
+  font-size: 0.9rem;
+  border-right: 0.2px solid black;
+  width: 35%;
+  padding-left: 0;
+}
+
+.settingChilds > button {
+  width: 2.6rem;
+  height: 1.4rem;
+  border-radius: 0.7rem;
+  border: none;
+  position: relative;
+}
+
+.settingChilds > button > span{
+  width: 40%;
+  height: 80%;
+  border-radius: 50%;
+  border: none;
+  position: absolute;
+  top: 8%;
+  background-color: white;
+}

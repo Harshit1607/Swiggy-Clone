@@ -22,7 +22,7 @@ function cartReducer(state=initialState, action){
       }
     case Add_CartItem_Success:
       const updatedCart = action.payload.cart;
-      const updatedGst = 0.18 * state.platformFee + 0.18 * updatedCart.totalPrice;
+      const updatedGst = 0.18 * updatedCart.totalPrice;
       const updatedToPay = state.deliverFee + state.platformFee + updatedGst + updatedCart.totalPrice;
 
       localStorage.setItem('cart', JSON.stringify(updatedCart));
@@ -36,7 +36,7 @@ function cartReducer(state=initialState, action){
       };
     case Fetch_Cart_Success:
       const newCart = action.payload.cart[0];
-      const newGst = 0.18 * state.platformFee + 0.18 * newCart.totalPrice;
+      const newGst = 0.18 * newCart.totalPrice;
       const newToPay = state.deliverFee + state.platformFee + newGst + newCart.totalPrice;
 
       localStorage.setItem('cart', JSON.stringify(newCart));
@@ -51,7 +51,7 @@ function cartReducer(state=initialState, action){
 
     case Delete_CartItem_Success:
       const newCartAfterDelete = action.payload.cart;
-      const newGstAfterDelete = 0.18 * state.platformFee + 0.18 * newCartAfterDelete.totalPrice;
+      const newGstAfterDelete = 0.18 * newCartAfterDelete.totalPrice;
       const newToPayAfterDelete = state.deliverFee + state.platformFee + newGstAfterDelete + newCartAfterDelete.totalPrice;
 
       localStorage.setItem('cart', JSON.stringify(newCartAfterDelete));

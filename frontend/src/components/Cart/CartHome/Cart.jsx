@@ -15,11 +15,25 @@ import Address from '../../User/Address/Address';
 
 const Cart = () => {
   const { cart, loading: cartLoading } = useSelector(state => state.cartReducer);
-  const { user } = useSelector(state => state.userReducer);
+  const { user, hiddenAddress } = useSelector(state => state.userReducer);
   const { hiddenLogin, hiddenSignup } = useSelector(state => state.userReducer);
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
+
+  useEffect(()=>{
+    const open = !hiddenAddress;
+    if(open){
+      document.body.style.overflow = 'hidden';
+    }else {
+      document.body.style.overflow = 'auto';
+    }
+
+    return () => {
+      document.body.style.overflow = 'auto';
+    };
+
+  }, [hiddenAddress]);
 
   useEffect(() => {
     dispatch(fetchCart());

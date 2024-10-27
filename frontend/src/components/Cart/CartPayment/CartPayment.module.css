@@ -1,0 +1,16 @@
+.CartPayment{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.CartPayment > button {
+  width: 80%;
+  height: 3rem;
+  background-color: #60b246;
+  color: white;
+  border: 0.2px solid #60b246;
+  margin-top: 5px;
+  font-size: 1rem;
+  font-weight: 500;
+}
