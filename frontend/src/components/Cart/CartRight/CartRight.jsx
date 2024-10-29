@@ -2,13 +2,16 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { addToCart, deleteFromCart } from '../../../Redux/cartActions';
-import { getSingleRestaurant } from '../../../Redux/restaurantActions';
+import { getCartRestaurant, getSingleRestaurant } from '../../../Redux/restaurantActions';
 
 import styles from './CartRight.module.css'; // Import CSS module
 
 const CartRight = () => {
   const { cart, deliverFee, platformFee, gst, toPay } = useSelector(state => state.cartReducer);
-  const { singleRestaurant } = useSelector(state => state.restaurantReducer);
+  const { cartRestaurant } = useSelector(state => state.restaurantReducer);
+  const {user} = useSelector(state => state.userReducer);
+  const userId = user ? user._id : "";
+  const cartId = cart ? cart._id : "";
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -16,17 +19,17 @@ const CartRight = () => {
   useEffect(() => {
     if (cart && cart.restaurantId) {
       const id = cart.restaurantId;
-      dispatch(getSingleRestaurant({ id }));
+      dispatch(getCartRestaurant({ id }));
     }
-  }, [cart, dispatch]);
+  }, [cart?.restaurantId, dispatch]);
 
   return (
     <>
-      {singleRestaurant && (
+      {cartRestaurant && (
         <div className={styles.cartRestInfo}>
-          <img src={singleRestaurant.image} alt={singleRestaurant.name} onClick={() => navigate('/restaurant')} />
+          <img src={cartRestaurant.image} alt={cartRestaurant.name} onClick={() => navigate('/restaurant')} />
           <div className={styles.cartRestName}>
-            <span onClick={() => navigate('/restaurant')}>{singleRestaurant.name}</span>
+            <span onClick={() => navigate('/restaurant')}>{cartRestaurant.name}</span>
             <div style={{ display: "flex" }}>
               <div className="small-dash"></div>
               <div className="small-dash"></div>
@@ -40,11 +43,11 @@ const CartRight = () => {
             <span>{item.item.substring(0, 20) + '...'}</span>
             <div className={styles.quantityButton}>
               <button onClick={() => {
-                dispatch(deleteFromCart({ Item: item, restId: cart.restaurantId }));
+                dispatch(deleteFromCart({ Item: item, restId: cart.restaurantId, cartId, userId }));
               }}>-</button>
               <span>{item.quantity}</span>
               <button onClick={() => {
-                dispatch(addToCart({ Item: item, restId: cart.restaurantId }));
+                dispatch(addToCart({ Item: item, restId: cart.restaurantId, cartId, userId }));
               }}>+</button>
             </div>
             <span>₹{item.price}</span>

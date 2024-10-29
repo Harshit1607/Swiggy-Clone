@@ -36,7 +36,6 @@ import { Close_Auth,
   Update_Address_Request,
   Update_Address_Success,
   User_Button} from "./actiontypes";
-import { editAddress } from "./userAction";
 
   
   const initialState = {
@@ -116,8 +115,9 @@ function userReducer(state=initialState, action){
       }
     case Logout:
       localStorage.removeItem('user');
-      localStorage.removeItem('editAddress')
-      localStorage.removeItem('deliveryAddress')
+      localStorage.removeItem('editAddress');
+      localStorage.removeItem('deliveryAddress');
+      localStorage.setItem('cartSynced', "false");
       return{
         ...state,
         user: null,  // This will ensure the Redux state is updated and the Navbar re-renders

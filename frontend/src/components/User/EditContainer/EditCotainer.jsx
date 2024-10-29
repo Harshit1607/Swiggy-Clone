@@ -35,7 +35,6 @@ const EditContainer = () => {
   };
 
   const handleVerify = () => {
-    console.log("HI")
     dispatch(editUser(user.email, user.phone, email, phone, userOtp));
   };
 

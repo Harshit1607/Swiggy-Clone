@@ -63,7 +63,6 @@ export const signup = (email, phone, name, userOtp) => async (dispatch) => {
   try {
     const result = await axios.post(`${API_URL}user/signup`, {email, phone, name, userOtp});
     alert(result.data.message);
-    console.log(result.data)
     if(result.data.newUser){
       dispatch({type: Signup_Success, payload: result.data});
     } 

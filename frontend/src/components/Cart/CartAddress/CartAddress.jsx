@@ -7,6 +7,7 @@ const CartAddress = () => {
   const dispatch = useDispatch();
 
   return (
+    user ?
     <div className={styles.addressContainer}>
       {deliveryAddress ? (
         <>
@@ -60,6 +61,8 @@ const CartAddress = () => {
         </>
       )}
     </div>
+    :
+    <div>Address</div>
   );
 };
 

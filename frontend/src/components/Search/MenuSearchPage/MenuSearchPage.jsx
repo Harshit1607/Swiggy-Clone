@@ -10,8 +10,12 @@ import styles from './MenuSearchPage.module.css'; // Import the CSS module
 const MenuSearchPage = () => {
   const { singleRestaurant, searchDishes, loading, error } = useSelector(state => state.restaurantReducer);
   const { cart } = useSelector(state => state.cartReducer);
+  const {user} = useSelector(state => state.userReducer);
   const dispatch = useDispatch();
   const navigate = useNavigate();
+
+  const userId = user ? user._id : "";
+  const cartId = cart ? cart._id : "";
 
   const debouncedSearch = useCallback(Debouncing((id, text) => {
     dispatch(getDishBySearch(id, text));
@@ -29,7 +33,7 @@ const MenuSearchPage = () => {
 
   function addItem(Item) {
     const restId = singleRestaurant._id;
-    dispatch(addToCart({ Item, restId }));
+    dispatch(addToCart({ Item, restId, cartId, userId }));
   }
 
   return (
@@ -55,7 +59,7 @@ const MenuSearchPage = () => {
                         <button onClick={() => {
                           const Item = menuItem;
                           const restId = cart.restaurantId;
-                          dispatch(deleteFromCart({ Item, restId }));
+                          dispatch(deleteFromCart({ Item, restId, cartId, userId }));
                         }}>-</button>
                         <span>
                           {cart.items.find(item => item.itemId === menuItem.itemId)?.quantity}
@@ -63,7 +67,7 @@ const MenuSearchPage = () => {
                         <button onClick={() => {
                           const Item = menuItem;
                           const restId = cart.restaurantId;
-                          dispatch(addToCart({ Item, restId }));
+                          dispatch(addToCart({ Item, restId, cartId, userId }));
                         }}>+</button>
                       </>
                     ) : (

@@ -21,7 +21,6 @@ const UserAddressContainer = () => {
       }
       if (Delete) {
         const handleClickOutside = (e) => {
-          console.log(e.target);
           // Check if the click was outside the delete box
           if (deleteBoxRef.current && !deleteBoxRef.current.contains(e.target)) {
             setDelete(false); // Close delete box

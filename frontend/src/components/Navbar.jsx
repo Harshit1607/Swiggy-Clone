@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom'
-import { fetchCart } from '../Redux/cartActions';
+import { cartExpiration, fetchCart } from '../Redux/cartActions';
 import { getLogin, getAddress } from '../Redux/userAction';
 import CartHover from './Cart/CartHover/CartHover';
 import UserHover from './User/UserHover/UserHover';
@@ -15,9 +15,15 @@ const Navbar = () => {
   const [visibleCart, setVisibleCart] = useState(false);
   const [visibleUser, setVisibleUser] = useState(false);
 
-  useEffect(() => {
-    dispatch(fetchCart());
-  }, [dispatch]);
+  // const userId = user ? user._id : "";
+  // const cartId = cart ? cart._id : "";
+
+  // useEffect(() => {
+  //   if (userId || cartId) { // Ensure both are defined
+  //     dispatch(cartExpiration());
+  //     dispatch(fetchCart({ cartId, userId }));
+  //   }
+  // }, [dispatch, userId, cartId]);
 
   return (
     <>

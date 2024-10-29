@@ -1,12 +1,16 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { closeAuth, getLogin, getSignupOtp, signup } from '../../Redux/userAction';
 import Otp from '../../Utils/Otp/Otp';
 import styles from './Auth.module.css'; // Importing modular CSS
 
+
 const Signup = () => {
-  const { hiddenSignup, showOtp } = useSelector(state => state.userReducer);
+  const { hiddenSignup, showOtp} = useSelector(state => state.userReducer);
+
   const dispatch = useDispatch();
+  
+
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
   const [name, setName] = useState("");

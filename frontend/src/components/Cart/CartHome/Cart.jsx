@@ -1,7 +1,7 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { fetchCart } from '../../../Redux/cartActions';
+import { cartExpiration, fetchCart } from '../../../Redux/cartActions';
 import CartNav from '../CartNav/CartNav';
 import Login from '../../Auth/Login';
 import Signup from '../../Auth/Signup';
@@ -17,6 +17,11 @@ const Cart = () => {
   const { cart, loading: cartLoading } = useSelector(state => state.cartReducer);
   const { user, hiddenAddress } = useSelector(state => state.userReducer);
   const { hiddenLogin, hiddenSignup } = useSelector(state => state.userReducer);
+
+
+  
+  // const userId = user ? user._id : "";
+  // const cartId = cart ? cart._id : "";
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -35,9 +40,13 @@ const Cart = () => {
 
   }, [hiddenAddress]);
 
-  useEffect(() => {
-    dispatch(fetchCart());
-  }, [dispatch]);
+  // useEffect(() => {
+  //   if (userId || cartId) { // Ensure both are defined
+  //     dispatch(cartExpiration());
+  //     dispatch(fetchCart({ cartId, userId }));
+  //   }
+  // }, [dispatch, userId, cartId]);
+
 
   return (
     <>

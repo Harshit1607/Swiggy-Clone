@@ -8,7 +8,7 @@ const Cartdiv = () => {
   const { singleRestaurant } = useSelector(state => state.restaurantReducer);
   const navigate = useNavigate();
 
-  const thisCart = cart.restaurantId === singleRestaurant._id ? cart : null;
+  const thisCart = cart && cart.restaurantId === singleRestaurant._id ? cart : null;
 
   useEffect(() => {
     const menu = document.querySelector(`.${styles.menuCircle}`);

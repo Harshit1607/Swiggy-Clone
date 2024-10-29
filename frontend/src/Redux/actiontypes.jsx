@@ -88,3 +88,13 @@ export const User_Button = 'User_Button'
 
 export const Set_Deliver_Address = 'Set_Deliver_Address'
 export const Delete_Deliver_Address = 'Delete_Deliver_Address'
+
+export const Check_Cart_Expiration = "Check_Cart_Expiration";
+
+export const Sync_Cart_Request = 'Sync_Cart_Request'
+export const Sync_Cart_Success = 'Sync_Cart_Success'
+export const Sync_Cart_Failure = 'Sync_Cart_Failure'
+
+export const Cart_Restaurant_Request = 'Cart_Restaurant_Request';
+export const Cart_Restaurant_Success = 'Cart_Restaurant_Success';
+export const Cart_Restaurant_Failure = 'Cart_Restaurant_Failure';

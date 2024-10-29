@@ -16,12 +16,16 @@ import {
   Search_Dish_Failure,
   Search_Dish_Success,
   No_Text,
+  Cart_Restaurant_Request,
+  Cart_Restaurant_Failure,
+  Cart_Restaurant_Success,
 } from './actiontypes';
 
 const initialState = {
   cuisines: [],
   restaurants: [],
   singleRestaurant:  localStorage.getItem('singleRestaurant')? JSON.parse(localStorage.getItem('singleRestaurant')): null,
+  cartRestaurant: localStorage.getItem('cartRestaurant')? JSON.parse(localStorage.getItem('cartRestaurant')): null,
   loading: false,
   error: null,
   searchRestaurant: [],
@@ -38,6 +42,7 @@ function restaurantReducer(state = initialState, action) {
     case Restaurant_By_Cuisine_Request:
     case Restaurant_By_Search_Request:
     case Search_Dish_Request:
+    case Cart_Restaurant_Request:
       return {
         ...state,
         loading: true,
@@ -89,11 +94,20 @@ function restaurantReducer(state = initialState, action) {
         searchRestaurant: [],
         searchDishes: []
       }
+    case Cart_Restaurant_Success:
+      localStorage.setItem('cartRestaurant', JSON.stringify(action.payload.restaurant))
+      return {
+        ...state,
+        loading: false,
+        cartRestaurant: action.payload.restaurant,
+        searchRestaurant: [],
+      };
     case Fetch_Restaurants_Failure:
     case Single_Restaurant_Failure:
     case Restaurant_By_Cuisine_Failure:
     case Restaurant_By_Search_Failure:
     case Search_Dish_Failure:
+    case Cart_Restaurant_Failure:
       return {
         ...state,
         loading: false,

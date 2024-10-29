@@ -6,9 +6,14 @@ import styles from './MenuCard.module.css'; // Importing CSS module
 const MenuCard = () => {
   const { singleRestaurant, loading, error } = useSelector(state => state.restaurantReducer);
   const { cart } = useSelector(state => state.cartReducer);
+  const {user} = useSelector(state => state.userReducer);
   const restaurants = singleRestaurant;
   const dispatch = useDispatch();
   const [visible, setVisible] = useState([]);
+
+  const userId = user ? user._id : "";
+  const cartId = cart ? cart._id : "";
+
 
   if (loading) {
     return <div>Loading...</div>;
@@ -26,7 +31,7 @@ const MenuCard = () => {
 
   function addItem(Item) {
     const restId = singleRestaurant._id;
-    dispatch(addToCart({ Item, restId }));
+    dispatch(addToCart({ Item, restId, cartId, userId }));
   }
 
   function handleVisible(category) {
@@ -45,7 +50,7 @@ const MenuCard = () => {
           <div key={category}>
             <div className={styles.divider}></div>
             <div className={styles.menuSingle} id={category}>
-              <div><span>{category}</span><span onClick={() => handleVisible(category)}>v</span></div>
+              <div><span>{category}</span><span onClick={() => handleVisible(category)} className={styles.slider}>v</span></div>
               {menu[category].map(menuItem => (
                 <div className={styles.menuSingleItem} key={menuItem.itemId} style={{ display: visible.includes(category) ? "" : "none" }}>
                   <div className={styles.itemNamePrice}>
@@ -53,13 +58,13 @@ const MenuCard = () => {
                     <span>{menuItem.price}</span>
                   </div>
                   <div className={styles.menuCardQuantityButton}>
-                    {cart.restaurantId === restaurants._id ? (
+                    {cart && cart.restaurantId === restaurants._id ? (
                       cart.items.some(item => item.itemId === menuItem.itemId) ? (
                         <>
                           <button onClick={() => {
                             const Item = menuItem;
                             const restId = cart.restaurantId;
-                            dispatch(deleteFromCart({ Item, restId }));
+                            dispatch(deleteFromCart({ Item, restId, cartId, userId }));
                           }}>-</button>
                           <span>
                             {cart.items.find(item => item.itemId === menuItem.itemId)?.quantity}
@@ -67,7 +72,7 @@ const MenuCard = () => {
                           <button onClick={() => {
                             const Item = menuItem;
                             const restId = cart.restaurantId;
-                            dispatch(addToCart({ Item, restId }));
+                            dispatch(addToCart({ Item, restId, cartId, userId }));
                           }}>+</button>
                         </>
                       ) : (

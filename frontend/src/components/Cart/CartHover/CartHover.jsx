@@ -1,25 +1,34 @@
-import React from 'react';
-import { useSelector } from 'react-redux';
+import React, {useEffect, useRef, useState} from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import styles from './CartHover.module.css'; // Import the CSS module
+import { getCartRestaurant } from '../../../Redux/restaurantActions';
 
 const CartHover = ({ visibleCart }) => {
   const { cart, loading: cartLoading, error: cartError, toPay } = useSelector(state => state.cartReducer);
-  const { singleRestaurant, loading: restaurantLoading, error: restaurantError } = useSelector(state => state.restaurantReducer);
+  const { cartRestaurant, loading: restaurantLoading, error: restaurantError } = useSelector(state => state.restaurantReducer);
   const navigate = useNavigate();
+  const dispatch= useDispatch();
+
+  useEffect(() => {
+    if (cart && cart.restaurantId && cart.restaurantId !== cartRestaurant._id) {
+      const id = cart.restaurantId;
+      dispatch(getCartRestaurant({ id }));
+    }
+  }, [cart?.restaurantId, dispatch]);
   
   return (
     cart && cart.items && cart.items.length > 0 ? 
       <div className={styles.cartHoverDiv} style={{ display: visibleCart ? "" : "none" }}>
-        {singleRestaurant && (
+        {cartRestaurant && (
           <div className={styles.cartRestInfo}>
             <img 
-              src={singleRestaurant.image} 
-              alt={singleRestaurant.name} 
+              src={cartRestaurant.image} 
+              alt={cartRestaurant.name} 
               onClick={() => { navigate('/restaurant'); }} 
             />
             <div className={styles.cartRestName}>
-              <span onClick={() => { navigate('/restaurant'); }}>{singleRestaurant.name}</span>
+              <span onClick={() => { navigate('/restaurant'); }}>{cartRestaurant.name}</span>
               <div style={{ display: "flex" }}>
                 <div className={styles.smallDash}></div>
                 <div className={styles.smallDash}></div>

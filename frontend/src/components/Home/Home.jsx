@@ -11,10 +11,14 @@ import { Throttle } from '../../Utils/Throttle';
 import Footer from './Footer/Footer';
 import Address from '../User/Address/Address';
 
+
 const Home = () => {
   const dispatch = useDispatch();
   const { loading, error, page, hasMore, restaurants } = useSelector(state => state.restaurantReducer);
-  const {hiddenLogin, hiddenSignup, hiddenAddress} = useSelector(state => state.userReducer)
+  const {hiddenLogin, hiddenSignup, hiddenAddress, user} = useSelector(state => state.userReducer);
+  const {cart, } = useSelector(state => state.cartReducer);
+
+
   
   const initialFetchRef = useRef(true)
   

@@ -16,6 +16,9 @@ import {
   Search_Dish_Failure,
   Search_Dish_Success,
   No_Text,
+  Cart_Restaurant_Request,
+  Cart_Restaurant_Success,
+  Cart_Restaurant_Failure,
 } from './actiontypes';
 
 const API_URL = 'http://localhost:5000/';
@@ -74,4 +77,14 @@ export const getDishBySearch = (id, text) => async (dispatch) => {
 
 export const noText = () => (dispatch) => {
   dispatch({type: No_Text})
+}
+
+export const getCartRestaurant = ({ id }) => async (dispatch) => {
+  dispatch({ type: Cart_Restaurant_Request });
+  try {
+    const result = await axios.get(`${API_URL}restaurants/cart/${id}`);
+    dispatch({ type: Cart_Restaurant_Success, payload: result.data });
+  } catch (error) {
+    dispatch({ type: Cart_Restaurant_Failure, error: error.message });
+  }
 }

@@ -8,4 +8,5 @@ router.get('/:restaurantId', getRestaurantById);
 router.get('/cuisine/:cuisine', getRestaurantBycuisine);
 router.get('/search/:search', getRestaurantBysearch);
 router.get('/search/menu/items', getDishBysearch);
+router.get('/cart/:restaurantId', getRestaurantById)
 export default router;
