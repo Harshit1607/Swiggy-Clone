@@ -3,10 +3,14 @@ import mongoose from 'mongoose';
 import bodyParser from 'body-parser';
 import cors from 'cors';
 import dotenv from 'dotenv';
+import Razorpay from 'razorpay'
 
 import restaurantRoutes from './routes/restaurantRoutes.js';
 import cartRoutes from './routes/cartRoutes.js'
 import userRoutes from './routes/userRoutes.js'
+import orderRoutes from './routes/orderRoutes.js'
+import paymentRoutes from './routes/paymentRoutes.js'
+
 
 dotenv.config();
 
@@ -19,9 +23,16 @@ app.use(cors())
 
 mongoose.connect("mongodb://localhost:27017/Swiggy");
 
+export const instance = new Razorpay({
+  key_id: 'rzp_test_FuNvMN2XBQ048R',
+  key_secret: 'iM62T5FAUW3bbF58vTEQzZ5h',
+});
+
 app.use('/restaurants', restaurantRoutes);
 app.use('/cart', cartRoutes)
 app.use('/user', userRoutes)
+app.use('/orders', orderRoutes)
+app.use('/payment', paymentRoutes)
 
 app.listen(port, '0.0.0.0', () => {
   console.log(`Server running on port ${port}`);

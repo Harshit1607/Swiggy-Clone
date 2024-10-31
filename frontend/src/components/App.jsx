@@ -1,5 +1,5 @@
 import React, {useEffect} from 'react'
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes, useNavigate, Navigate } from 'react-router-dom';
 // import Navbar from './Navbar'
 import Home from './Home/Home'
 import RestaurantHome from './Restaurant/RestaurantHome/RestaurantHome'
@@ -13,14 +13,26 @@ import PrivateUser from './Private/PrivateUser';
 import UserHome from './User/UserHome/UserHome';
 import { useDispatch, useSelector } from 'react-redux';
 import { cartExpiration, cartSync, fetchCart } from '../Redux/cartActions';
+import Payment from './Payment/Payment';
+import PaymentSuccessful from './Private/PaymentSuccessful';
 
 const App = () => {
   const {user} = useSelector(state => state.userReducer);
   const {cart, cartSynced} = useSelector(state => state.cartReducer);
+  const {paymentVerified, userOrder} = useSelector(state => state.paymentReducer);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const userId = user ? user._id : "";
   const cartId = cart ? cart._id : "";
+
+  useEffect(()=>{
+    if(paymentVerified){
+      navigate('/paymentSuccess')
+    }
+  }, [userOrder, paymentVerified])
+
+
   useEffect(()=>{
     if(user && !cartSynced){
       dispatch(cartSync({userId, cartId}))
@@ -36,16 +48,16 @@ const App = () => {
       dispatch(cartExpiration());
       dispatch(fetchCart({ cartId, userId })); // Fetch cart with cartId only
   }
-  }, [dispatch, userId, cartId]);
+  }, [dispatch, userId, cartId, paymentVerified]);
 
 
   return (
-    <Router>
     <div>
       <Routes>
         <Route element={<PrivateUser />}>
           <Route path='/user' element={<UserHome />}/>
         </Route>
+        <Route path='/paymentSuccess' element={paymentVerified ? <Payment /> : <Home />} />
         <Route path='/' element={<Home />} />
         <Route path='/restaurant' element={<RestaurantHome />} />
         <Route path='/cuisine' element={<Cuisinehome />} />
@@ -54,7 +66,6 @@ const App = () => {
         <Route path='/search/menu' element={<MenuSearchPage />} />
       </Routes>
     </div>
-    </Router>
   )
 }
 

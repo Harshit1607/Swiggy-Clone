@@ -17,7 +17,7 @@ const Cart = () => {
   const { cart, loading: cartLoading } = useSelector(state => state.cartReducer);
   const { user, hiddenAddress } = useSelector(state => state.userReducer);
   const { hiddenLogin, hiddenSignup } = useSelector(state => state.userReducer);
-
+  const {loading: paymentLoading, error: paymentError} = useSelector(state=>state.paymentReducer);
 
   
   // const userId = user ? user._id : "";
@@ -47,6 +47,13 @@ const Cart = () => {
   //   }
   // }, [dispatch, userId, cartId]);
 
+  if (paymentLoading) {
+    return <div className='loading'>Loading...<div className='loader' /></div>;
+  }
+
+  if (paymentError) {
+    return <div className='loading'>Error: {paymentError}</div>;
+  }
 
   return (
     <>

@@ -1,5 +1,4 @@
 import { Add_CartItem_Failure, Add_CartItem_Request, Add_CartItem_Success, Check_Cart_Expiration, Delete_CartItem_Failure, Delete_CartItem_Request, Delete_CartItem_Success, Fetch_Cart_Request, Fetch_Cart_Success, Fetch_Restaurants_Failure, Sync_Cart_Failure, Sync_Cart_Request, Sync_Cart_Success } from "./actiontypes";
-import { cartSync } from "./cartActions";
 
 const initialState = {
   cart : localStorage.getItem('cart') ? JSON.parse(localStorage.getItem('cart')) : [],
@@ -58,11 +57,21 @@ function cartReducer(state=initialState, action){
       };
 
     case Delete_CartItem_Success:
-      const newCartAfterDelete = action.payload.cart;
-      const newGstAfterDelete = 0.18 * newCartAfterDelete.totalPrice;
-      const newToPayAfterDelete = state.deliverFee + state.platformFee + newGstAfterDelete + newCartAfterDelete.totalPrice;
+      let  newCartAfterDelete = action.payload.cart;
+      let newGstAfterDelete,newToPayAfterDelete;
+      if(action.payload.cart){
+        
+      newGstAfterDelete = 0.18 * newCartAfterDelete.totalPrice;
+      newToPayAfterDelete = state.deliverFee + state.platformFee + newGstAfterDelete + newCartAfterDelete.totalPrice;
 
       localStorage.setItem('cart', JSON.stringify(newCartAfterDelete));
+      } else{
+        
+        newGstAfterDelete = 0;
+        newToPayAfterDelete = 0;
+        localStorage.removeItem('cart');
+      }
+      
 
       return {
         ...state,

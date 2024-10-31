@@ -98,3 +98,11 @@ export const Sync_Cart_Failure = 'Sync_Cart_Failure'
 export const Cart_Restaurant_Request = 'Cart_Restaurant_Request';
 export const Cart_Restaurant_Success = 'Cart_Restaurant_Success';
 export const Cart_Restaurant_Failure = 'Cart_Restaurant_Failure';
+
+export const Create_Order_Request = 'Create_Order_Request'
+export const Create_Order_Success = 'Create_Order_Success'
+export const Create_Order_Failure = 'Create_Order_Failure'
+
+export const Make_Payment_Request = 'Make_Payment_Request'
+export const Make_Payment_Success = 'Make_Payment_Success'
+export const Make_Payment_Failure = 'Make_Payment_Failure'
