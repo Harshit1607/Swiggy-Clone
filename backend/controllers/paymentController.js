@@ -10,9 +10,10 @@ const PAYMENT_TIMEOUT = 5 * 60 * 1000;
 
 export const createOrder = async (req, res) => {
   const {amount, userId} = req.body
+  
   try {
     const options = {
-      amount: Number(amount * 100),
+      amount: Math.floor(Number(amount * 100)),
       currency: "INR",
     };
     const order = await instance.orders.create(options);

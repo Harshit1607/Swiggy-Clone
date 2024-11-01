@@ -14,7 +14,6 @@ import UserHome from './User/UserHome/UserHome';
 import { useDispatch, useSelector } from 'react-redux';
 import { cartExpiration, cartSync, fetchCart } from '../Redux/cartActions';
 import Payment from './Payment/Payment';
-import PaymentSuccessful from './Private/PaymentSuccessful';
 
 const App = () => {
   const {user} = useSelector(state => state.userReducer);
