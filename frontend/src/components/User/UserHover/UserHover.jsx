@@ -15,6 +15,11 @@ const UserHover = ({ visibleUser }) => {
         <span>Profile</span>
       </div>
       <div className={styles.userHoverInfo} onClick={() => {
+        dispatch(userButton("Orders"));
+        navigate('/user')}}>
+        <span>Orders</span>
+      </div>
+      <div className={styles.userHoverInfo} onClick={() => {
         dispatch(userButton("Settings"));
         navigate('/user')}}>
         <span>Settings</span>

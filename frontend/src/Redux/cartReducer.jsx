@@ -1,4 +1,4 @@
-import { Add_CartItem_Failure, Add_CartItem_Request, Add_CartItem_Success, Check_Cart_Expiration, Delete_CartItem_Failure, Delete_CartItem_Request, Delete_CartItem_Success, Fetch_Cart_Request, Fetch_Cart_Success, Fetch_Restaurants_Failure, Sync_Cart_Failure, Sync_Cart_Request, Sync_Cart_Success } from "./actiontypes";
+import { Add_CartItem_Failure, Add_CartItem_Request, Add_CartItem_Success, Check_Cart_Expiration, Delete_CartItem_Failure, Delete_CartItem_Request, Delete_CartItem_Success, Fetch_Cart_Request, Fetch_Cart_Success, Fetch_Restaurants_Failure, Re_Order_Failure, Re_Order_Request, Re_Order_Success, Sync_Cart_Failure, Sync_Cart_Request, Sync_Cart_Success } from "./actiontypes";
 
 const initialState = {
   cart : localStorage.getItem('cart') ? JSON.parse(localStorage.getItem('cart')) : [],
@@ -17,6 +17,7 @@ function cartReducer(state=initialState, action){
     case Fetch_Cart_Request:
     case Delete_CartItem_Request:
     case Sync_Cart_Request:
+    case Re_Order_Request:
       return{
         ...state,
         loading: true,
@@ -117,11 +118,30 @@ function cartReducer(state=initialState, action){
         gst: syncGst,
         toPay: syncToPay,
       };
+    
+    case Re_Order_Success:
+      const reCart = action.payload.cart;
+      let reGst = 0, reToPay = 0;
+      if(reCart){
+        reGst = 0.18 * reCart.totalPrice;
+        reToPay = state.deliverFee + state.platformFee + reGst + reCart.totalPrice;
+      }
+      
+      localStorage.setItem('cart', JSON.stringify(reCart));
 
+      return {
+        ...state,
+        loading: false,
+        cart: reCart,
+        gst: reGst,
+        toPay: reToPay,
+      };
+       
     case Add_CartItem_Failure:
     case Fetch_Restaurants_Failure:
     case Delete_CartItem_Failure:
     case Sync_Cart_Failure:
+    case Re_Order_Failure:
       return{
         ...state,
         loading: false,

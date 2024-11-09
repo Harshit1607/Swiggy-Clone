@@ -9,14 +9,21 @@ import styles from './UserHome.module.css';
 import UserButtonContainer from '../UserButtons/UserButtonContainer';
 import EditAddressContainer from '../EditAddress/EditAddressContainer';
 import UserSettings from '../UserSettings/UserSettings'
+import { fetchOrders } from '../../../Redux/orderActions';
+import OrderPage from '../Orders/OrderPage/OrderPage';
+import OrderDetails from '../Orders/OrderDetails/OrderDetails';
 
 const UserHome = () => {
   const { user, activeButton, hiddenEdit, hiddenEditAddress } = useSelector(state => state.userReducer);
+  const { userOrder } = useSelector(state => state.paymentReducer);
+  const {hiddenOrder} = useSelector(state=>state.OrderReducer);
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
+  const userId = user._id
+
   useEffect(()=>{
-    const open = !hiddenEditAddress || !hiddenEdit;
+    const open = !hiddenEditAddress || !hiddenEdit || !hiddenOrder;
     if(open){
       document.body.style.overflow = 'hidden';
     }else {
@@ -27,7 +34,13 @@ const UserHome = () => {
       document.body.style.overflow = 'auto';
     };
 
-  }, [hiddenEditAddress, hiddenEdit]);
+  }, [hiddenEditAddress, hiddenEdit, hiddenOrder]);
+
+  useEffect(()=>{
+    if (userId) {
+      dispatch(fetchOrders(userId));
+    }
+  }, [userId, userOrder])
 
   useEffect(()=>{
       <UserAddressContainer />
@@ -37,6 +50,7 @@ const UserHome = () => {
     <>
       <EditContainer />
       <EditAddressContainer />
+      {!hiddenOrder ? <OrderDetails /> : null}
       <UserNav />
       <div className={styles.userMain}>
         <div className={styles.userInfoContainer}>
@@ -55,6 +69,7 @@ const UserHome = () => {
           <div className={styles.userDisplayRight}>
             {activeButton === 'Address' ?<UserAddressContainer />: null}
             {activeButton === 'Settings' ? <UserSettings /> : null}
+            {activeButton === 'Orders' ? <OrderPage /> : null}
           </div>
         </div>
       </div>

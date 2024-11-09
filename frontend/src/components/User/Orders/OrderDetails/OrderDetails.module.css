@@ -1,0 +1,138 @@
+.main{
+  height: 100vh;
+  width: 35%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  background-color: rgb(249, 249, 249);
+  position: absolute;
+  z-index: 110;
+  float: right;
+  right: 0;
+  gap: 20px;
+}
+
+.main > .authCut,
+.main > .deliveryInfo,
+.main > .itemInfo {
+  width: 80%;
+}
+
+
+.authCut {
+  margin-top: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 1.5rem;
+  font-weight: bold;
+  cursor: pointer;
+  margin-bottom: 20px;
+}
+.authCut > span:first-child{
+  font-size: 1.5rem;
+}
+
+.deliveryInfo{
+  height: 10%;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: space-between;
+  font-size: 1.1rem;
+  font-weight: bold;
+}
+.deliveryInfo > span:last-child{
+  font-size: 1rem;
+  color: rgb(96, 96, 96);
+  font-weight: normal;
+}
+.itemInfo{
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: center;
+  font-size: 0.9rem;
+  gap: 10%;
+}
+.items, .fees{
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: space-around;
+  color: #656875;
+  padding: 5% 0;
+}
+.items{
+  border-bottom: 0.2px dotted #656875 ;
+}
+.itemName{
+  font-weight: bold;
+  color: #282c3f;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+.total{
+  width: 80%;
+  display: flex;
+  align-items: start;
+  justify-content: space-between;
+}
+
+.total > span:nth-child(2){
+  font-weight: bold;
+}
+
+.fees{
+  width: 80%;
+  padding-bottom: 10px;
+  border-bottom: 3px solid #282c3f;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.fees > div {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 30px;
+  font-size: 0.9rem;
+  color: #656875;
+}
+
+.fees span{
+  font-size: smaller;
+  font-weight: 400;
+  margin: 5px 0;
+}
+
+.cartBill {
+  width: 80%;
+  margin-top: 20px;
+  padding-bottom: 10px;
+  border-bottom: 3px solid #282c3f;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.cartBill span {
+  font-size: smaller;
+  font-weight: 400;
+  margin: 5px 0;
+}
+
+.cartBillInfo {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 30px;
+  font-size: smaller;
+  color: #656875;
+}

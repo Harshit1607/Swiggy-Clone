@@ -4,12 +4,14 @@ import restaurantReducer from './restaurantReducer.jsx'
 import cartReducer from './cartReducer.jsx'
 import userReducer from "./userReducer.jsx";
 import paymentReducer from "./paymentReducer.jsx";
+import OrderReducer from "./OrderReducer.jsx";
 
 const rootReducer = combineReducers({
   restaurantReducer,
   cartReducer,
   userReducer,
-  paymentReducer
+  paymentReducer,
+  OrderReducer
 })
 
 const store = legacy_createStore(rootReducer, applyMiddleware(thunk));

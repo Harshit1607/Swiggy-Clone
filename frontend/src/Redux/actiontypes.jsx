@@ -106,3 +106,14 @@ export const Create_Order_Failure = 'Create_Order_Failure'
 export const Make_Payment_Request = 'Make_Payment_Request'
 export const Make_Payment_Success = 'Make_Payment_Success'
 export const Make_Payment_Failure = 'Make_Payment_Failure'
+
+export const Fetch_Orders_Request = 'Fetch_Orders_Request'
+export const Fetch_Orders_Success = 'Fetch_Orders_Success'
+export const Fetch_Orders_Failure = 'Fetch_Orders_Failure'
+
+
+export const Re_Order_Request = 'Re_Order_Request'
+export const Re_Order_Success = 'Re_Order_Success'
+export const Re_Order_Failure = 'Re_Order_Failure'
+
+export const Get_Order = 'Get_Order'
