@@ -6,9 +6,11 @@
   align-items: center;
   justify-content: flex-start;
   background-color: rgb(249, 249, 249);
-  position: absolute;
+  
   z-index: 110;
-  float: left;
+  position: fixed; /* Change from absolute to fixed */
+  top: 0; /* Position it at the top */
+  left: 0;
   gap: 20px;
 }
 

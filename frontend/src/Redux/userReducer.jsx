@@ -1,4 +1,4 @@
-import { Close_Auth,
+import { Add_Fav_Failure, Add_Fav_Request, Add_Fav_Success, Close_Auth,
   Current_Address,
   Delete_Address_Failure,
   Delete_Address_Request,
@@ -66,6 +66,7 @@ function userReducer(state=initialState, action){
     case Save_Address_Request:
     case Update_Address_Request:
     case Delete_Address_Request:
+    case Add_Fav_Request:
       return{
         ...state,
         loading: true,
@@ -221,6 +222,12 @@ function userReducer(state=initialState, action){
         ...state,
         deliveryAddress: null
       }
+    case Add_Fav_Success:
+      localStorage.setItem('user', JSON.stringify(action.payload.user));
+      return{
+        ...state,
+        user: action.payload.user,
+      }
     case Get_Login_Otp_Failure:
     case Get_Signup_Otp_Failure:
     case Signup_Failure:
@@ -229,6 +236,7 @@ function userReducer(state=initialState, action){
     case Save_Address_Failure:
     case Update_Address_Failure:
     case Delete_Address_Failure:
+    case Add_Fav_Failure:
       return {
         ...state,
         loading: false,

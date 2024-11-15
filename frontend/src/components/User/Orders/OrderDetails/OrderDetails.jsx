@@ -40,7 +40,10 @@ const OrderDetails = () => {
       </div>
       <div className={styles.deliveryInfo}>
         <span>{order.restaurant.name}</span>
-        <span></span>
+        <span className={styles.deliveryAddress}>
+          <span>{order.deliveryAddress.addressName}</span>
+          <span>{order.deliveryAddress.address}</span>
+          </span>
         <span>Delivered on {formattedDate}</span>
       </div>
       <div className={styles.itemInfo}>

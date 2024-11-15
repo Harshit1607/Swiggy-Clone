@@ -24,6 +24,11 @@ const UserHover = ({ visibleUser }) => {
         navigate('/user')}}>
         <span>Settings</span>
       </div>
+      <div className={styles.userHoverInfo} onClick={() => {
+        dispatch(userButton("Favourites"));
+        navigate('/favourites')}}>
+        <span>Favourites</span>
+      </div>
       <div className={styles.userHoverInfo} onClick={() => dispatch(logout())}>
         <span>Logout</span>
       </div>

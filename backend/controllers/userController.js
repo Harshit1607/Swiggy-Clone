@@ -178,3 +178,23 @@ export const deleteAddress = async (req, res) => {
     res.status(500).json({ error: 'Failed to delete address' });
   }
 }
+
+export const addToFav = async (req, res) => {
+  const {userId, restId} = req.body;
+  try {
+    const user = await User.findById(userId);
+    const isPresent = user.favouriteRest.includes(restId);
+    if(isPresent){
+      console.log(user.favouriteRest.length)
+      user.favouriteRest = user.favouriteRest.filter((id)=> id.toString()!==restId);
+      console.log(user.favouriteRest.length)
+    }else{
+      user.favouriteRest.push(restId)
+    }
+    await user.save();
+
+    res.status(200).json({user})
+  } catch (error) {
+    res.status(500).json({ error: 'Failed to add rest' });
+  }
+}

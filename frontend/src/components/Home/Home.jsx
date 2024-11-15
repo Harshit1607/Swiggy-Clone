@@ -2,7 +2,7 @@ import React, { useCallback, useEffect, useRef } from 'react';
 import Recomendation from './Recomendation/Recomendation';
 import Restaurants from './Restaurant/Restaurants';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchRestaurants } from '../../Redux/restaurantActions';
+import { fetchRestaurants, getFavRestaurants } from '../../Redux/restaurantActions';
 import TopRestaurants from './TopRestaurant/TopRestaurants';
 import Navbar from '../Navbar';
 import Login from '../Auth/Login';
@@ -10,13 +10,13 @@ import Signup from '../Auth/Signup';
 import { Throttle } from '../../Utils/Throttle';
 import Footer from './Footer/Footer';
 import Address from '../User/Address/Address';
-
+import FavRestaurants from './FavRestaurants/FavRestaurants'
 
 const Home = () => {
   const dispatch = useDispatch();
-  const { loading, error, page, hasMore, restaurants } = useSelector(state => state.restaurantReducer);
+  const { loading, error, page, hasMore, restaurants, favRest } = useSelector(state => state.restaurantReducer);
   const {hiddenLogin, hiddenSignup, hiddenAddress, user} = useSelector(state => state.userReducer);
-  const {cart, } = useSelector(state => state.cartReducer);
+  // const {cart} = useSelector(state => state.cartReducer);
 
 
   
@@ -43,6 +43,11 @@ const Home = () => {
     }
   }, []);
 
+  useEffect(()=>{
+    if(user){
+      dispatch(getFavRestaurants(user._id))
+    }
+  }, [user])
   const handleScroll = useCallback(Throttle(() => {
     if (hasMore && !loading && (window.innerHeight + window.scrollY) >= document.body.offsetHeight - 300) {
       dispatch(fetchRestaurants(page+1));
@@ -70,6 +75,12 @@ const Home = () => {
     <Navbar />
     <div className="main" style={!hiddenLogin || !hiddenSignup ? {overflow: "hidden", height: "calc(100vh - 80px)"} : null}>
       <Recomendation />
+      {user && user.favouriteRest && favRest.length > 0 ? 
+      <>
+        <div className="home-divider"></div>
+        <FavRestaurants />
+      </>
+      : null}
       <div className="home-divider"></div>
       <TopRestaurants />
       <div className="home-divider"></div>

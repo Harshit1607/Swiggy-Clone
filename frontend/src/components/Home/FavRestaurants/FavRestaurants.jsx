@@ -3,12 +3,12 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getSingleRestaurant } from '../../../Redux/restaurantActions';
 import { useNavigate } from 'react-router-dom';
 import Carousel from '../../../Utils/Carousel/Carousel';
-import styles from './TopRestaurants.module.css'; // Importing the module CSS
+import styles from './FavRestaurants.module.css'; // Importing the module CSS
 import Heart from '../../../Utils/Heart/Heart';
 import { addToFav } from '../../../Redux/userAction';
 
 const TopRestaurants = () => {
-  const { topRestaurants, favRest } = useSelector(state => state.restaurantReducer);
+  const { favRest } = useSelector(state => state.restaurantReducer);
   const {user} = useSelector(state => state.userReducer);
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -18,20 +18,20 @@ const TopRestaurants = () => {
     navigate('/restaurant');
   }
 
-  if (!topRestaurants || topRestaurants.length === 0) {
-    return <div>No cuisines available</div>;
+  if (!favRest || favRest.length === 0) {
+    return <div>No Rest available</div>;
   }
 
   return (
     <div className={styles.recomendation}>
       <div className={styles.recomHeading}>
-        <span>Top Restaurants in India</span>
+        <span>Your Favourites</span>
       </div>
       <Carousel length={3}>
-        {topRestaurants.map((item, index) => {
-          const isFav = user && favRest && favRest.find(rest => rest._id === item._id); // Check if the restaurant is in favorites
-          const red = isFav ? true : false; // Set red to true if found, otherwise false
-        return(
+        {favRest.map((item, index) => {
+           const isFav = user && favRest && favRest.find(rest => rest._id === item._id); // Check if the restaurant is in favorites
+           const red = isFav ? true : false; // Set red to true if found, otherwise false
+          return(
           <div className={styles.restaurantInfo} onClick={() => handleClick(item._id)} key={item._id}>
             <Heart red={red} onClick={(e)=>{
                 e.stopPropagation(); // Prevent the click from propagating to the parent div

@@ -14,6 +14,7 @@ import UserHome from './User/UserHome/UserHome';
 import { useDispatch, useSelector } from 'react-redux';
 import { cartExpiration, cartSync, fetchCart } from '../Redux/cartActions';
 import Payment from './Payment/Payment';
+import Favourite from './Favourite/Favourite';
 
 const App = () => {
   const {user} = useSelector(state => state.userReducer);
@@ -60,6 +61,7 @@ const App = () => {
         <Route path='/' element={<Home />} />
         <Route path='/restaurant' element={<RestaurantHome />} />
         <Route path='/cuisine' element={<Cuisinehome />} />
+        <Route path='/favourites' element={<Favourite />} />
         <Route path='/search' element={<SearchPage />} />
         <Route path='/cart' element={<Cart />}/>
         <Route path='/search/menu' element={<MenuSearchPage />} />

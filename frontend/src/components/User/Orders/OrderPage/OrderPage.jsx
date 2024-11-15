@@ -11,7 +11,7 @@ const OrderPage = () => {
       <div className={styles.heading}>
         <span>Past Orders</span>
       </div>
-      {orders.map((data, index)=>(
+      {orders.slice().reverse().map((data, index)=>(
         <OrderBox order={data} key={index}/>
       ))}
     </div>

@@ -50,7 +50,10 @@ const CartPayment = () => {
 
   const handleOrder = ()=>{
     const userId = user? user._id : null;
-    dispatch(createOrder(toPay, userId));
+    if(deliveryAddress){
+      dispatch(createOrder(toPay, userId, deliveryAddress));
+    }
+    
   }
 
   if (loading) {

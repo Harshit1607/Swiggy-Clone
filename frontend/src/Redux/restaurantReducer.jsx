@@ -19,6 +19,9 @@ import {
   Cart_Restaurant_Request,
   Cart_Restaurant_Failure,
   Cart_Restaurant_Success,
+  Fav_Rest_Failure,
+  Fav_Rest_Request,
+  Fav_Rest_Success,
 } from './actiontypes';
 
 const initialState = {
@@ -31,6 +34,7 @@ const initialState = {
   searchRestaurant: [],
   topRestaurants: [],
   searchDishes: [],
+  favRest: localStorage.getItem('favRest') && JSON.parse(localStorage.getItem('favRest')) && JSON.parse(localStorage.getItem('favRest')).length > 0 ? JSON.parse(localStorage.getItem('favRest')): [],
   page: 0,
   hasMore: true,
 };
@@ -43,6 +47,7 @@ function restaurantReducer(state = initialState, action) {
     case Restaurant_By_Search_Request:
     case Search_Dish_Request:
     case Cart_Restaurant_Request:
+    case Fav_Rest_Request:
       return {
         ...state,
         loading: true,
@@ -102,12 +107,21 @@ function restaurantReducer(state = initialState, action) {
         cartRestaurant: action.payload.restaurant,
         searchRestaurant: [],
       };
+    case Fav_Rest_Success:
+      localStorage.setItem('favRest', JSON.stringify(action.payload.favRestaurants))
+      return {
+        ...state,
+        loading: false,
+        favRest: action.payload.favRestaurants,
+        searchRestaurant: [],
+      };
     case Fetch_Restaurants_Failure:
     case Single_Restaurant_Failure:
     case Restaurant_By_Cuisine_Failure:
     case Restaurant_By_Search_Failure:
     case Search_Dish_Failure:
     case Cart_Restaurant_Failure:
+    case Fav_Rest_Failure:
       return {
         ...state,
         loading: false,

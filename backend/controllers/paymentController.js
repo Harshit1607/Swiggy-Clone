@@ -9,7 +9,7 @@ const cache = new NodeCache();
 const PAYMENT_TIMEOUT = 5 * 60 * 1000;
 
 export const createOrder = async (req, res) => {
-  const {amount, userId} = req.body
+  const {amount, userId, deliveryAddress} = req.body
   
   try {
     const options = {
@@ -21,11 +21,14 @@ export const createOrder = async (req, res) => {
 
     const cart = await Cart.findOne({userId: userId});
 
+    const delAddress = deliveryAddress.data;
+
     const newOrder = new Order({
       restaurantId: cart.restaurantId,
       items: cart.items,
       userId,
-      amount
+      amount,
+      deliveryAddress: delAddress
     });
 
     const userOrder = await newOrder.save();
@@ -85,6 +88,7 @@ export const verifyPayment = async (req, res) => {
     });
     const userOrder = await Order.findByIdAndUpdate(
       orderId,
+      {payment: true},
       { PaymentId: payment._id },
       { new: true } // This option returns the updated document
     );

@@ -19,6 +19,9 @@ import {
   Cart_Restaurant_Request,
   Cart_Restaurant_Success,
   Cart_Restaurant_Failure,
+  Fav_Rest_Request,
+  Fav_Rest_Failure,
+  Fav_Rest_Success,
 } from './actiontypes';
 
 const API_URL = 'http://localhost:5000/';
@@ -86,5 +89,16 @@ export const getCartRestaurant = ({ id }) => async (dispatch) => {
     dispatch({ type: Cart_Restaurant_Success, payload: result.data });
   } catch (error) {
     dispatch({ type: Cart_Restaurant_Failure, error: error.message });
+  }
+}
+
+export const getFavRestaurants = (userId) => async (dispatch) => {
+  dispatch({type: Fav_Rest_Request});
+  try {
+    const result = await axios.get(`${API_URL}restaurants/fav/${userId}`);
+    console.log(result.data)
+    dispatch({ type: Fav_Rest_Success, payload: result.data });
+  } catch (error) {
+    dispatch({ type: Fav_Rest_Failure, error: error.message });
   }
 }

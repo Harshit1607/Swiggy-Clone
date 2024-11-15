@@ -10,6 +10,7 @@ const userSchema = new mongoose.Schema({
   phone: {type : Number, required: true},
   email: {type : String, required: true},
   address: { type: [addressSchema], default: [] }, // Array of address objects
+  favouriteRest: {type: [mongoose.Schema.Types.ObjectId], ref: 'Restaurant', default: []}
 })
 
 export default  mongoose.model('User', userSchema);

@@ -1,4 +1,4 @@
-.main{
+.main {
   height: 100vh;
   width: 35%;
   display: flex;
@@ -6,10 +6,10 @@
   align-items: center;
   justify-content: flex-start;
   background-color: rgb(249, 249, 249);
-  position: absolute;
-  z-index: 110;
-  float: right;
+  position: fixed; /* Change from absolute to fixed */
+  top: 0; /* Position it at the top */
   right: 0;
+  z-index: 110;
   gap: 20px;
 }
 
@@ -135,4 +135,15 @@
   height: 30px;
   font-size: smaller;
   color: #656875;
+}
+
+.deliveryAddress{
+  display: flex;
+  flex-direction: column;
+}
+
+.deliveryAddress > span:last-child{
+  font-size: 0.8rem;
+  color: #656875;
+  font-weight: normal;
 }

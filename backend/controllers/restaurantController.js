@@ -1,5 +1,6 @@
 import Restaurant from '../models/restaurants.js';
 import Cuisine from '../models/cuisine.js';
+import User from "../models/user.js";
 
 export const getAllRestaurants = async (req, res) => {
   const page = parseInt(req.query.page) || 1; // Default to page 1 if not provided
@@ -81,4 +82,22 @@ export const getDishBysearch = async (req, res) => {
   }
 }
 
+export const favRestaurants = async (req, res) => {
+  const { userId } = req.params;
+  try {
+    // Fetch the user
+    const user = await User.findById(userId);
+    if (!user || user.favouriteRest.length === 0) {
+      // Return an empty array if the user has no favorite restaurants
+      return res.status(200).json({ favRestaurants: [] });
+    }
 
+    // Fetch all favorite restaurants in a single query
+    const favRestaurants = await Restaurant.find({ '_id': { $in: user.favouriteRest } });
+    
+    // Return the list of favorite restaurants
+    res.status(200).json({ favRestaurants });
+  }  catch (error) {
+    res.status(500).json({ error: 'Failed to get favorite restaurants' });
+  }
+};

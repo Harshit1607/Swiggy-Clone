@@ -1,0 +1,45 @@
+
+.heart {
+  position: absolute;
+  top: 5%; /* Position the heart relative to the parent container */
+  right: 0%; /* Adjust placement */
+  width: 6%; /* Scale the heart relative to the parent */
+  height: 5%; /* Maintain aspect ratio */
+  background: white;
+  transform: rotate(-45deg);
+  transform-origin: 0 100%;
+  z-index: 2; /* Ensure it stays above other elements */
+  cursor: pointer;
+}
+
+.heart:before,
+.heart:after {
+  content: "";
+  position: absolute;
+  width: 100%; /* Match the size of the parent heart */
+  height: 100%; /* Match the size of the parent heart */
+  background: white;
+  border-radius: 50%; /* Create circular top shapes */
+  cursor: pointer;
+  
+}
+
+.heart:before {
+  top: -50%; /* Adjust positioning to maintain the heart shape */
+  left: 0;
+}
+
+.heart:after {
+  left: 50%; /* Align with the right of the parent */
+  top: 0;
+}
+
+
+.redHeart {
+  background: red !important; /* Override to red */
+}
+
+.redHeart:before,
+.redHeart:after {
+  background: red !important; /* Override pseudo-elements to red */
+}

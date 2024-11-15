@@ -11,11 +11,11 @@ const CartHover = ({ visibleCart }) => {
   const dispatch= useDispatch();
 
   useEffect(() => {
-    if (cart && cart.restaurantId && cart.restaurantId !== cartRestaurant._id) {
+    if (cart && cart.restaurantId && cart.restaurantId !== cartRestaurant?._id) {
       const id = cart.restaurantId;
       dispatch(getCartRestaurant({ id }));
     }
-  }, [cart?.restaurantId, dispatch]);
+  }, [cart?.restaurantId, cartRestaurant?._id, dispatch]);
   
   return (
     cart && cart.items && cart.items.length > 0 ? 

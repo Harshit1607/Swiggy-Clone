@@ -40,6 +40,9 @@ const orderSchema = new mongoose.Schema({
     type: Number,
     required: true,
   },
+  deliveryAddress:{
+    type: Object,
+  },
   payment: {
     type: Boolean,
     default: false,

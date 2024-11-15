@@ -117,3 +117,11 @@ export const Re_Order_Success = 'Re_Order_Success'
 export const Re_Order_Failure = 'Re_Order_Failure'
 
 export const Get_Order = 'Get_Order'
+
+export const Add_Fav_Request = 'Add_Fav_Request'
+export const Add_Fav_Success = 'Add_Fav_Success'
+export const Add_Fav_Failure = 'Add_Fav_Failure'
+
+export const Fav_Rest_Request = 'Fav_Rest_Request'
+export const Fav_Rest_Success = 'Fav_Rest_Success'
+export const Fav_Rest_Failure = 'Fav_Rest_Failure'
