@@ -62,3 +62,85 @@
   align-items: center;
   justify-content: flex-start;
 }
+
+@media (max-width: 1024px) {
+  .cartLeft, .cartRight {
+    width: 40%; /* Set both cartLeft and cartRight to 40% for smaller laptops */
+  }
+
+  .cartMain {
+    flex-direction: row; /* Ensure the items are side by side */
+    gap: 5%; /* Retain gap between cartLeft and cartRight */
+  }
+}
+/* Responsive Adjustments for Phones and Tablets (max-width: 768px) */
+@media (max-width: 768px) {
+  .cartMain {
+    flex-direction: column-reverse; /* Reverse the column layout for phones/tablets */
+    padding-top: 15px;
+    padding-bottom: 15px;
+    align-items: center;
+    justify-content:start;
+    gap: 3%;
+  }
+
+  .cartLeft {
+    width: 100%; /* Make cartLeft take full width */
+    max-height: none; /* Remove height restrictions for smaller screens */
+    padding: 15px; /* Reduce padding */
+    gap: 15px; /* Reduce gap */
+  }
+
+  .cartRight {
+    width: 100%; /* Make cartRight take full width */
+    padding: 15px; /* Reduce padding */
+  }
+}
+
+/* Responsive Adjustments for Small Devices (max-width: 500px) */
+@media (max-width: 500px) {
+  .cartLeft, .cartRight {
+    width: 100%; /* Set cartLeft and cartRight to 100% for very small devices */
+  }
+
+  .cartMain {
+    flex-direction: column-reverse; /* Reverse the column layout for very small screens */
+    padding-top: 10px;
+    padding-bottom: 10px;
+    gap: 2%;
+  }
+
+  .cartLeft {
+    max-height: none; /* Remove height restrictions */
+    padding: 10px; /* Reduce padding */
+    gap: 10px; /* Reduce gap */
+  }
+
+  .cartRight {
+    padding: 10px; /* Reduce padding */
+  }
+}
+
+/* Responsive Adjustments for Devices Between 500px and 768px */
+@media (min-width: 500px) and (max-width: 768px) {
+  .cartLeft, .cartRight {
+    width: 85%; /* Set cartLeft and cartRight to 85% for devices between 500px and 768px */
+  }
+
+  .cartMain {
+    flex-direction: column-reverse; /* Reverse the column layout for devices between 500px and 768px */
+    padding-top: 15px;
+    padding-bottom: 15px;
+    gap: 3%;
+  }
+
+  .cartLeft {
+    max-height: none; /* Remove height restrictions */
+    padding: 15px; /* Reduce padding */
+    gap: 15px; /* Reduce gap */
+  }
+
+  .cartRight {
+    padding: 15px; /* Reduce padding */
+  }
+}
