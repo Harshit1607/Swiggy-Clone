@@ -31,3 +31,10 @@
   height: 180px;
   width: 144px;
 }
+
+@media (max-width: 600px) {
+  .recomendation{
+    width: 90%;
+  }
+
+}

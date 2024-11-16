@@ -18,6 +18,14 @@
   width: 100%;
 }
 
+.restaurantContainer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: start;
+  margin-top: 15px;
+}
+
 .restaurantInfo {
   max-width: 200px;
   height: 260px;
@@ -40,4 +48,31 @@
 
 .restaurantInfo span {
   margin-left: 10px;
+}
+
+/* Responsive Adjustments for Smaller Screens */
+@media (max-width: 1200px) {
+  .restaurantInfo {
+    flex: 0 0 33%; /* 3 items in a row */
+  }
+}
+
+@media (max-width: 900px) {
+  .restaurantInfo {
+    flex: 0 0 50%; /* 2 items in a row */
+  }
+}
+
+@media (max-width: 600px) {
+  .recomendation{
+    width: 90%;
+  }
+  .restaurantInfo {
+    flex: 0 0 100%; /* 1 item per row */
+  }
+
+  .restaurantContainer {
+    flex-direction: column; /* Stack items vertically */
+    align-items: center;
+  }
 }

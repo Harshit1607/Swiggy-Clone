@@ -5,7 +5,7 @@
   right: 0%; /* Adjust placement */
   width: 6%; /* Scale the heart relative to the parent */
   height: 5%; /* Maintain aspect ratio */
-  background: white;
+  background: rgb(200, 200, 200);
   transform: rotate(-45deg);
   transform-origin: 0 100%;
   z-index: 2; /* Ensure it stays above other elements */
@@ -18,7 +18,7 @@
   position: absolute;
   width: 100%; /* Match the size of the parent heart */
   height: 100%; /* Match the size of the parent heart */
-  background: white;
+  background: rgb(200, 200, 200);
   border-radius: 50%; /* Create circular top shapes */
   cursor: pointer;
   
@@ -42,4 +42,11 @@
 .redHeart:before,
 .redHeart:after {
   background: red !important; /* Override pseudo-elements to red */
+}
+
+@media (max-width: 600px) {
+  .heart {
+    width: 12px; /* Smaller size for small screens */
+    height: 12px;
+  }
 }
