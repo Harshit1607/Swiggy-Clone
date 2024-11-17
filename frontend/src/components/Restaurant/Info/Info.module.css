@@ -74,3 +74,10 @@
 }
 
 
+
+
+@media (max-width: 600px){
+  .menuPageInfo{
+    width: 100%;
+  }
+}

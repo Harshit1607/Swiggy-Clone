@@ -21,3 +21,9 @@
   bottom: 10%;
   left: 72.5%;
 }
+
+@media (max-width: 600px){
+  .menuCircle{
+    left: 90%;
+  }
+}

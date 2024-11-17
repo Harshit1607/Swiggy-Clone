@@ -107,3 +107,68 @@
   height: calc(100vh - 80px);
   background-color: rgb(11, 11, 11);
 }
+
+@media (max-width: 1450px){
+  .restaurantInfo {
+    width: 150px; /* 3 items in a row */
+  }
+}
+/* Responsive Flex Adjustments */
+@media (max-width: 1200px) {
+  .restaurantInfo {
+    width: calc(33.33% - 1.5rem); /* 3 items in a row */
+  }
+}
+
+@media (max-width: 900px) {
+  .restaurantInfo {
+    width: calc(50% - 1.5rem); /* 2 items in a row */
+  }
+
+  .restaurantInfo img {
+    height: 160px; /* Slightly smaller height for smaller screens */
+  }
+
+  .restaurantInfo span {
+    font-size: 0.9rem; /* Adjust font size for smaller screens */
+  }
+}
+
+/* Switch to Grid Layout for Small Screens */
+@media (max-width: 600px) {
+  .restaurants{
+    width: 90%;
+  }
+  .restaurantContainer {
+    flex-direction: column; /* Stack items vertically */
+    align-items: stretch;
+    width: 100%;
+  }
+
+  .restaurantInfo {
+    display: grid; /* Switch to grid layout */
+    grid-template-columns: 1fr 2fr; /* Two columns */
+    grid-template-rows: auto auto auto; /* Three rows */
+    gap: 10px; /* Space between items */
+    row-gap: 0;
+    align-items: start; /* Center content */
+    width: 100%; /* Full-width for small screens */
+    height: auto; /* Let height adjust automatically */
+  }
+
+  .restaurantInfo img {
+    grid-column: 1 / 2; /* Image in the first column */
+    grid-row: 1 / 4; /* Image spans 3 rows */
+    width: 100% !important; /* Full width */
+    height: 90%; /* Adjust height to fit */
+    object-fit: cover; /* Ensure proper fit */
+    align-items: start;
+    margin: 0;
+  }
+
+  .restaurantInfo span {
+    width: 100%;
+    grid-column: 2 / 3; /* Spans in the second column */
+    align-self: flex-start; /* Vertically center spans */
+  }
+}

@@ -31,3 +31,9 @@
   text-decoration: none;
   color: white;
 }
+
+@media (max-width: 600px){
+  .hiddenMenuBox{
+    width: 70%;
+  }
+}

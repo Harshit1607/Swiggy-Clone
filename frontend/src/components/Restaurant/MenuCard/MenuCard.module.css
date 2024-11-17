@@ -95,3 +95,13 @@
   border: none;
   margin: 10px auto;
 }
+
+
+@media (max-width: 600px){
+  .menuSingle{
+    width: 100%;
+  }
+  .divider{
+    width: 100%;
+  }
+}
