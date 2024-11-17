@@ -103,3 +103,8 @@
   width: 144px;
 }
 
+@media (max-width: 600px){
+  .searchRestaurants, .searchBox{
+    width: 90%;
+  }
+}

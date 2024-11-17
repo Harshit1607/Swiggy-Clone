@@ -6,6 +6,10 @@ import { getLogin, getAddress } from '../Redux/userAction';
 import CartHover from './Cart/CartHover/CartHover';
 import UserHover from './User/UserHover/UserHover';
 import styles from './Navbar.module.css'; // Import the CSS module
+import cartsvg from '../assets/cart.svg';
+import profilesvg from '../assets/profile.svg';
+import searchsvg from '../assets/search.svg';
+import addresssvg from '../assets/address.svg';
 
 const Navbar = () => {
   const navigate = useNavigate();
@@ -36,7 +40,8 @@ const Navbar = () => {
             }}
           />
           {user ? (
-            <span className={`${styles.navElem} ${styles.navAddress}`} onClick={() => dispatch(getAddress())}>
+            <div className={`${styles.navElem} ${styles.navAddress}`} onClick={() => dispatch(getAddress())}>
+              <img src={addresssvg} alt='' />
               {currentAddress ? (
                 <>
                   <span>{currentAddress.addressName}</span>
@@ -46,12 +51,15 @@ const Navbar = () => {
               ) : (
                 'Address'
               )}
-            </span>
+            </div>
           ) : null}
         </div>
         <div className={styles.NavbarRight}>
-          <span className={styles.navElem} onClick={() => { navigate('/search'); }}>Search</span>
-          <span
+          <div className={styles.navElem} onClick={() => { navigate('/search'); }}>
+          <img src={searchsvg} alt='' />
+            <span>Search</span>
+          </div>
+          <div
             className={styles.navElem}
             onClick={user ? () => navigate('/user') : () => dispatch(getLogin())}
             onMouseOver={() => {
@@ -61,8 +69,9 @@ const Navbar = () => {
               setVisibleUser(false);
             }}
           >
-            {user ? `${user.name}` : 'Sign in'}
-          </span>
+            <img src={profilesvg} alt='' />
+            <span>{user ? `${user.name}` : 'Sign in'}</span>
+          </div>
           <div
             className={styles.navElem}
             onClick={() => {
@@ -81,6 +90,7 @@ const Navbar = () => {
             >
               <span>{cart && cart.items ? cart.items.length : null}</span>
             </div>
+            <img src={cartsvg} alt='' />
             <span>Cart</span>
           </div>
         </div>

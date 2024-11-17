@@ -7,6 +7,10 @@ import CartHover from '../CartHover/CartHover';
 import UserHover from '../../User/UserHover/UserHover';
 import styles from './CartNav.module.css'; // Import the CSS module
 
+import cartsvg from '../../../assets/cart.svg';
+import profilesvg from '../../../assets/profile.svg';
+import searchsvg from '../../../assets/search.svg';
+
 const Navbar = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -38,7 +42,7 @@ const Navbar = () => {
           <span className={`${styles.navElem} ${styles.navAddress}`}>Secure Checkout</span>
         </div>
         <div className={styles.NavbarRight}>
-          <span
+        <div
             className={styles.navElem}
             onClick={user ? () => navigate('/user') : () => dispatch(getLogin())}
             onMouseOver={() => {
@@ -48,8 +52,9 @@ const Navbar = () => {
               setVisibleUser(false);
             }}
           >
-            {user ? `${user.name}` : 'Sign in'}
-          </span>
+            <img src={profilesvg} alt='' />
+            <span>{user ? `${user.name}` : 'Sign in'}</span>
+          </div>
         </div>
       </div>
       <CartHover visibleCart={visibleCart} />

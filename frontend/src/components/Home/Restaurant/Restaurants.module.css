@@ -49,18 +49,30 @@
 }
 
 @media (max-width: 1450px){
-  .restaurantInfo {
-    width: 150px; /* 3 items in a row */
+  .restaurantContainer {
+    gap: 2.5rem;
   }
 }
 /* Responsive Flex Adjustments */
 @media (max-width: 1200px) {
+  .restaurantContainer {
+    gap: 1.5rem;
+  }
   .restaurantInfo {
     width: calc(33.33% - 1.5rem); /* 3 items in a row */
   }
 }
 
+@media (max-width: 1050px){
+  .restaurantContainer {
+    gap: 2.5rem;
+  }
+}
+
 @media (max-width: 900px) {
+  .restaurantContainer {
+    gap: 2.5rem;
+  }
   .restaurantInfo {
     width: calc(50% - 1.5rem); /* 2 items in a row */
   }
@@ -75,7 +87,10 @@
 }
 
 /* Switch to Grid Layout for Small Screens */
-@media (max-width: 600px) {
+@media (max-width: 800px) {
+  .restaurantContainer {
+    gap: 1.5rem;
+  }
   .restaurants{
     width: 90%;
   }

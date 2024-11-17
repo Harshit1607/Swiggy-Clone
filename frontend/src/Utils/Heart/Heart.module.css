@@ -44,7 +44,7 @@
   background: red !important; /* Override pseudo-elements to red */
 }
 
-@media (max-width: 600px) {
+@media (max-width: 800px) {
   .heart {
     width: 12px; /* Smaller size for small screens */
     height: 12px;

@@ -48,6 +48,7 @@
   cursor: pointer;
   font-weight: 500;
   font-size: 1.1rem;
+  gap: 10px;
 }
 
 .navElem:hover{
@@ -57,7 +58,7 @@
 .navCartQuant {
   width: 20px;
   height: 20px;
-  margin-right: 5px;
+  margin-right: -10px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -94,3 +95,13 @@
   margin-right: 10px;
 }
 
+.navElem > img{
+  width: 25px;
+  height: 25px;
+}
+
+@media (max-width: 800px) {
+  .navElem > span{
+    display: none;
+  }
+}

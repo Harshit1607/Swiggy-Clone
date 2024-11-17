@@ -121,3 +121,21 @@
   font-size: normal;
   font-weight: normal;
 }
+
+@media (max-width: 1050px){
+  .authContainer{
+    width: 50%;
+  }
+}
+
+@media (max-width: 800px){
+  .authContainer{
+    width: 70%;
+  }
+}
+
+@media (max-width: 600px){
+  .authContainer{
+    width: 100%;
+  }
+}

@@ -7,6 +7,11 @@ import CartHover from '../../Cart/CartHover/CartHover';
 import UserHover from '../UserHover/UserHover';
 import styles from './UserNav.module.css'; // Import the CSS module
 
+import cartsvg from '../../../assets/cart.svg';
+import profilesvg from '../../../assets/profile.svg';
+import searchsvg from '../../../assets/search.svg';
+
+
 const Navbar = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -36,8 +41,11 @@ const Navbar = () => {
           <span className={`${styles.navElem} ${styles.navAddress}`}>My Account</span>
         </div>
         <div className={styles.NavbarRight}>
-          <span className={styles.navElem} onClick={() => { navigate('/search'); }}>Search</span>
-          <span
+        <div className={styles.navElem} onClick={() => { navigate('/search'); }}>
+          <img src={searchsvg} alt='' />
+            <span>Search</span>
+          </div>
+          <div
             className={styles.navElem}
             onClick={user ? () => navigate('/user') : () => dispatch(getLogin())}
             onMouseOver={() => {
@@ -47,8 +55,9 @@ const Navbar = () => {
               setVisibleUser(false);
             }}
           >
-            {user ? `${user.name}` : 'Sign in'}
-          </span>
+            <img src={profilesvg} alt='' />
+            <span>{user ? `${user.name}` : 'Sign in'}</span>
+          </div>
           <div
             className={styles.navElem}
             onClick={() => {
@@ -67,6 +76,7 @@ const Navbar = () => {
             >
               <span>{cart && cart.items ? cart.items.length : null}</span>
             </div>
+            <img src={cartsvg} alt='' />
             <span>Cart</span>
           </div>
         </div>
