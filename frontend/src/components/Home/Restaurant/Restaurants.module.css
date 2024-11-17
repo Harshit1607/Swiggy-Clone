@@ -21,12 +21,12 @@
   display: flex;
   flex-wrap: wrap;
   gap: 1.5rem;
-  justify-content: space-between; /* Ensures space between items */
+  justify-content: start; /* Ensures space between items */
 }
 
 .restaurantInfo {
   width: calc(25% - 1.5rem); /* 4 items in a row with gap */
-  width: 250px;
+  min-width: 250px;
   height: 300px;
   display: flex;
   flex-direction: column;
@@ -48,6 +48,11 @@
   font-size: 1rem; /* Adjust font size for better readability */
 }
 
+@media (max-width: 1450px){
+  .restaurantInfo {
+    width: 150px; /* 3 items in a row */
+  }
+}
 /* Responsive Flex Adjustments */
 @media (max-width: 1200px) {
   .restaurantInfo {

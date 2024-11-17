@@ -75,3 +75,36 @@
 .userPageAddressContainer > span {
   grid-column: span 2;
 }
+
+@media (max-width: 600px) {
+  .userDisplayContainer {
+    flex-direction: column; /* Stack items vertically */
+    align-items: center; /* Center align items horizontally */
+    gap: 20px;
+  }
+  .userButtonSide {
+    width: 100%;
+    height: 30%;
+  }
+  .userDisplayRight {
+    width: 100%;
+  }
+  .userInfoContainer{
+    width: 90%;
+  }
+  .editInfo{
+    padding: 10px;
+  }
+}
+@media (max-width: 400px){
+  .userInfoContainer{
+    flex-direction: column;
+    align-items: center;
+  }
+  .userInfo{
+    width: 100%;
+  }
+  .editInfo{
+    width: 100%;
+  }
+}

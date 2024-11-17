@@ -116,3 +116,15 @@
   color: white;
 
 }
+
+/* For screens less than or equal to 750px */
+@media (max-width: 750px) {
+  .addressRow {
+    flex-direction: column; /* Stack items vertically */
+    align-items: center; /* Center align items */
+  }
+
+  .savedAddresses {
+    width: 90%; /* Full width with some margin on sides */
+  }
+}

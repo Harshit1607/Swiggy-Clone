@@ -59,3 +59,18 @@
   top: 8%;
   background-color: white;
 }
+
+@media (max-width: 900px){
+  .settingContainer{
+    flex-direction: column;
+    gap: 20px;
+  }
+  .settingChilds{
+    width: 100%;
+    border: none;
+  }
+  .settingChilds:first-of-type{
+    width: 95%;
+    border: none;
+  }
+}

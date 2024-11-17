@@ -1,7 +1,7 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import styles from './UserButtonContainer.module.css';
-import { userButton } from '../../../Redux/userAction';
+import { logout, userButton } from '../../../Redux/userAction';
 import { useNavigate } from 'react-router-dom';
 
 const UserButtonContainer = () => {
@@ -33,6 +33,11 @@ const UserButtonContainer = () => {
           itemID='Settings' 
           onClick={(e)=>{dispatch(userButton(e.currentTarget.getAttribute('itemID')))}}>
         <span>Settings</span>
+      </div>
+      <div className={`${styles.userButtons} ${activeButton === 'Settings' ? styles.active : ''}`} 
+          itemID='Logout' 
+          onClick={(e)=>{dispatch(logout())}}>
+        <span>Logout</span>
       </div>
     </div>
   )

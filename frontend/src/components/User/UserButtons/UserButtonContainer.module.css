@@ -36,3 +36,28 @@
 .active > span{
   color: #37718e;
 }
+
+@media (max-width: 600px) {
+  .userButtonContainer{
+    width: 100%;
+    height: 60px;
+    flex-direction: row;
+  }
+  .userButtons{
+    height: 100%;
+    border: none;
+    border-right:  2px solid white;
+    border-radius: 0;
+  }
+  .userButtons:first-of-type{
+    border-radius: 0;
+    border-top-left-radius: 23px;
+    border-bottom-left-radius: 23px;
+  }
+  .userButtons:last-of-type{
+    border: none;
+    border-radius: 0;
+    border-top-right-radius: 23px;
+    border-bottom-right-radius: 23px;
+  }
+}
