@@ -43,6 +43,8 @@ app.use('/user', userRoutes)
 app.use('/orders', orderRoutes)
 app.use('/payment', paymentRoutes)
 
-app.listen(port, '0.0.0.0', () => {
-  console.log(`Server running on port ${port}`);
-});
+// app.listen(port, '0.0.0.0', () => {
+//   console.log(`Server running on port ${port}`);
+// });
+
+export default app;
