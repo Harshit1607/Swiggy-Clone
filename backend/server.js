@@ -4,7 +4,6 @@ import bodyParser from 'body-parser';
 import cors from 'cors';
 import dotenv from 'dotenv';
 import Razorpay from 'razorpay'
-import dotenv from 'dotenv'
 import restaurantRoutes from './routes/restaurantRoutes.js';
 import cartRoutes from './routes/cartRoutes.js'
 import userRoutes from './routes/userRoutes.js'
@@ -22,7 +21,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 const corsOptions = {
-  origin: 'https://swiggy-x98p.onrender.com/', // Ensure no trailing slash
+  origin: 'https://swiggy-x98p.onrender.com', // Ensure no trailing slash
   methods: 'GET, POST, PUT, PATCH, DELETE, OPTIONS',
   allowedHeaders: 'Content-Type, Authorization',
   credentials: true // Enable credentials if needed
