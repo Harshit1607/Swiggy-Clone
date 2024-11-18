@@ -1,6 +1,6 @@
 import axios from 'axios'
 import { Create_Order_Failure, Create_Order_Request, Create_Order_Success, Make_Payment_Failure, Make_Payment_Request, Make_Payment_Success } from './actiontypes';
-const API_URL = process.env.SERVER_URL;
+const API_URL = process.env.REACT_APP_SERVER_URL;
 
 
 export const createOrder = (amount, userId, deliveryAddress) => async (dispatch) => {

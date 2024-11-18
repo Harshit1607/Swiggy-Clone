@@ -9,7 +9,7 @@ const CartPayment = () => {
   const {toPay} = useSelector(state=>state.cartReducer);
   const dispatch = useDispatch();
 
-  const key = process.env.KEY;
+  const key = process.env.REACT_APP_KEY;
 
   useEffect(()=>{
     if(order && makePayment){
