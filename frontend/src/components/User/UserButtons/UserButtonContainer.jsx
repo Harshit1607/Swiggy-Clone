@@ -34,7 +34,7 @@ const UserButtonContainer = () => {
           onClick={(e)=>{dispatch(userButton(e.currentTarget.getAttribute('itemID')))}}>
         <span>Settings</span>
       </div>
-      <div className={`${styles.userButtons} ${activeButton === 'Settings' ? styles.active : ''}`} 
+      <div className={`${styles.userButtons} ${activeButton === 'Logout' ? styles.active : ''}`} 
           itemID='Logout' 
           onClick={(e)=>{dispatch(logout())}}>
         <span>Logout</span>
