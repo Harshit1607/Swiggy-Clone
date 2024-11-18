@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { closeAuth, currentAddress, saveAddress } from '../../../Redux/userAction';
 import styles from './Address.module.css';
+import addresssvg from '../../../assets/address.svg';
 
 const Address = () => {
   const { hiddenAddress, user } = useSelector(state => state.userReducer);
@@ -48,7 +49,9 @@ const Address = () => {
         <span>Saved Addresses</span>
         {user && user.address && user.address.length > 0 ? user.address.map((data, index) => (
           <div className={styles.savedAddresses} key={index} onClick={() => dispatch(currentAddress(user.address[index]))}>
-            <div className={styles.savedAddressLeft}></div>
+            <div className={styles.savedAddressLeft}>
+              <img src={addresssvg} alt='' />
+            </div>
             <div className={styles.savedAddressRight}>
               <span>{data.addressName}</span>
               <span>{data.address}</span>

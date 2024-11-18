@@ -127,3 +127,13 @@
   font-weight: normal;
   color: rgb(141, 141, 141);
 }
+
+@media (max-width: 750px) {
+  .addresses{
+    flex-direction: column;
+  }
+  .addressBox{
+    width: 90%;
+    height: 150px;
+  }
+}

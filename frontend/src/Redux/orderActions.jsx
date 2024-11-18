@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { Fetch_Orders_Failure, Fetch_Orders_Request, Fetch_Orders_Success, Get_Order, Re_Order_Failure, Re_Order_Request, Re_Order_Success } from './actiontypes';
 
-const API_URL = 'http://localhost:5000/';
+const API_URL = process.env.SERVER_URL;
 
 export const fetchOrders = (userId) => async (dispatch) => {
   dispatch({type: Fetch_Orders_Request});

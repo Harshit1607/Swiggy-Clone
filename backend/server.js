@@ -4,7 +4,7 @@ import bodyParser from 'body-parser';
 import cors from 'cors';
 import dotenv from 'dotenv';
 import Razorpay from 'razorpay'
-
+import dotenv from 'dotenv'
 import restaurantRoutes from './routes/restaurantRoutes.js';
 import cartRoutes from './routes/cartRoutes.js'
 import userRoutes from './routes/userRoutes.js'
@@ -24,8 +24,8 @@ app.use(cors())
 mongoose.connect("mongodb://localhost:27017/Swiggy");
 
 export const instance = new Razorpay({
-  key_id: 'rzp_test_FuNvMN2XBQ048R',
-  key_secret: 'iM62T5FAUW3bbF58vTEQzZ5h',
+  key_id: process.env.RAZORPAY_ID,
+  key_secret: process.env.RAZORPAY_SECRET,
 });
 
 app.use('/restaurants', restaurantRoutes);

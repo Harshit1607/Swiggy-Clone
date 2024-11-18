@@ -2,7 +2,7 @@ import React, { useEffect, useState, useRef } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { currentAddress, deleteAddress, editAddress } from '../../../Redux/userAction';
 import styles from './UserAddressContainer.module.css';
-
+import addresssvg from '../../../assets/address.svg';
 const UserAddressContainer = () => {
   const { user } = useSelector(state => state.userReducer);
   const dispatch = useDispatch();
@@ -49,7 +49,9 @@ const UserAddressContainer = () => {
             key={index}
             onClick={() => dispatch(currentAddress(user.address[index]))}
           >
-            <div className={styles.savedAddressLeft}></div>
+            <div className={styles.savedAddressLeft}>
+            <img src={addresssvg} alt='' />
+            </div>
             <div className={styles.savedAddressRight}>
               <span>{data.addressName}</span>
               <span>{data.address}</span>

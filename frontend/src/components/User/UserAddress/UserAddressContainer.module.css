@@ -68,6 +68,10 @@
 .editAddress > span:hover{
   color: black;
 }
+.savedAddressLeft > img{
+  width: 20px;
+  height: 20px;
+}
 
 .deleteBox{
   position: fixed;

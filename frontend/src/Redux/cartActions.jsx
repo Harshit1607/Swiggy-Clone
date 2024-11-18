@@ -13,7 +13,7 @@ import { Add_CartItem_Failure,
    Sync_Cart_Request,
    Sync_Cart_Success} from "./actiontypes";
 
-const API_URL = 'http://localhost:5000/';
+const API_URL = process.env.SERVER_URL;
 
 export const fetchCart = ({cartId, userId}) => async (dispatch) => {
   dispatch({ type: Fetch_Cart_Request });

@@ -40,13 +40,7 @@ export const addItemToCart = async (req, res)=>{
       // Find the cart for the specified restaurant and user
       cart = await Cart.findOne({userId: userId });
 
-      // if (cart && cart.userId) {
-      //   cart = new Cart({
-      //     restaurantId: "", // Use existing restaurantId
-      //     items: [],
-      //     totalPrice: 0
-      //   });
-      // }
+    
 
       if (cart && cart.restaurantId.toString() !== restId.toString()) {
         cart.items = []; // Clear old items

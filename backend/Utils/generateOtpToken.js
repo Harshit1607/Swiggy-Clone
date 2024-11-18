@@ -1,6 +1,8 @@
 import jwt from 'jsonwebtoken'
-const SECRET_KEY = 'secret';
+import dotenv from 'dotenv'
 
+dotenv.config();
+const SECRET_KEY = process.env.JWT_SECRET;
 const generateToken = (otp, email)=>{
   const token = jwt.sign({ otp, email }, SECRET_KEY, { expiresIn: '5m' });
   return token;

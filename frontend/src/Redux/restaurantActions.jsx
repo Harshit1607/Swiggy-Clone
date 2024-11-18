@@ -24,7 +24,7 @@ import {
   Fav_Rest_Success,
 } from './actiontypes';
 
-const API_URL = 'http://localhost:5000/';
+const API_URL = process.env.SERVER_URL;
 
 export const fetchRestaurants = (page = 1) => async (dispatch) => {
   dispatch({ type: Fetch_Restaurants_Request });

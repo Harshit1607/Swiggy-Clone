@@ -4,6 +4,9 @@ import Payment from '../models/payment.js'
 import crypto from "crypto";
 import NodeCache from 'node-cache';
 import { instance } from '../server.js';
+import dotenv from 'dotenv'
+
+dotenv.config();
 const cache = new NodeCache();
 
 const PAYMENT_TIMEOUT = 5 * 60 * 1000;
@@ -71,7 +74,7 @@ export const verifyPayment = async (req, res) => {
     const body = razorpay_order_id + "|" + razorpay_payment_id;
 
     const expectedSignature = crypto
-    .createHmac("sha256", "iM62T5FAUW3bbF58vTEQzZ5h")
+    .createHmac("sha256", process.env.CRYPTO_KEY)
     .update(body.toString())
     .digest("hex");
     

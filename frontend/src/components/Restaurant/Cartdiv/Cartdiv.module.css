@@ -26,3 +26,9 @@
   bottom: 5%;
   left: 72.5%;
 }
+
+@media (max-width: 600px){
+  .cartBox{
+    width: 80%;
+  }
+}

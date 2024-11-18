@@ -15,7 +15,6 @@ export const fetchOrders = async (req, res) => {
       return order;
     })
   );
-  console.log(ordersWithRestaurants)
   // Send the result
   return res.status(200).json({ orders: ordersWithRestaurants });
   } catch (error) {

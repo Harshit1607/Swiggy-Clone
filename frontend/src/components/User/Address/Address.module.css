@@ -104,6 +104,10 @@
   justify-content: center;
 }
 
+.savedAddressLeft > img{
+  width: 20px;
+  height: 20px;
+}
 .savedAddressRight {
   width: 85%;
   height: 100px;
