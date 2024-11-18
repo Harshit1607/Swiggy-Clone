@@ -20,7 +20,14 @@ const mongourl = process.env.MONGOURL;
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(cors())
+
+const corsOptions = {
+  origin: 'https://swiggy-x98p.onrender.com/', // Ensure no trailing slash
+  methods: 'GET, POST, PUT, PATCH, DELETE, OPTIONS',
+  allowedHeaders: 'Content-Type, Authorization',
+  credentials: true // Enable credentials if needed
+};
+app.use(cors(corsOptions));
 
 mongoose.connect(mongourl);
 
