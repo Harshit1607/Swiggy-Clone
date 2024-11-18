@@ -1,0 +1,361 @@
+[
+  {
+    "restaurantId": 2,
+    "name": "Domino's Pizza",
+    "cuisine": "Pizza, Italian",
+    "location": "Various locations",
+    "rating": 4.4,
+    "image": "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/d0450ce1a6ba19ea60cd724471ed54a8",
+    "num_of_rating": "10k+",
+    "price_for_two": "Varies by location",
+    "menu": {
+      "Pizzas": [
+        { "itemId": 201, "item": "Margherita Pizza", "price": "₹99" },
+        { "itemId": 202, "item": "Farmhouse Pizza", "price": "₹199" },
+        { "itemId": 203, "item": "Peppy Paneer Pizza", "price": "₹249" },
+        { "itemId": 204, "item": "Veg Extravaganza Pizza", "price": "₹299" },
+        { "itemId": 205, "item": "Chicken Dominator Pizza", "price": "₹349" },
+        { "itemId": 206, "item": "Cheese Burst Pizza", "price": "₹399" },
+        { "itemId": 207, "item": "Veggie Paradise Pizza", "price": "₹249" },
+        { "itemId": 208, "item": "Paneer Makhani Pizza", "price": "₹299" },
+        { "itemId": 209, "item": "Chicken Sausage Pizza", "price": "₹249" },
+        { "itemId": 210, "item": "Pepper Barbecue Chicken Pizza", "price": "₹299" },
+        { "itemId": 211, "item": "Chicken Golden Delight Pizza", "price": "₹349" },
+        { "itemId": 212, "item": "Mexican Green Wave Pizza", "price": "₹299" },
+        { "itemId": 213, "item": "Deluxe Veggie Pizza", "price": "₹349" },
+        { "itemId": 214, "item": "Non Veg Supreme Pizza", "price": "₹399" },
+        { "itemId": 215, "item": "Chicken Fiesta Pizza", "price": "₹349" },
+        { "itemId": 216, "item": "Indi Tandoori Paneer Pizza", "price": "₹399" },
+        { "itemId": 217, "item": "Indi Chicken Tikka Pizza", "price": "₹449" },
+        { "itemId": 218, "item": "Pepperoni Pizza", "price": "₹499" },
+        { "itemId": 219, "item": "Double Cheese Margherita Pizza", "price": "₹199" },
+        { "itemId": 220, "item": "Cheese n Corn Pizza", "price": "₹249" }
+      ],
+      "Sides": [
+        { "itemId": 221, "item": "Garlic Breadsticks", "price": "₹99" },
+        { "itemId": 222, "item": "Stuffed Garlic Bread", "price": "₹139" },
+        { "itemId": 223, "item": "Taco Mexicana", "price": "₹169" },
+        { "itemId": 224, "item": "Chicken Wings", "price": "₹199" },
+        { "itemId": 225, "item": "Potato Wedges", "price": "₹99" },
+        { "itemId": 226, "item": "Cheesy Dip", "price": "₹50" },
+        { "itemId": 227, "item": "Jalapeno Dip", "price": "₹50" },
+        { "itemId": 228, "item": "Choco Lava Cake", "price": "₹99" },
+        { "itemId": 229, "item": "Butterscotch Mousse Cake", "price": "₹99" },
+        { "itemId": 230, "item": "Brownie Fantasy", "price": "₹120" }
+      ],
+      "Beverages": [
+        { "itemId": 231, "item": "Pepsi", "price": "₹60" },
+        { "itemId": 232, "item": "Coke", "price": "₹60" },
+        { "itemId": 233, "item": "Sprite", "price": "₹60" },
+        { "itemId": 234, "item": "Fanta", "price": "₹60" },
+        { "itemId": 235, "item": "Mountain Dew", "price": "₹60" },
+        { "itemId": 236, "item": "7 Up", "price": "₹60" },
+        { "itemId": 237, "item": "Mirinda", "price": "₹60" },
+        { "itemId": 238, "item": "Lipton Ice Tea", "price": "₹70" },
+        { "itemId": 239, "item": "Red Bull", "price": "₹150" },
+        { "itemId": 240, "item": "Mineral Water", "price": "₹20" }
+      ]
+    }
+  },{
+    "restaurantId": 3,
+    "name": "McDonald's",
+    "cuisine": "Fast Food, Burgers",
+    "location": "Various locations",
+    "rating": "Varies by location",
+    "image": "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/535fc9f9c135f7982317bbb6a64a1ffc",
+    "num_of_rating": "Varies by location",
+    "price_for_two": "Varies by location",
+    "menu": {
+      "Burgers": [
+        { "itemId": 301, "item": "McAloo Tikki Burger", "price": "₹42" },
+        { "itemId": 302, "item": "McSpicy Paneer Burger", "price": "₹149" },
+        { "itemId": 303, "item": "McChicken Burger", "price": "₹120" },
+        { "itemId": 304, "item": "Filet-O-Fish", "price": "₹150" },
+        { "itemId": 305, "item": "McVeggie Burger", "price": "₹100" },
+        { "itemId": 306, "item": "Big Mac", "price": "₹200" },
+        { "itemId": 307, "item": "Quarter Pounder with Cheese", "price": "₹220" },
+        { "itemId": 308, "item": "Double Cheeseburger", "price": "₹180" },
+        { "itemId": 309, "item": "Chicken Maharaja Mac", "price": "₹250" },
+        { "itemId": 310, "item": "McChicken Deluxe", "price": "₹170" }
+      ],
+      "Fries": [
+        { "itemId": 311, "item": "Medium Fries", "price": "₹90" },
+        { "itemId": 312, "item": "Large Fries", "price": "₹120" },
+        { "itemId": 313, "item": "Cheesy Fries", "price": "₹130" }
+      ],
+      "Beverages": [
+        { "itemId": 314, "item": "Coke", "price": "₹50" },
+        { "itemId": 315, "item": "Pepsi", "price": "₹50" },
+        { "itemId": 316, "item": "Sprite", "price": "₹50" },
+        { "itemId": 317, "item": "McFlurry", "price": "₹120" },
+        { "itemId": 318, "item": "Iced Coffee", "price": "₹130" }
+      ]
+    }
+  },{
+    "restaurantId": 4,
+    "name": "KFC",
+    "cuisine": "Fast Food, Chicken, Burgers",
+    "location": "Various locations",
+    "rating": "Varies by location",
+    "image": "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/RX_THUMBNAIL/IMAGES/VENDOR/2024/4/17/69e69c55-d2bb-4207-8310-131fc693f78a_26722.JPG",
+    "num_of_rating": "Varies by location",
+    "price_for_two": "Varies by location",
+    "menu": {
+      "Chicken": [
+        { "itemId": 401, "item": "Chicken Bucket", "price": "₹499" },
+        { "itemId": 402, "item": "Hot Wings", "price": "₹199" },
+        { "itemId": 403, "item": "Chicken Strips", "price": "₹149" },
+        { "itemId": 404, "item": "Chicken Drumsticks", "price": "₹199" },
+        { "itemId": 405, "item": "Chicken Wings", "price": "₹199" },
+        { "itemId": 406, "item": "Chicken Popcorn", "price": "₹99" },
+        { "itemId": 407, "item": "Chicken Biryani", "price": "₹250" }
+      ],
+      "Burgers": [
+        { "itemId": 408, "item": "Zinger Burger", "price": "₹149" },
+        { "itemId": 409, "item": "Veg Zinger Burger", "price": "₹139" }
+      ],
+      "Wraps": [
+        { "itemId": 410, "item": "Chicken Wrap", "price": "₹129" }
+      ],
+      "Sides": [
+        { "itemId": 411, "item": "French Fries", "price": "₹75" },
+        { "itemId": 412, "item": "Chicken Nuggets", "price": "₹150" }
+      ],
+      "Desserts": [
+        { "itemId": 413, "item": "Chocolate Lava Cake", "price": "₹99" },
+        { "itemId": 414, "item": "Brownie Sundae", "price": "₹120" }
+      ],
+      "Beverages": [
+        { "itemId": 415, "item": "Pepsi", "price": "₹60" },
+        { "itemId": 416, "item": "Coke", "price": "₹60" },
+        { "itemId": 417, "item": "Sprite", "price": "₹60" }
+      ]
+    }
+  },{
+    "restaurantId": 5,
+    "name": "Subway",
+    "cuisine": "Fast Food, Sandwiches, Salads",
+    "location": "Various locations",
+    "rating": "Varies by location",
+    "image":"https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/RX_THUMBNAIL/IMAGES/VENDOR/2024/6/4/518837c9-252e-47e6-90d3-055f0ea2c79d_493099.JPG",
+    "num_of_rating": "Varies by location",
+    "price_for_two": "Varies by location",
+    "menu": {
+      "Subs": [
+        { "itemId": 501, "item": "Veggie Delight Sub", "price": "₹150" },
+        { "itemId": 502, "item": "Chicken Teriyaki Sub", "price": "₹250" },
+        { "itemId": 503, "item": "Tuna Sub", "price": "₹200" },
+        { "itemId": 504, "item": "Turkey Breast Sub", "price": "₹220" },
+        { "itemId": 505, "item": "Italian B.M.T. Sub", "price": "₹240" },
+        { "itemId": 506, "item": "Roasted Chicken Sub", "price": "₹230" },
+        { "itemId": 507, "item": "Subway Club", "price": "₹250" },
+        { "itemId": 508, "item": "Chicken Ham Sub", "price": "₹210" },
+        { "itemId": 509, "item": "Chicken Tikka Sub", "price": "₹220" },
+        { "itemId": 510, "item": "Paneer Tikka Sub", "price": "₹200" },
+        { "itemId": 511, "item": "Aloo Patty Sub", "price": "₹150" },
+        { "itemId": 512, "item": "Egg and Cheese Sub", "price": "₹180" },
+        { "itemId": 513, "item": "Veg Shammi Sub", "price": "₹160" },
+        { "itemId": 514, "item": "Chicken Seekh Sub", "price": "₹220" },
+        { "itemId": 515, "item": "BBQ Chicken Sub", "price": "₹240" },
+        { "itemId": 516, "item": "Chicken Kofta Sub", "price": "₹230" },
+        { "itemId": 517, "item": "Veggie Patty Sub", "price": "₹170" },
+        { "itemId": 518, "item": "Chicken Meatball Sub", "price": "₹250" },
+        { "itemId": 519, "item": "Chicken Salami Sub", "price": "₹210" },
+        { "itemId": 520, "item": "Chicken Pepperoni Sub", "price": "₹240" }
+      ]
+    }
+  },{
+    "restaurantId": 7,
+    "name": "Hira Sweets",
+    "cuisine": "Indian Sweets, Bakery, Snacks, Cakes",
+    "location": "Various locations",
+    "rating": "Varies by location",
+    "image": "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/RX_THUMBNAIL/IMAGES/VENDOR/2024/7/7/2bd912af-cd14-46ca-99ad-21e2e59e928b_921099.jpg",
+    "num_of_rating": "Varies by location",
+    "price_for_two": "Varies by location",
+    "menu": {
+      "Sweets": [
+        { "itemId": 701, "item": "Gulab Jamun", "price": "₹20" },
+        { "itemId": 702, "item": "Rasgulla", "price": "₹25" },
+        { "itemId": 703, "item": "Kaju Katli", "price": "₹40" },
+        { "itemId": 704, "item": "Ladoo", "price": "₹30" },
+        { "itemId": 705, "item": "Barfi", "price": "₹35" },
+        { "itemId": 706, "item": "Jalebi", "price": "₹15" },
+        { "itemId": 707, "item": "Balushahi", "price": "₹25" },
+        { "itemId": 708, "item": "Peda", "price": "₹30" },
+        { "itemId": 709, "item": "Soan Papdi", "price": "₹20" },
+        { "itemId": 710, "item": "Mysore Pak", "price": "₹35" }
+      ],
+      "Bakery": [
+        { "itemId": 711, "item": "Chocolate Cake", "price": "₹300" },
+        { "itemId": 712, "item": "Vanilla Cake", "price": "₹250" },
+        { "itemId": 713, "item": "Red Velvet Cake", "price": "₹350" },
+        { "itemId": 714, "item": "Black Forest Cake", "price": "₹300" },
+        { "itemId": 715, "item": "Pineapple Cake", "price": "₹280" },
+        { "itemId": 716, "item": "Butterscotch Cake", "price": "₹320" },
+        { "itemId": 717, "item": "Cupcakes", "price": "₹150" },
+        { "itemId": 718, "item": "Cookies", "price": "₹100" },
+        { "itemId": 719, "item": "Brownies", "price": "₹200" },
+        { "itemId": 720, "item": "Pastries", "price": "₹180" }
+      ],
+      "Snacks": [
+        { "itemId": 721, "item": "Samosa", "price": "₹15" },
+        { "itemId": 722, "item": "Kachori", "price": "₹20" },
+        { "itemId": 723, "item": "Aloo Tikki", "price": "₹25" },
+        { "itemId": 724, "item": "Chole Bhature", "price": "₹50" },
+        { "itemId": 725, "item": "Pav Bhaji", "price": "₹60" },
+        { "itemId": 726, "item": "Dhokla", "price": "₹30" },
+        { "itemId": 727, "item": "Paneer Pakora", "price": "₹40" },
+        { "itemId": 728, "item": "Bread Pakora", "price": "₹20" },
+        { "itemId": 729, "item": "Vada Pav", "price": "₹25" },
+        { "itemId": 730, "item": "Bhel Puri", "price": "₹30" }
+      ]
+    }
+  },{
+    "restaurantId": 12,
+    "name": "Pizza Hut",
+    "cuisine": "Fast Food, Pizza",
+    "location": "Various locations",
+    "rating": "Varies by location",
+    "image":"https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/RX_THUMBNAIL/IMAGES/VENDOR/2024/6/20/5c0cf9a2-1195-4825-956b-bf00c6660d91_605121.JPG",
+    "num_of_rating": "Varies by location",
+    "price_for_two": "Varies by location",
+    "menu": {
+      "Pizzas": [
+        { "itemId": 1201, "item": "Margherita Pizza", "price": "₹199" },
+        { "itemId": 1202, "item": "Pepperoni Pizza", "price": "₹299" },
+        { "itemId": 1203, "item": "Veggie Supreme Pizza", "price": "₹249" },
+        { "itemId": 1204, "item": "Chicken Supreme Pizza", "price": "₹349" },
+        { "itemId": 1205, "item": "Paneer Tikka Pizza", "price": "₹299" },
+        { "itemId": 1206, "item": "BBQ Chicken Pizza", "price": "₹349" },
+        { "itemId": 1207, "item": "Hawaiian Pizza", "price": "₹299" },
+        { "itemId": 1208, "item": "Meat Lover's Pizza", "price": "₹399" }
+      ],
+      "Sides": [
+        { "itemId": 1209, "item": "Garlic Bread", "price": "₹99" },
+        { "itemId": 1210, "item": "Cheesy Breadsticks", "price": "₹129" },
+        { "itemId": 1211, "item": "Chicken Wings", "price": "₹199" },
+        { "itemId": 1212, "item": "Potato Wedges", "price": "₹99" }
+      ],
+      "Desserts": [
+        { "itemId": 1213, "item": "Chocolate Lava Cake", "price": "₹149" },
+        { "itemId": 1214, "item": "Cinnamon Sticks", "price": "₹129" }
+      ],
+      "Beverages": [
+        { "itemId": 1215, "item": "Pepsi", "price": "₹60" },
+        { "itemId": 1216, "item": "Coke", "price": "₹60" },
+        { "itemId": 1217, "item": "Sprite", "price": "₹60" }
+      ]
+    }
+  },{
+    "restaurantId": 13,
+    "name": "Keventers Milkshakes",
+    "cuisine": "Beverages, Desserts, Shakes",
+    "location": "Various locations",
+    "rating": "Varies by location",
+    "image": "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/RX_THUMBNAIL/IMAGES/VENDOR/2024/6/20/5c0cf9a2-1195-4825-956b-bf00c6660d91_605121.JPG",
+    "num_of_rating": "Varies by location",
+    "price_for_two": "Varies by location",
+    "menu": {
+      "Milkshakes": [
+        { "itemId": 1301, "item": "Chocolate Milkshake", "price": "₹150" },
+        { "itemId": 1302, "item": "Strawberry Milkshake", "price": "₹150" },
+        { "itemId": 1303, "item": "Vanilla Milkshake", "price": "₹150" },
+        { "itemId": 1304, "item": "Mango Milkshake", "price": "₹150" },
+        { "itemId": 1305, "item": "Butterscotch Milkshake", "price": "₹150" },
+        { "itemId": 1306, "item": "Oreo Milkshake", "price": "₹180" },
+        { "itemId": 1307, "item": "KitKat Milkshake", "price": "₹180" }
+      ],
+      "Thick Shakes": [
+        { "itemId": 1308, "item": "Chocolate Thick Shake", "price": "₹200" },
+        { "itemId": 1309, "item": "Strawberry Thick Shake", "price": "₹200" },
+        { "itemId": 1310, "item": "Vanilla Thick Shake", "price": "₹200" }
+      ],
+      "Iced Beverages": [
+        { "itemId": 1311, "item": "Iced Coffee", "price": "₹120" },
+        { "itemId": 1312, "item": "Iced Tea", "price": "₹100" }
+      ],
+      "Ice Cream Packs": [
+        { "itemId": 1313, "item": "Chocolate Ice Cream Pack", "price": "₹250" },
+        { "itemId": 1314, "item": "Vanilla Ice Cream Pack", "price": "₹250" }
+      ],
+      "Sundaes": [
+        { "itemId": 1315, "item": "Chocolate Sundae", "price": "₹150" },
+        { "itemId": 1316, "item": "Strawberry Sundae", "price": "₹150" }
+      ],
+      "Hot Chocolate": [
+        { "itemId": 1317, "item": "Classic Hot Chocolate", "price": "₹120" }
+      ]
+    }
+  },{
+    "restaurantId": 14,
+    "name": "Nirula's",
+    "cuisine": "Fast Food, North Indian, Desserts, Burgers, Pizza",
+    "location": "Various locations",
+    "rating": "Varies by location",
+    "image": "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/a66fa8f5befa65947d9e20f29a863ce0",
+    "num_of_rating": "Varies by location",
+    "price_for_two": "Varies by location",
+    "menu": {
+      "Burgers": [
+        { "itemId": 1401, "item": "Big Boy Burger", "price": "₹150" },
+        { "itemId": 1402, "item": "Chicken Burger", "price": "₹120" },
+        { "itemId": 1403, "item": "Veggie Burger", "price": "₹100" }
+      ],
+      "Pizzas": [
+        { "itemId": 1404, "item": "Cheese Pizza", "price": "₹200" },
+        { "itemId": 1405, "item": "Pepperoni Pizza", "price": "₹250" },
+        { "itemId": 1406, "item": "Veggie Pizza", "price": "₹220" }
+      ],
+      "Indian": [
+        { "itemId": 1407, "item": "Paneer Tikka", "price": "₹180" },
+        { "itemId": 1408, "item": "Chicken Tikka", "price": "₹200" },
+        { "itemId": 1409, "item": "Dal Makhani", "price": "₹150" }
+      ],
+      "Desserts": [
+        { "itemId": 1410, "item": "Hot Chocolate Fudge", "price": "₹100" },
+        { "itemId": 1411, "item": "Ice Cream Sundae", "price": "₹120" }
+      ],
+      "Beverages": [
+        { "itemId": 1412, "item": "Cold Coffee", "price": "₹80" },
+        { "itemId": 1413, "item": "Lemonade", "price": "₹60" }
+      ]
+    }
+  },{
+    "restaurantId": 15,
+    "name": "Wendy's Burger",
+    "cuisine": "Fast Food, Burgers",
+    "location": "Various locations",
+    "rating": "Varies by location",
+    "image": "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/f1aa621021a2826088089b89842d4e7c",
+    "num_of_rating": "Varies by location",
+    "price_for_two": "Varies by location",
+    "menu": {
+      "Burgers": [
+        { "itemId": 1501, "item": "Dave's Single", "price": "₹150" },
+        { "itemId": 1502, "item": "Baconator", "price": "₹200" },
+        { "itemId": 1503, "item": "Spicy Chicken Sandwich", "price": "₹180" }
+      ],
+      "Nuggets": [
+        { "itemId": 1504, "item": "Chicken Nuggets", "price": "₹100" },
+        { "itemId": 1505, "item": "Spicy Nuggets", "price": "₹120" }
+      ],
+      "Salads": [
+        { "itemId": 1506, "item": "Caesar Salad", "price": "₹150" },
+        { "itemId": 1507, "item": "Garden Salad", "price": "₹130" }
+      ],
+      "Sides": [
+        { "itemId": 1508, "item": "French Fries", "price": "₹60" },
+        { "itemId": 1509, "item": "Baked Potato", "price": "₹80" }
+      ],
+      "Desserts": [
+        { "itemId": 1510, "item": "Frosty", "price": "₹50" },
+        { "itemId": 1511, "item": "Chocolate Chip Cookie", "price": "₹40" }
+      ],
+      "Beverages": [
+        { "itemId": 1512, "item": "Coke", "price": "₹60" },
+        { "itemId": 1513, "item": "Sprite", "price": "₹60" }
+      ]
+    }
+  }
+]
