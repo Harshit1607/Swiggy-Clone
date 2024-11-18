@@ -16,12 +16,13 @@ dotenv.config();
 
 const app = express();
 const port = process.env.PORT || 5000;
+const mongourl = process.env.MONGOURL;
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors())
 
-mongoose.connect("mongodb://localhost:27017/Swiggy");
+mongoose.connect(mongourl);
 
 export const instance = new Razorpay({
   key_id: process.env.RAZORPAY_ID,
