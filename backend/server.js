@@ -21,11 +21,13 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 const corsOptions = {
-  origin: 'https://swiggy-x98p.onrender.com', // Ensure no trailing slash
-  methods: 'GET, POST, PUT, PATCH, DELETE, OPTIONS',
-  allowedHeaders: 'Content-Type, Authorization',
-  credentials: true // Enable credentials if needed
+  origin: 'https://swiggy-x98p.onrender.com', // This is correct - no trailing slash
+  methods: 'GET, POST, PUT, PATCH, DELETE, OPTIONS', // This allows all the necessary HTTP methods
+  allowedHeaders: 'Content-Type, Authorization', // Allow headers for content type and authorization tokens
+  credentials: true // Allow cookies or authorization headers if needed
 };
+
+// Use the cors middleware with the specified options
 app.use(cors(corsOptions));
 
 mongoose.connect(mongourl);
