@@ -21,7 +21,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 const corsOptions = {
-  origin: 'https://swiggy-x98p.onrender.com', // This is correct - no trailing slash
+  origin: ['https://swiggy-x98p.onrender.com', 'http://localhost:3000'], // This is correct - no trailing slash
   methods: 'GET, POST, PUT, PATCH, DELETE, OPTIONS', // This allows all the necessary HTTP methods
   allowedHeaders: 'Content-Type, Authorization', // Allow headers for content type and authorization tokens
   credentials: true // Allow cookies or authorization headers if needed
@@ -30,7 +30,12 @@ const corsOptions = {
 app.use(cors(corsOptions));  // Apply CORS middleware to all routes
 app.options('*', cors(corsOptions));  // Handle preflight requests for all routes
 
-mongoose.connect(mongourl);
+mongoose.connect(mongourl, {
+}).then(() => {
+  console.log('MongoDB Connected');
+}).catch((error) => {
+  console.error('MongoDB Connection Error:', error);
+});
 
 export const instance = new Razorpay({
   key_id: process.env.RAZORPAY_ID,
@@ -43,8 +48,8 @@ app.use('/user', userRoutes)
 app.use('/orders', orderRoutes)
 app.use('/payment', paymentRoutes)
 
-// app.listen(port, '0.0.0.0', () => {
-//   console.log(`Server running on port ${port}`);
-// });
+app.listen(port, '0.0.0.0', () => {
+  console.log(`Server running on port ${port}`);
+});
 
 export default app;
