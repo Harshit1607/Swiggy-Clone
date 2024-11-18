@@ -27,8 +27,8 @@ const corsOptions = {
   credentials: true // Allow cookies or authorization headers if needed
 };
 
-// Use the cors middleware with the specified options
-app.use(cors(corsOptions));
+app.use(cors(corsOptions));  // Apply CORS middleware to all routes
+app.options('*', cors(corsOptions));  // Handle preflight requests for all routes
 
 mongoose.connect(mongourl);
 
