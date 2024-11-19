@@ -8,7 +8,7 @@ import Signup from '../Auth/Signup';
 import styles from './Cuisinehome.module.css';
 
 const Cuisinehome = () => {
-  const { restaurants, loading, error } = useSelector(state => state.restaurantReducer);
+  const { cuisineRestaurants, loading, error } = useSelector(state => state.restaurantReducer);
   const { hiddenLogin, hiddenSignup } = useSelector(state => state.userReducer);
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -26,7 +26,7 @@ const Cuisinehome = () => {
     return <div className="loading">Error: {error}</div>;
   }
 
-  if (!restaurants || restaurants.length === 0) {
+  if (!cuisineRestaurants || cuisineRestaurants.length === 0) {
     return <div>No restaurants available</div>;
   }
 
@@ -43,7 +43,7 @@ const Cuisinehome = () => {
           <span>Restaurants with online food delivery in Delhi</span>
         </div>
         <div className={styles.restaurantContainer}>
-          {restaurants.map(item => (
+          {cuisineRestaurants.map(item => (
             <div className={styles.restaurantInfo} onClick={() => handleClick(item._id)} key={item._id}>
               <img src={item.image} alt={`${item.name}`} />
               <span className={styles.restaurantName}>{item.name}</span>

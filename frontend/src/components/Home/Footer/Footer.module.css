@@ -2,4 +2,33 @@
   width: 100%;
   height: calc(100vh - 80px);
   background-color: rgb(11, 11, 11);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: end;
+  gap: 1rem;
+  font-size: 1.5rem;
+  color: rgb(214, 214, 214);
+}
+
+.name > span{
+  color: #fc8019;
+  text-decoration: underline;
+}
+
+.logos{
+  display: flex;
+  justify-content: center;
+  gap: 3rem
+}
+
+.logos > a{
+  text-decoration: none;
+}
+.logos > a > img{
+  background-color: white;
+  color: white;
+  width: 50px;
+  height: 50px;
+  border-radius: 20%;
 }

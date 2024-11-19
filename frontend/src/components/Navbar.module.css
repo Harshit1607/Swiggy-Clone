@@ -105,4 +105,7 @@
   .navElem > span{
     display: none;
   }
+  .NavbarLeft, .NavbarRight{
+    width: 50%;
+  }
 }

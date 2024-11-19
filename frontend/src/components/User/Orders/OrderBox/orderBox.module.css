@@ -106,3 +106,26 @@
   color: #fc8019;
 }
 
+@media (max-width: 750px) {
+  .main{
+    min-height: 45vh;
+  }
+  .top{
+    min-height: 22vh;
+  }
+  .bottom{
+    min-height: 20vh;
+  }
+}
+
+@media (max-width: 500px) {
+  .main{
+    min-height: 55vh;
+  }
+  .top{
+    min-height: 26vh;
+  }
+  .bottom{
+    min-height: 26vh;
+  }
+}

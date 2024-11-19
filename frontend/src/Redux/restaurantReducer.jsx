@@ -34,6 +34,7 @@ const initialState = {
   searchRestaurant: [],
   topRestaurants: [],
   searchDishes: [],
+  cuisineRestaurants: [],
   favRest: localStorage.getItem('favRest') && JSON.parse(localStorage.getItem('favRest')) && JSON.parse(localStorage.getItem('favRest')).length > 0 ? JSON.parse(localStorage.getItem('favRest')): [],
   page: 0,
   hasMore: true,
@@ -76,7 +77,7 @@ function restaurantReducer(state = initialState, action) {
       return {
         ...state,
         loading: false,
-        restaurants: action.payload.restaurants,
+        cuisineRestaurants: action.payload.restaurants,
         searchRestaurant: [],
       };
     case Restaurant_By_Search_Success:
