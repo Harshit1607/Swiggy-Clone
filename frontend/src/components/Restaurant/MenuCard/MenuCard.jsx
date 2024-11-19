@@ -50,7 +50,7 @@ const MenuCard = () => {
           <div key={category}>
             <div className={styles.divider}></div>
             <div className={styles.menuSingle} id={category}>
-              <div><span>{category}</span><span onClick={() => handleVisible(category)} className={styles.slider}>v</span></div>
+              <div onClick={() => handleVisible(category)}><span>{category}</span><span  className={styles.slider}>v</span></div>
               {menu[category].map(menuItem => (
                 <div className={styles.menuSingleItem} key={menuItem.itemId} style={{ display: visible.includes(category) ? "" : "none" }}>
                   <div className={styles.itemNamePrice}>

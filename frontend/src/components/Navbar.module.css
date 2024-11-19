@@ -105,10 +105,13 @@
   .navElem > span{
     display: none;
   }
-  .NavbarLeft, .NavbarRight{
+  .NavbarRight{
+    width: 50%;
+  }
+  .NavbarLeft{
     width: 50%;
   }
   .NavbarLeft > img {
-    margin-left: 10px;
+    margin: 0;
   }
 }
