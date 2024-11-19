@@ -108,4 +108,7 @@
   .NavbarLeft, .NavbarRight{
     width: 50%;
   }
+  .NavbarLeft > img {
+    margin-left: 10px;
+  }
 }
