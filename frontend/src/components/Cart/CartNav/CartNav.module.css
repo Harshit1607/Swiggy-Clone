@@ -104,4 +104,13 @@
   .navElem > span{
     display: none;
   }
+  .NavbarRight{
+    width: 50%;
+  }
+  .NavbarLeft{
+    width: 50%;
+  }
+  .NavbarLeft > img {
+    margin: 0;
+  }
 }
