@@ -10,7 +10,7 @@ import styles from './UserNav.module.css'; // Import the CSS module
 import cartsvg from '../../../assets/cart.svg';
 import profilesvg from '../../../assets/profile.svg';
 import searchsvg from '../../../assets/search.svg';
-
+import swiggysvg from '../../../assets/swiggy-1.svg';
 
 const Navbar = () => {
   const navigate = useNavigate();
@@ -33,7 +33,7 @@ const Navbar = () => {
       <div className={styles.Navbar}>
         <div className={styles.NavbarLeft}>
           <img
-            src="https://cdn.iconscout.com/icon/free/png-256/free-swiggy-1613371-1369418.png"
+            src={swiggysvg}
             onClick={() => {
               navigate('/');
             }}
