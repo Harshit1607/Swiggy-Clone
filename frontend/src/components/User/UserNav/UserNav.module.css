@@ -1,7 +1,7 @@
 .Navbar {
   background-color: rgb(249, 249, 249);
   height: 80px;
-  position: sticky;
+  position: absolute;
   display: flex;
   flex-direction: row;
   justify-content: center;
