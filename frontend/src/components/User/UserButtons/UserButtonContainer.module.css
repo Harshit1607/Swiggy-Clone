@@ -8,6 +8,7 @@
   align-items: center;
   justify-content: start;
   border: 2px solid #37718e;
+  position: absolute;
 }
 
 .userButtons{
@@ -47,6 +48,7 @@
     width: 100%;
     height: 60px;
     flex-direction: row;
+    position: fixed;
   }
   .userButtons{
     height: 100%;
