@@ -3,11 +3,14 @@ import styles from './CartPayment.module.css'
 import { useDispatch, useSelector } from 'react-redux';
 import { createOrder, verifyPayment } from '../../../Redux/paymentActions';
 import img from '../../../assets/swiggy-1.svg'
+import { useNavigate } from 'react-router-dom';
 const CartPayment = () => {
   const {deliveryAddress, user} = useSelector(state=>state.userReducer);
   const {order, loading, error, userOrder, makePayment} = useSelector(state=>state.paymentReducer);
+  const {cart} = useSelector(state=>state.cartReducer);
   const {toPay} = useSelector(state=>state.cartReducer);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const key = process.env.REACT_APP_KEY;
 
@@ -43,6 +46,9 @@ const CartPayment = () => {
             "color": "#121212"
         }
     };
+    if(!order && !cart){
+        navigate('/');
+    }
     const razor = new window.Razorpay(options);
     razor.open();
     }

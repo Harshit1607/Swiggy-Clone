@@ -32,10 +32,12 @@ function paymentReducer (state = initialState, action){
         paymentVerified: false,
       };
     case Make_Payment_Success:
+      console.log("Success")
       localStorage.removeItem('order');
       localStorage.setItem('userOrder', JSON.stringify(action.payload.userOrder))
       localStorage.setItem('paymentVerified', "true")
       localStorage.setItem('makePayment', "false")
+      localStorage.removeItem('cart');
       return{
         ...state,
         loading:false,
